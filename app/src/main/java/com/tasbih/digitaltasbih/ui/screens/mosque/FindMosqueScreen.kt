@@ -43,6 +43,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import com.tasbih.digitaltasbih.data.CitySearchResult
 import com.tasbih.digitaltasbih.data.HalalFoodItem
 import com.tasbih.digitaltasbih.data.MosqueItem
 import com.tasbih.digitaltasbih.data.NearMeRepository
@@ -51,6 +52,7 @@ import com.tasbih.digitaltasbih.data.mosque.MosqueRepository
 import com.tasbih.digitaltasbih.data.mosque.MosqueRouteInfo
 import com.tasbih.digitaltasbih.data.mosque.NearbyMosque
 import com.tasbih.digitaltasbih.util.MapHelper
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -96,13 +98,38 @@ fun FindMosqueScreen(
             ?.takeIf { it.isNotBlank() && it != "Current Location" } ?: "Your Area"
     }
 
+    val filteredPlaces = remember(placesList, searchQuery) {
+        if (searchQuery.isBlank()) {
+            placesList
+        } else {
+            val q = searchQuery.trim().lowercase()
+            placesList.filter { it.name.lowercase().contains(q) || it.address.lowercase().contains(q) }
+        }
+    }
+
+    var citySuggestions by remember { mutableStateOf<List<CitySearchResult>>(emptyList()) }
+    var isSearchingCity by remember { mutableStateOf(false) }
+
+    // City search debounce effect via Nominatim
+    LaunchedEffect(searchQuery) {
+        val q = searchQuery.trim()
+        if (q.length >= 3 && filteredPlaces.isEmpty()) {
+            delay(500L)
+            isSearchingCity = true
+            citySuggestions = NearMeRepository.searchCities(q)
+            isSearchingCity = false
+        } else {
+            citySuggestions = emptyList()
+        }
+    }
+
     // Function to calculate route from user's current position to selected place
     fun calculateRoute(dest: NearbyMosque, driving: Boolean) {
         selectedPlace = dest
         isDrivingMode = driving
         isLoadingRoute = true
         coroutineScope.launch {
-            val route = MosqueRepository.getRoute(
+            val route = NearMeRepository.getRoute(
                 startLat = userLat,
                 startLon = userLon,
                 destLat = dest.lat,
@@ -281,16 +308,6 @@ fun FindMosqueScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // ── 1. MAP ENGINE (Google Maps SDK or 100% Free OSMDroid Fallback) ──
-            val filteredPlaces = remember(placesList, searchQuery) {
-                if (searchQuery.isBlank()) {
-                    placesList
-                } else {
-                    val q = searchQuery.trim().lowercase()
-                    placesList.filter { it.name.lowercase().contains(q) || it.address.lowercase().contains(q) }
-                }
-            }
-
             // ── 1. MAP ENGINE: MapLibre Native with OpenFreeMap Liberty style ──
             MapLibreMosqueView(
                 userLat = userLat,
@@ -367,12 +384,59 @@ fun FindMosqueScreen(
                             )
                         }
 
-                        if (isLoadingPlaces) {
+                        if (isLoadingPlaces || isSearchingCity) {
                             CircularProgressIndicator(
                                 color = Color(0xFF0D4A3E),
                                 strokeWidth = 2.dp,
                                 modifier = Modifier.size(16.dp)
                             )
+                        }
+                    }
+                }
+
+                // City Suggestions Dropdown (Nominatim Search Results)
+                if (citySuggestions.isNotEmpty()) {
+                    Surface(
+                        shape = RoundedCornerShape(12.dp),
+                        color = Color.White,
+                        shadowElevation = 6.dp,
+                        border = BorderStroke(1.dp, Color(0xFFC9A84C).copy(alpha = 0.35f)),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Column(modifier = Modifier.padding(vertical = 4.dp)) {
+                            citySuggestions.forEach { city ->
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable {
+                                            userLat = city.latitude
+                                            userLon = city.longitude
+                                            searchQuery = ""
+                                            citySuggestions = emptyList()
+                                            loadPlaces()
+                                        }
+                                        .padding(horizontal = 14.dp, vertical = 9.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                    Text("📍", fontSize = 14.sp)
+                                    Column(modifier = Modifier.weight(1f)) {
+                                        Text(
+                                            text = city.name,
+                                            fontSize = 13.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color(0xFF0D4A3E)
+                                        )
+                                        Text(
+                                            text = city.displayName,
+                                            fontSize = 10.5.sp,
+                                            color = Color(0xFF64748B),
+                                            maxLines = 1,
+                                            overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                                        )
+                                    }
+                                }
+                            }
                         }
                     }
                 }

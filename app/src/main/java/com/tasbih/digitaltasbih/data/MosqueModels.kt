@@ -30,3 +30,10 @@ data class HalalFoodItem(
     val dietHalalTag: String = "yes",
     val verificationLabel: String = "Reported halal (not certified)"
 )
+
+data class CitySearchResult(
+    val name: String,
+    val displayName: String,
+    val latitude: Double,
+    val longitude: Double
+)

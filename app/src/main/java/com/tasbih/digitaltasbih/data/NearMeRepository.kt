@@ -3,13 +3,17 @@ package com.tasbih.digitaltasbih.data
 import android.content.Context
 import android.util.Log
 import com.google.gson.JsonParser
+import com.tasbih.digitaltasbih.data.mosque.MosqueRouteInfo
+import com.tasbih.digitaltasbih.data.mosque.RouteStep
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.net.URLEncoder
 import java.util.Locale
 import kotlin.math.ceil
 import kotlin.math.cos
 import kotlin.math.floor
+import kotlin.math.max
 
 /**
  * Repository orchestrating live OpenStreetMap Overpass queries and offline Overture dataset.
@@ -342,5 +346,181 @@ object NearMeRepository {
 
         results.sortBy { it.distanceMeters }
         return results
+    }
+
+    private var lastNominatimRequestTime = 0L
+
+    /**
+     * Searches cities in India using OpenStreetMap Nominatim.
+     * Enforces 1 req/sec rate limit per Nominatim policy with a 500ms debounce.
+     */
+    suspend fun searchCities(query: String): List<CitySearchResult> = withContext(Dispatchers.IO) {
+        val clean = query.trim()
+        if (clean.length < 2) return@withContext emptyList()
+
+        val now = System.currentTimeMillis()
+        val elapsed = now - lastNominatimRequestTime
+        if (elapsed < 1000L) {
+            delay(1000L - elapsed)
+        }
+        lastNominatimRequestTime = System.currentTimeMillis()
+
+        val encoded = URLEncoder.encode(clean, "UTF-8")
+        val url = "https://nominatim.openstreetmap.org/search?format=json&q=$encoded&countrycodes=in&limit=5&addressdetails=1"
+
+        try {
+            val response = NearMeHttpClient.get(url)
+            if (response.isSuccessful && response.body.isNotBlank()) {
+                val jsonArray = JsonParser.parseString(response.body).asJsonArray
+                val results = mutableListOf<CitySearchResult>()
+                for (i in 0 until jsonArray.size()) {
+                    val obj = jsonArray[i].asJsonObject
+                    val lat = obj.get("lat")?.asDouble ?: continue
+                    val lon = obj.get("lon")?.asDouble ?: continue
+                    val displayName = obj.get("display_name")?.asString ?: clean
+                    val name = obj.get("name")?.asString
+                        ?: displayName.split(",").firstOrNull()?.trim()
+                        ?: clean
+
+                    results.add(
+                        CitySearchResult(
+                            name = name,
+                            displayName = displayName,
+                            latitude = lat,
+                            longitude = lon
+                        )
+                    )
+                }
+                results
+            } else {
+                emptyList()
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "Nominatim search error: ${e.message}")
+            emptyList()
+        }
+    }
+
+    /**
+     * Option A Navigation: Fetches route preview polyline and distance/ETA from OSRM.
+     * When walking, duration is computed at realistic walking speed (1.38 m/s ~ 5 km/h)
+     * and labeled as approximate.
+     */
+    suspend fun getRoute(
+        startLat: Double,
+        startLon: Double,
+        destLat: Double,
+        destLon: Double,
+        isDriving: Boolean = false
+    ): MosqueRouteInfo? = withContext(Dispatchers.IO) {
+        val urlStr = "https://router.project-osrm.org/route/v1/driving/$startLon,$startLat;$destLon,$destLat?overview=full&geometries=polyline&steps=true"
+        try {
+            val response = NearMeHttpClient.get(urlStr)
+            if (response.isSuccessful && response.body.isNotBlank()) {
+                val json = JsonParser.parseString(response.body).asJsonObject
+                if (json.get("code")?.asString == "Ok") {
+                    val routes = json.getAsJsonArray("routes")
+                    if (routes != null && routes.size() > 0) {
+                        val route = routes.get(0).asJsonObject
+                        val distance = route.get("distance")?.asDouble ?: 0.0
+                        val rawDuration = route.get("duration")?.asDouble ?: 0.0
+
+                        // For walking: estimate realistic walking speed (approx 5 km/h = 1.38 m/s)
+                        val duration = if (isDriving) {
+                            rawDuration
+                        } else {
+                            max(60.0, distance / 1.38)
+                        }
+
+                        val encodedPolyline = route.get("geometry")?.asString ?: ""
+                        val polylinePoints = decodePolyline(encodedPolyline)
+
+                        val stepsList = mutableListOf<RouteStep>()
+                        val legs = route.getAsJsonArray("legs")
+                        if (legs != null && legs.size() > 0) {
+                            val leg = legs.get(0).asJsonObject
+                            val stepsArray = leg.getAsJsonArray("steps")
+                            if (stepsArray != null) {
+                                for (j in 0 until stepsArray.size()) {
+                                    val stepObj = stepsArray.get(j).asJsonObject
+                                    val name = stepObj.get("name")?.asString ?: ""
+                                    val maneuver = stepObj.getAsJsonObject("maneuver")
+                                    val mType = maneuver?.get("type")?.asString ?: ""
+                                    val mMod = maneuver?.get("modifier")?.asString ?: ""
+                                    val sDist = stepObj.get("distance")?.asDouble ?: 0.0
+                                    val sDur = stepObj.get("duration")?.asDouble ?: 0.0
+
+                                    val instruction = buildInstruction(mType, mMod, name, sDist)
+                                    stepsList.add(RouteStep(instruction, sDist, sDur, mType))
+                                }
+                            }
+                        }
+
+                        return@withContext MosqueRouteInfo(
+                            distanceMeters = distance,
+                            durationSeconds = duration,
+                            polylinePoints = polylinePoints,
+                            steps = stepsList,
+                            isDriving = isDriving
+                        )
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "OSRM route fetch failed: ${e.message}")
+        }
+        null
+    }
+
+    private fun buildInstruction(type: String, modifier: String, name: String, distance: Double): String {
+        val road = if (name.isNotBlank()) "onto $name" else ""
+        val distText = if (distance >= 1000) String.format(Locale.US, "%.1f km", distance / 1000.0) else "${distance.toInt()} m"
+
+        return when (type) {
+            "depart" -> "Head out $road ($distText)"
+            "arrive" -> "Arrive at destination"
+            "turn" -> "Turn ${modifier.replace("_", " ")} $road ($distText)"
+            "continue" -> "Continue straight $road ($distText)"
+            "new name" -> "Continue $road ($distText)"
+            "fork" -> "Keep ${modifier.replace("_", " ")} $road ($distText)"
+            "roundabout" -> "Take roundabout $road ($distText)"
+            else -> "${type.replaceFirstChar { it.uppercase() }} $modifier $road ($distText)".trim()
+        }
+    }
+
+    private fun decodePolyline(encoded: String): List<Pair<Double, Double>> {
+        val poly = ArrayList<Pair<Double, Double>>()
+        var index = 0
+        val len = encoded.length
+        var lat = 0
+        var lng = 0
+
+        while (index < len) {
+            var b: Int
+            var shift = 0
+            var result = 0
+            do {
+                b = encoded[index++].code - 63
+                result = result or ((b and 0x1f) shl shift)
+                shift += 5
+            } while (b >= 0x20)
+            val dlat = if ((result and 1) != 0) (result shr 1).inv() else (result shr 1)
+            lat += dlat
+
+            shift = 0
+            result = 0
+            do {
+                b = encoded[index++].code - 63
+                result = result or ((b and 0x1f) shl shift)
+                shift += 5
+            } while (b >= 0x20)
+            val dlng = if ((result and 1) != 0) (result shr 1).inv() else (result shr 1)
+            lng += dlng
+
+            val pLat = lat.toDouble() / 1E5
+            val pLng = lng.toDouble() / 1E5
+            poly.add(Pair(pLat, pLng))
+        }
+        return poly
     }
 }

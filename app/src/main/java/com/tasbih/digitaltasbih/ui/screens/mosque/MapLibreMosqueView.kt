@@ -183,7 +183,7 @@ fun MapLibreMosqueView(
         }
     }
 
-    // Update user location blue dot
+    // Update user location blue dot and camera position
     LaunchedEffect(mapLibreMap, currentStyle, userLat, userLon) {
         val map = mapLibreMap ?: return@LaunchedEffect
         if (currentStyle == null) return@LaunchedEffect
@@ -199,6 +199,11 @@ fun MapLibreMosqueView(
                 .icon(userBlueDotIcon)
         )
         userLocationMarker = marker
+
+        map.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(LatLng(userLat, userLon), 13.5),
+            700
+        )
     }
 
     // Update place markers

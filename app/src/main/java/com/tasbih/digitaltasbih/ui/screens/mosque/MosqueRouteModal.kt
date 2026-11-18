@@ -147,8 +147,8 @@ fun MosqueRouteModal(
                 StatItem(label = "TOTAL DISTANCE", value = distText, icon = "📏")
                 Divider(modifier = Modifier.height(30.dp).width(1.dp), color = Color(0xFFE2E8F0))
                 StatItem(
-                    label = if (isDrivingMode) "DRIVE TIME" else "WALK TIME",
-                    value = "~$estTimeMin mins",
+                    label = if (isDrivingMode) "DRIVE TIME" else "APPROX WALK TIME",
+                    value = if (isDrivingMode) "~$estTimeMin mins" else "~$estTimeMin mins (approx)",
                     icon = if (isDrivingMode) "🚗" else "🚶"
                 )
                 Divider(modifier = Modifier.height(30.dp).width(1.dp), color = Color(0xFFE2E8F0))
