@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Tasbih - Architecture & Privacy Diagrams</title>
+    <style>
+        :root {
+            --bg: #090d16;
+            --card-bg: #111827;
+            --border: #1f2937;
+            --gold: #d4af37;
+            --text: #f3f4f6;
+            --text-muted: #9ca3af;
+            --emerald: #10b981;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 32px 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            color: var(--gold);
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .diagram-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 36px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .diagram-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .diagram-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--emerald);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .diagram-img-wrap {
+            background: #0b131a;
+            border-radius: 12px;
+            padding: 16px;
+            overflow-x: auto;
+            text-align: center;
+            border: 1px solid #1a2333;
+        }
+        .diagram-img-wrap img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+        .diagram-desc {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--gold);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .download-btn:hover {
+            background: rgba(212, 175, 55, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Visual Architecture &amp; Privacy Flow Diagrams</h1>
+            <p class="subtitle">Evidence-based architectural topology, data boundaries, permission matrices, and consent mechanics for Digital Tasbih (com.tasbih.digitaltasbih).</p>
+        </header>
+
+        <!-- Diagram 1 -->
+        <div class="diagram-card">
+            <div class="diagram-header">
+                <div class="diagram-title">01. End-to-End System Architecture &amp; Data Flows</div>
+                <span class="badge">Architecture Topology</span>
+            </div>
+            <div class="diagram-img-wrap">
+                <img src="01_system_architecture_data_flow.svg" alt="System Architecture & Data Flows">
+            </div>
+            <div class="diagram-desc">
+                Illustrates the complete data journey between the sandboxed Android device, direct third-party cloud APIs (Aladhan, AdMob, Firebase), Cloudflare Edge Workers (auth-worker, campaigns-worker), Cloudflare D1 SQL, and Google Cloud Firestore.
+                <br><a class="download-btn" href="01_system_architecture_data_flow.svg" download>Download Raw SVG</a>
+            </div>
+        </div>
+
+        <!-- Diagram 2 -->
+        <div class="diagram-card">
+            <div class="diagram-header">
+                <div class="diagram-title">02. Backend Storage &amp; PII Reality Map</div>
+                <span class="badge">Data Inventory</span>
+            </div>
+            <div class="diagram-img-wrap">
+                <img src="02_backend_storage_pii_map.svg" alt="Backend Storage & PII Reality Map">
+            </div>
+            <div class="diagram-desc">
+                Reveals the exact storage states across local SharedPreferences, Cloudflare D1, and Cloud Firestore. Distinguishes plain-text PII (E.164 phone numbers, OTP emails) from HMAC-SHA256 duplicate-prevention hashes and masked public leaderboard outputs.
+                <br><a class="download-btn" href="02_backend_storage_pii_map.svg" download>Download Raw SVG</a>
+            </div>
+        </div>
+
+        <!-- Diagram 3 -->
+        <div class="diagram-card">
+            <div class="diagram-header">
+                <div class="diagram-title">03. Android Permissions &amp; Hardware Boundaries</div>
+                <span class="badge">Hardware & Permissions</span>
+            </div>
+            <div class="diagram-img-wrap">
+                <img src="03_permissions_and_boundaries.svg" alt="Android Permissions & Boundaries">
+            </div>
+            <div class="diagram-desc">
+                Details all 9 permissions defined in AndroidManifest.xml, hardware triggers in code, optionality, graceful degradation when denied, and confirms zero dangerous invasive permissions (Camera, Mic, Contacts, SMS).
+                <br><a class="download-btn" href="03_permissions_and_boundaries.svg" download>Download Raw SVG</a>
+            </div>
+        </div>
+
+        <!-- Diagram 4 -->
+        <div class="diagram-card">
+            <div class="diagram-header">
+                <div class="diagram-title">04. Consent, DPDP 18+ Age Gate &amp; Deletion Architecture</div>
+                <span class="badge">Compliance & Rights</span>
+            </div>
+            <div class="diagram-img-wrap">
+                <img src="04_consent_and_age_gate_flow.svg" alt="Consent & Age Gate Flow">
+            </div>
+            <div class="diagram-desc">
+                Maps the user journey through the DPDP Act 18+ community gate, Google UMP ad consent choices, and highlights the simulated in-app deletion button versus Google Play's required deletion architecture.
+                <br><a class="download-btn" href="04_consent_and_age_gate_flow.svg" download>Download Raw SVG</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

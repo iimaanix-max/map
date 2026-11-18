@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 1. Royal Gold Crescent Moon (Hilal) -->
+    <path
+        android:pathData="M52,26 C38,26 27,37 27,52 C27,67 39,78 54,78 C61,78 68,75 73,70 C59,69 47,58 47,46 C47,36 52,29 58,26 C56,26 54,26 52,26 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="27"
+                android:startY="26"
+                android:endX="73"
+                android:endY="78"
+                android:type="linear">
+                <item android:color="#FFF1A8" android:offset="0.0" />
+                <item android:color="#E6C862" android:offset="0.45" />
+                <item android:color="#C9A84C" android:offset="0.80" />
+                <item android:color="#967226" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 2. Sparkling 8-Pointed Islamic Star -->
+    <path
+        android:pathData="M66,33 L68,38 L73,37 L70,41 L73,45 L68,44 L66,49 L64,44 L59,45 L62,41 L59,37 L64,38 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="59"
+                android:startY="33"
+                android:endX="73"
+                android:endY="49"
+                android:type="linear">
+                <item android:color="#FFFFFF" android:offset="0.0" />
+                <item android:color="#FFE885" android:offset="0.5" />
+                <item android:color="#C9A84C" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- 3. Tasbih Beads Strand (Golden Marbles Arch) -->
+    <!-- Bead 1 -->
+    <path
+        android:fillColor="#E6C862"
+        android:pathData="M35,60 A3.2,3.2 0 1 0 35,66.4 A3.2,3.2 0 1 0 35,60" />
+    <!-- Bead 2 -->
+    <path
+        android:fillColor="#FFDF78"
+        android:pathData="M42,67 A3.4,3.4 0 1 0 42,73.8 A3.4,3.4 0 1 0 42,67" />
+    <!-- Bead 3 -->
+    <path
+        android:fillColor="#FFE894"
+        android:pathData="M50,73 A3.6,3.6 0 1 0 50,80.2 A3.6,3.6 0 1 0 50,73" />
+    <!-- Bead 4 (Center Lead Bead) -->
+    <path
+        android:fillColor="#FFF0B0"
+        android:pathData="M59,75 A3.8,3.8 0 1 0 59,82.6 A3.8,3.8 0 1 0 59,75" />
+    <!-- Bead 5 -->
+    <path
+        android:fillColor="#FFE894"
+        android:pathData="M68,73 A3.6,3.6 0 1 0 68,80.2 A3.6,3.6 0 1 0 68,73" />
+    <!-- Bead 6 -->
+    <path
+        android:fillColor="#FFDF78"
+        android:pathData="M76,67 A3.4,3.4 0 1 0 76,73.8 A3.4,3.4 0 1 0 76,67" />
+    <!-- Bead 7 -->
+    <path
+        android:fillColor="#E6C862"
+        android:pathData="M82,59 A3.2,3.2 0 1 0 82,65.4 A3.2,3.2 0 1 0 82,59" />
+
+    <!-- 4. Tasbih Center Tassel Ornament -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#C9A84C"
+        android:strokeWidth="1.2"
+        android:pathData="M59,82.6 L59,89" />
+    <path
+        android:fillColor="#FFDF78"
+        android:pathData="M59,87 A1.5,1.5 0 1 0 59,90 A1.5,1.5 0 1 0 59,87" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#C9A84C"
+        android:strokeWidth="1.0"
+        android:pathData="M59,89 L56,95 M59,89 L59,96 M59,89 L62,95" />
+</vector>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <include domain="sharedpref" path="." />
+    <include domain="database" path="." />
+    <!-- Exclude sensitive contact PII and precise GPS coordinates from unencrypted cloud drive backups -->
+    <exclude domain="sharedpref" path="dt_campaign_prefs.xml" />
+    <exclude domain="sharedpref" path="dt_prayer_prefs.xml" />
+</full-backup-content>

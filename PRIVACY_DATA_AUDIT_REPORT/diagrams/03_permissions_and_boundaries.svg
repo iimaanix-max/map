@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%" style="background:#0b131a; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+  <text x="600" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="700">Digital Tasbih - Android Permissions &amp; Data Boundary Matrix</text>
+  <text x="600" y="70" text-anchor="middle" fill="#94a3b8" font-size="13">Manifest Analysis: Hardware Triggers, Optionality, Data Leak Risks, and Fallback Degradation</text>
+
+  <!-- Table Header -->
+  <rect x="50" y="100" width="1100" height="40" rx="8" fill="#1e293b"/>
+  <text x="70" y="125" fill="#f8fafc" font-size="12" font-weight="700">ANDROID PERMISSION</text>
+  <text x="310" y="125" fill="#f8fafc" font-size="12" font-weight="700">TRIGGER IN CODE</text>
+  <text x="500" y="125" fill="#f8fafc" font-size="12" font-weight="700">OPTIONAL?</text>
+  <text x="610" y="125" fill="#f8fafc" font-size="12" font-weight="700">BEHAVIOUR IF DENIED</text>
+  <text x="880" y="125" fill="#f8fafc" font-size="12" font-weight="700">PRIVACY / EXPOSURE RISK</text>
+
+  <!-- Row 1: ACCESS_FINE_LOCATION -->
+  <rect x="50" y="150" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="175" fill="#38bdf8" font-size="12" font-weight="700">ACCESS_FINE_LOCATION</text>
+  <text x="70" y="195" fill="#94a3b8" font-size="10">android.permission.ACCESS_FINE_LOCATION</text>
+  <text x="310" y="175" fill="#cbd5e1" font-size="12">Prayer times &amp; Qibla compass</text>
+  <text x="310" y="195" fill="#94a3b8" font-size="10">PrayerRepository.kt#L590</text>
+  <rect x="500" y="165" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="181" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="175" fill="#cbd5e1" font-size="12">Falls back to manual city selection</text>
+  <text x="610" y="195" fill="#94a3b8" font-size="10">User chooses city from local list</text>
+  <text x="880" y="175" fill="#f59e0b" font-size="11" font-weight="600">HIGH: Exact coordinates sent to</text>
+  <text x="880" y="195" fill="#f59e0b" font-size="10">Aladhan API (api.aladhan.com)</text>
+
+  <!-- Row 2: ACCESS_COARSE_LOCATION -->
+  <rect x="50" y="220" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="245" fill="#38bdf8" font-size="12" font-weight="700">ACCESS_COARSE_LOCATION</text>
+  <text x="70" y="265" fill="#94a3b8" font-size="10">android.permission.ACCESS_COARSE_LOCATION</text>
+  <text x="310" y="245" fill="#cbd5e1" font-size="12">Cell / WiFi approximate prayer times</text>
+  <text x="310" y="265" fill="#94a3b8" font-size="10">Requested alongside fine location</text>
+  <rect x="500" y="235" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="251" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="245" fill="#cbd5e1" font-size="12">Manual city selection dropdown</text>
+  <text x="610" y="265" fill="#94a3b8" font-size="10">No GPS lock needed</text>
+  <text x="880" y="245" fill="#cbd5e1" font-size="11">MEDIUM: City-level accuracy</text>
+  <text x="880" y="265" fill="#94a3b8" font-size="10">AdMob may use for geo-targeting</text>
+
+  <!-- Row 3: POST_NOTIFICATIONS -->
+  <rect x="50" y="290" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="315" fill="#38bdf8" font-size="12" font-weight="700">POST_NOTIFICATIONS</text>
+  <text x="70" y="335" fill="#94a3b8" font-size="10">android.permission.POST_NOTIFICATIONS</text>
+  <text x="310" y="315" fill="#cbd5e1" font-size="12">Adhan prayer alarms &amp; Daily reminders</text>
+  <text x="310" y="335" fill="#94a3b8" font-size="10">Prompted on Android 13+ (API 33)</text>
+  <rect x="500" y="305" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="321" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="315" fill="#cbd5e1" font-size="12">Alarms trigger silently without banner</text>
+  <text x="610" y="335" fill="#94a3b8" font-size="10">User misses prayer times</text>
+  <text x="880" y="315" fill="#10b981" font-size="11" font-weight="600">ZERO: Local system notifications</text>
+  <text x="880" y="335" fill="#94a3b8" font-size="10">No remote push servers (No FCM)</text>
+
+  <!-- Row 4: SCHEDULE_EXACT_ALARM -->
+  <rect x="50" y="360" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="385" fill="#38bdf8" font-size="12" font-weight="700">SCHEDULE_EXACT_ALARM</text>
+  <text x="70" y="405" fill="#94a3b8" font-size="10">android.permission.SCHEDULE_EXACT_ALARM</text>
+  <text x="310" y="385" fill="#cbd5e1" font-size="12">Exact-minute Adhan playback</text>
+  <text x="310" y="405" fill="#94a3b8" font-size="10">PrayerAlarmReceiver.kt</text>
+  <rect x="500" y="375" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="391" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="385" fill="#cbd5e1" font-size="12">Adhan may drift by 5-15 mins in Doze</text>
+  <text x="610" y="405" fill="#94a3b8" font-size="10">Android OS batches background alarms</text>
+  <text x="880" y="385" fill="#10b981" font-size="11" font-weight="600">ZERO: Pure device scheduling</text>
+  <text x="880" y="405" fill="#94a3b8" font-size="10">No data transmitted</text>
+
+  <!-- Row 5: VIBRATE -->
+  <rect x="50" y="430" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="455" fill="#38bdf8" font-size="12" font-weight="700">VIBRATE</text>
+  <text x="70" y="475" fill="#94a3b8" font-size="10">android.permission.VIBRATE</text>
+  <text x="310" y="455" fill="#cbd5e1" font-size="12">Haptic pulse on bead slide / dial click</text>
+  <text x="310" y="475" fill="#94a3b8" font-size="10">TasbihScreen.kt (FROZEN)</text>
+  <rect x="500" y="445" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="461" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="455" fill="#cbd5e1" font-size="12">Beads slide without vibration</text>
+  <text x="610" y="475" fill="#94a3b8" font-size="10">Toggled in Tasbih settings</text>
+  <text x="880" y="455" fill="#10b981" font-size="11" font-weight="600">ZERO: Hardware motor only</text>
+  <text x="880" y="475" fill="#94a3b8" font-size="10">No data processed</text>
+
+  <!-- Row 6: INTERNET & ACCESS_NETWORK_STATE -->
+  <rect x="50" y="500" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="525" fill="#38bdf8" font-size="12" font-weight="700">INTERNET / NETWORK STATE</text>
+  <text x="70" y="545" fill="#94a3b8" font-size="10">android.permission.INTERNET</text>
+  <text x="310" y="525" fill="#cbd5e1" font-size="12">Syncing campaigns, OTP, Audio stream, Ads</text>
+  <text x="310" y="545" fill="#94a3b8" font-size="10">Standard normal permission</text>
+  <rect x="500" y="515" width="60" height="24" rx="4" fill="#450a0a"/>
+  <text x="516" y="531" fill="#f87171" font-size="11" font-weight="700">NO</text>
+  <text x="610" y="525" fill="#cbd5e1" font-size="12">Operating system grants automatically</text>
+  <text x="610" y="545" fill="#94a3b8" font-size="10">Airplane mode runs local Tasbih/Quran</text>
+  <text x="880" y="525" fill="#f59e0b" font-size="11" font-weight="600">MEDIUM: IP address exposed to</text>
+  <text x="880" y="545" fill="#f59e0b" font-size="10">Cloudflare edge &amp; Google servers</text>
+
+  <!-- Row 7: FOREGROUND_SERVICE_MEDIA_PLAYBACK -->
+  <rect x="50" y="570" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="595" fill="#38bdf8" font-size="12" font-weight="700">FOREGROUND_SERVICE (MEDIA)</text>
+  <text x="70" y="615" fill="#94a3b8" font-size="10">android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK</text>
+  <text x="310" y="595" fill="#cbd5e1" font-size="12">Continuous Quran recitation playback</text>
+  <text x="310" y="615" fill="#94a3b8" font-size="10">AudioPlayerService.kt</text>
+  <rect x="500" y="585" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="601" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="595" fill="#cbd5e1" font-size="12">Audio halts when app goes to background</text>
+  <text x="610" y="615" fill="#94a3b8" font-size="10">Screen must stay active to listen</text>
+  <text x="880" y="595" fill="#10b981" font-size="11" font-weight="600">ZERO: Media session controller</text>
+  <text x="880" y="615" fill="#94a3b8" font-size="10">No personal data collected</text>
+
+  <!-- Bottom Summary Note -->
+  <rect x="50" y="650" width="1100" height="70" rx="8" fill="#132328" stroke="#10b981"/>
+  <text x="70" y="675" fill="#34d399" font-size="13" font-weight="700">🛡️ Zero Dangerous Hardware Probes Found in Manifest</text>
+  <text x="70" y="695" fill="#cbd5e1" font-size="11">Audit Confirms: CAMERA, RECORD_AUDIO, READ_CONTACTS, READ_CALL_LOG, READ_SMS, READ_MEDIA_IMAGES are <tspan fill="#34d399" font-weight="700">COMPLETELY ABSENT</tspan>.</text>
+  <text x="70" y="710" fill="#94a3b8" font-size="10">The app cannot access user gallery, address book, microphone, or text messages under any circumstances.</text>
+</svg>

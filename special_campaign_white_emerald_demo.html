@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Campaign (1 Crore Durood + Free Umrah) — White & Emerald Theme Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-page: #EDF2EE;
+    --card-white: #FFFFFF;
+    --emerald-dark: #053B2C;
+    --emerald-primary: #07523D;
+    --emerald-vibrant: #10B981;
+    --emerald-soft: #ECFDF5;
+    --emerald-border: #A7F3D0;
+    --gold: #C9A84C;
+    --gold-dark: #B45309;
+    --gold-light: #FFFDF5;
+    --text-primary: #0F172A;
+    --text-muted: #527364;
+    --text-sub: #64748B;
+    --live-red: #EF4444;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background: #E2E8E3;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 14px 60px;
+    overflow-x: hidden;
+  }
+
+  /* ── TOP DEMO HEADER ── */
+  .demo-header {
+    text-align: center;
+    max-width: 840px;
+    margin-bottom: 20px;
+  }
+
+  .demo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #ECFDF5;
+    border: 1.5px solid #10B981;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--emerald-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .demo-header h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--emerald-dark);
+    margin-bottom: 6px;
+  }
+
+  .demo-header p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── FLOW NAV SWITCHER ── */
+  .flow-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 720px;
+    margin-bottom: 24px;
+    background: #FFFFFF;
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid rgba(5,59,44,0.12);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  }
+
+  .flow-btn {
+    padding: 9px 16px;
+    border-radius: 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .flow-btn.active {
+    background: var(--emerald-dark);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(5,59,44,0.25);
+  }
+
+  /* ── PHONE CONTAINER (White & Emerald) ── */
+  .phone-frame {
+    width: 100%;
+    max-width: 412px;
+    min-height: 780px;
+    background: #F4F6F4;
+    border-radius: 38px;
+    border: 5px solid #053B2C;
+    box-shadow: 0 25px 60px rgba(5,59,44,0.18), 0 5px 20px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Status Bar */
+  .status-bar {
+    height: 42px;
+    padding: 0 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #053B2C;
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(5,59,44,0.06);
+  }
+
+  .phone-notch {
+    width: 110px;
+    height: 18px;
+    background: #053B2C;
+    border-radius: 0 0 12px 12px;
+    margin: 0 auto;
+  }
+
+  /* App Topbar */
+  .app-topbar {
+    background: #FFFFFF;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(5,59,44,0.08);
+  }
+
+  .app-title-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .app-title {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--emerald-dark);
+    letter-spacing: 0.4px;
+  }
+
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: #FEE2E2;
+    border: 1px solid #FCA5A5;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--live-red);
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--live-red);
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(0.9); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+
+  /* ── SCROLLABLE FEED ── */
+  .feed-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* ============================================================== */
+  /* SCREEN 1: TOP PINNED SPECIAL CARD (WHITE & EMERALD LUXURY)    */
+  /* ============================================================== */
+  .special-pinned-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    border: 2px solid var(--emerald-dark);
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(5,59,44,0.1), inset 0 0 0 1px rgba(201,168,76,0.3);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .special-pinned-card:active {
+    transform: scale(0.985);
+  }
+
+  /* Top Badges */
+  .pinned-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .badge-cluster {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .ribbon-special {
+    background: linear-gradient(135deg, #053B2C, #07523D);
+    color: #FFFDF5;
+    padding: 4px 9px;
+    border-radius: 8px;
+    font-size: 9.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border: 1px solid var(--gold);
+  }
+
+  .ribbon-prize {
+    background: #ECFDF5;
+    color: #065F46;
+    padding: 4px 9px;
+    border-radius: 8px;
+    font-size: 9.5px;
+    font-weight: 800;
+    border: 1px solid #A7F3D0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .target-badge {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #B45309;
+    background: #FFFBEB;
+    padding: 3px 8px;
+    border-radius: 8px;
+    border: 1px solid #FDE68A;
+  }
+
+  /* Arabic Calligraphy & Title */
+  .arabic-center-box {
+    text-align: center;
+    margin: 6px 0 4px;
+  }
+
+  .arabic-heading {
+    font-family: 'Amiri', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--emerald-dark);
+    line-height: 1.35;
+  }
+
+  .pinned-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #0F172A;
+    margin-bottom: 6px;
+  }
+
+  .pinned-desc {
+    text-align: center;
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.45;
+    margin-bottom: 4px;
+  }
+
+  .pinned-desc b {
+    color: var(--emerald-dark);
+  }
+
+  .pinned-subrule {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #059669;
+    margin-bottom: 12px;
+  }
+
+  /* Progress Bar */
+  .white-progress-card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+  }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .progress-meta .cur {
+    color: var(--emerald-dark);
+  }
+
+  .progress-meta .tgt {
+    color: #B45309;
+  }
+
+  .progress-bar-track {
+    width: 100%;
+    height: 8px;
+    background: #E2E8F0;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 48.2%;
+    background: linear-gradient(90deg, #10B981, #053B2C);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+
+  /* Pinned Bottom Stats */
+  .pinned-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .stat-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: #334155;
+  }
+
+  .ticket-cta-chip {
+    background: #FFFDF5;
+    border: 1.2px solid var(--gold);
+    color: #B45309;
+    font-weight: 800;
+    padding: 4px 9px;
+    border-radius: 8px;
+  }
+
+  /* Big Join CTA Button */
+  .btn-join-main {
+    width: 100%;
+    height: 46px;
+    background: linear-gradient(135deg, #053B2C, #07523D);
+    border: 1.5px solid var(--gold);
+    border-radius: 14px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(5,59,44,0.25);
+    transition: all 0.15s ease;
+  }
+
+  .btn-join-main:active {
+    transform: scale(0.98);
+  }
+
+  /* Section Title for Community Groups */
+  .section-divider-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  /* Community Group Card (Below Special) */
+  .community-group-card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid #E2E8F0;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* ============================================================== */
+  /* SCREEN 2: JOIN REGISTRATION MODAL (WHITE & EMERALD)           */
+  /* ============================================================== */
+  .modal-overlay-custom {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 59, 44, 0.65);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: flex-end;
+    z-index: 200;
+  }
+
+  .modal-white-sheet {
+    width: 100%;
+    max-height: 92%;
+    background: #FFFFFF;
+    border-radius: 28px 28px 0 0;
+    border-top: 2px solid var(--emerald-dark);
+    padding: 20px 18px 24px;
+    overflow-y: auto;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.25);
+    animation: slideUp 0.25s ease-out;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .sheet-handle {
+    width: 44px;
+    height: 5px;
+    background: #CBD5E1;
+    border-radius: 999px;
+    margin: 0 auto 12px;
+  }
+
+  .sheet-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--emerald-dark);
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .sheet-sub {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .form-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--emerald-dark);
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .form-input {
+    width: 100%;
+    height: 42px;
+    background: #F8FAFC;
+    border: 1.5px solid rgba(7,82,61,0.25);
+    border-radius: 10px;
+    padding: 0 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0F172A;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--emerald-dark);
+    background: #FFFFFF;
+  }
+
+  .privacy-callout {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #065F46;
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Embedded Rules Box */
+  .rules-embedded-card {
+    background: #FFFDF5;
+    border: 1.5px solid rgba(217,119,6,0.3);
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin: 12px 0 10px;
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  .rules-hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 900;
+    color: #B45309;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .rules-body {
+    font-size: 11px;
+    color: #334155;
+    line-height: 1.5;
+  }
+
+  .rules-body li {
+    margin-left: 16px;
+    margin-bottom: 4px;
+  }
+
+  /* Checkboxes */
+  .check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--emerald-dark);
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+
+  .check-row input {
+    accent-color: var(--emerald-dark);
+    width: 17px;
+    height: 17px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .check-row.consent {
+    background: rgba(7,82,61,0.05);
+    border: 1.2px solid rgba(7,82,61,0.18);
+    border-radius: 10px;
+    padding: 7px 8px;
+    font-size: 10.5px;
+    color: #064E3B;
+    margin-bottom: 14px;
+  }
+
+  .btn-actions-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn-submit-reg {
+    flex: 1;
+    height: 44px;
+    background: linear-gradient(135deg, #053B2C, #07523D);
+    color: #FFFFFF;
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+  }
+
+  .btn-cancel-reg {
+    height: 44px;
+    padding: 0 16px;
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+  }
+
+  /* ============================================================== */
+  /* SCREEN 3: LIVE RECITATION TASBIH ROOM (EXACT TO APP)          */
+  /* ============================================================== */
+  .room-view-container {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+
+  .room-header-card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1.5px solid rgba(5,59,44,0.12);
+    padding: 12px 14px;
+    text-align: center;
+  }
+
+  .room-arabic-title {
+    font-family: 'Amiri', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--emerald-dark);
+    margin: 4px 0 2px;
+  }
+
+  /* Realistic Marble Beads & Dial Box */
+  .beads-dial-wrapper {
+    background: #FFFFFF;
+    border-radius: 24px;
+    border: 1.5px solid rgba(5,59,44,0.12);
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+  }
+
+  .marble-pill-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FAF6EE;
+    border: 1.2px solid #DECFA6;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1E1B18;
+    margin-bottom: 14px;
+    cursor: pointer;
+  }
+
+  .marble-preview-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #10B981 60%, #064E3B 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  /* Big Circular Counter Dial */
+  .central-counter-dial {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FAF6EE 0%, #EFE9D9 100%);
+    border: 4px solid var(--gold);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12), inset 0 2px 6px rgba(255,255,255,0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.08s ease;
+  }
+
+  .central-counter-dial:active {
+    transform: scale(0.96);
+  }
+
+  .dial-number {
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--emerald-dark);
+    line-height: 1;
+    font-family: serif;
+  }
+
+  .dial-sub {
+    font-size: 10px;
+    font-weight: 800;
+    color: #B45309;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  .tap-instruction {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  /* In-flow Submit Zikr Button */
+  .submit-zikr-bar {
+    width: 100%;
+    height: 52px;
+    background: linear-gradient(135deg, #053B2C, #07523D);
+    border: 1.2px solid #10B981;
+    border-radius: 16px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(5,59,44,0.2);
+  }
+
+  /* Native Ad Slot Preview */
+  .native-ad-preview-box {
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+
+  .ad-badge-tag {
+    background: #F1F5F9;
+    color: #475569;
+    border: 1px solid #CBD5E1;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 1px 4px;
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+
+  .ad-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  /* Share Progress & Invite Card */
+  .share-invite-card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1.5px solid var(--emerald-border);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .share-header-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--emerald-dark);
+  }
+
+  .share-wa-btn {
+    width: 100%;
+    height: 40px;
+    background: #25D366;
+    border: none;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  /* ============================================================== */
+  /* SCREEN 4: ADMIN VERIFICATION VIEW (CRITERIA & QUALIFIED)      */
+  /* ============================================================== */
+  .admin-panel-preview {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .admin-card-box {
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .admin-tabs-row {
+    display: flex;
+    gap: 6px;
+    margin: 10px 0;
+  }
+
+  .admin-filter-pill {
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    border: 1px solid #CBD5E1;
+    background: #F8FAFC;
+    cursor: pointer;
+  }
+
+  .admin-filter-pill.active {
+    background: #10B981;
+    color: #FFF;
+    border-color: #059669;
+  }
+
+  .participant-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-top: 8px;
+  }
+
+  .participant-table th {
+    text-align: left;
+    background: #F1F5F9;
+    padding: 6px 8px;
+    color: #475569;
+    font-weight: 800;
+  }
+
+  .participant-table td {
+    padding: 8px;
+    border-bottom: 1px solid #E2E8F0;
+  }
+
+  /* Bottom Nav */
+  .phone-bottom-nav {
+    height: 54px;
+    background: #FFFFFF;
+    border-top: 1px solid #E2E8F0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 10px;
+    color: #64748B;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+  }
+
+  .nav-item.active {
+    color: var(--emerald-dark);
+    font-weight: 900;
+  }
+</style>
+</head>
+<body>
+
+  <!-- DEMO HEADER -->
+  <div class="demo-header">
+    <div class="demo-badge">✨ White &amp; Emerald Luxury Preview</div>
+    <h1>Special Campaign UI: 1 Crore Durood &amp; Free Umrah</h1>
+    <p>Aapke exact inputs ke mutabiq <b>White &amp; Emerald Green Theme</b>, <b>Top Pinned Special Card</b>, <b>Privacy-Protected Join Sheet</b>, <b>Exact App Tasbih Room with Native Ad</b>, aur <b>Admin Verification Rules</b> ready hain:</p>
+  </div>
+
+  <!-- FLOW SWITCHER TABS -->
+  <div class="flow-nav">
+    <button class="flow-btn active" onclick="setFlowView('pinned')">
+      <span>📌</span> 1. Top Pinned Card
+    </button>
+    <button class="flow-btn" onclick="setFlowView('modal')">
+      <span>📝</span> 2. Join Registration Modal
+    </button>
+    <button class="flow-btn" onclick="setFlowView('room')">
+      <span>📿</span> 3. Live Tasbih Room (+Ad)
+    </button>
+    <button class="flow-btn" onclick="setFlowView('admin')">
+      <span>🛠️</span> 4. Admin Rules &amp; Qualification
+    </button>
+  </div>
+
+  <!-- PHONE MOCKUP FRAME -->
+  <div class="phone-frame">
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <span>9:41</span>
+      <div class="phone-notch"></div>
+      <span>📶 5G 🔋 100%</span>
+    </div>
+
+    <!-- App Top Bar -->
+    <div class="app-topbar">
+      <div class="app-title-box">
+        <span class="app-title">LIVE DHIKR</span>
+        <div class="live-pill">
+          <span class="live-dot"></span>
+          <span>LIVE</span>
+        </div>
+      </div>
+      <div style="font-size:11px; font-weight:800; color:var(--emerald-dark); background:#ECFDF5; padding:3px 8px; border-radius:8px; border:1px solid #A7F3D0;">
+        🕌 Global Muhim
+      </div>
+    </div>
+
+    <!-- Feed Content -->
+    <div class="feed-content" id="feedContent">
+
+      <!-- ============================================================== -->
+      <!-- VIEW 1: TOP PINNED CARD ABOVE ALL GROUPS                      -->
+      <!-- ============================================================== -->
+      <div id="viewPinned">
+        
+        <!-- TOP PINNED SPECIAL MUHIM CARD -->
+        <div class="special-pinned-card" onclick="setFlowView('modal')">
+          <div class="pinned-top-row">
+            <div class="badge-cluster">
+              <span class="ribbon-special">👑 SPECIAL MEGA CAMPAIGN</span>
+              <span class="ribbon-prize">🕋 1 FREE UMRAH WON</span>
+            </div>
+            <div class="target-badge">
+              Target: 1 Crore+
+            </div>
+          </div>
+
+          <div class="arabic-center-box">
+            <div class="arabic-heading">اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ</div>
+          </div>
+
+          <div class="pinned-title">
+            Durood Shareef 1 Crore Grand Muhim
+          </div>
+
+          <div class="pinned-desc">
+            Join this blessed Muhim, recite Durood Shareef, and get a chance to win <b>1 Free Umrah Package (All Expenses Covered)</b>!
+          </div>
+
+          <div class="pinned-subrule">
+            ✨ Rule: Minimum 100 Recitations/Day to Qualify for Lucky Draw
+          </div>
+
+          <!-- Progress -->
+          <div class="white-progress-card">
+            <div class="progress-meta">
+              <span class="cur">Recited: <b id="mainRecitedDisplay">4,821,340</b></span>
+              <span class="tgt">Target: <b>10,000,000 (1 Cr)</b></span>
+            </div>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="mainFillProgress" style="width: 48.2%;"></div>
+            </div>
+          </div>
+
+          <!-- Stats & CTA -->
+          <div class="pinned-stats-row">
+            <div class="stat-group">
+              <span class="live-dot"></span>
+              <span>184 Reciting Now</span>
+              <span>•</span>
+              <span>👥 14,890 Joined</span>
+            </div>
+            <div class="ticket-cta-chip">
+              🎟️ Free Draw Entry
+            </div>
+          </div>
+
+          <button class="btn-join-main" onclick="event.stopPropagation(); setFlowView('modal')">
+            <span>Join Blessed Muhim &amp; Recite Live ➔</span>
+          </button>
+        </div>
+
+        <!-- COMMUNITY GROUPS LISTED DIRECTLY BELOW SPECIAL -->
+        <div class="section-divider-title" style="margin-top:10px;">
+          <span>COMMUNITY PUBLIC GROUPS</span>
+          <span style="color:var(--emerald-dark); font-weight:800;">24 Active</span>
+        </div>
+
+        <div class="community-group-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <b style="font-size:13px; color:#0F172A;">SubhanAllah 1 Lakh Group</b>
+            <span style="font-size:11px; font-weight:800; color:#10B981; background:#ECFDF5; padding:2px 6px; border-radius:6px;">72% Done</span>
+          </div>
+          <div style="font-size:11px; color:#64748B;">
+            Created by: Farhan • Mumbai • 312 Members
+          </div>
+        </div>
+
+        <div class="community-group-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <b style="font-size:13px; color:#0F172A;">Astaghfirullah 50,000 Group</b>
+            <span style="font-size:11px; font-weight:800; color:#10B981; background:#ECFDF5; padding:2px 6px; border-radius:6px;">45% Done</span>
+          </div>
+          <div style="font-size:11px; color:#64748B;">
+            Created by: Danish • Hyderabad • 185 Members
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- VIEW 3: LIVE RECITATION TASBIH ROOM (+ ADMOB NATIVE AD)       -->
+      <!-- ============================================================== -->
+      <div id="viewRoom" class="room-view-container">
+        
+        <div class="room-header-card">
+          <span class="ribbon-special" style="font-size:8.5px;">1 CRORE DUROOD GRAND MUHIM</span>
+          <div class="room-arabic-title">اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ</div>
+          <div style="font-size:11.5px; font-weight:800; color:#B45309;">Target: 10,000,000 (1 Crore)</div>
+        </div>
+
+        <!-- Counter Dial Box -->
+        <div class="beads-dial-wrapper">
+          <div class="marble-pill-selector">
+            <div class="marble-preview-dot"></div>
+            <span>Colours &amp; Marbles</span>
+          </div>
+
+          <div class="central-counter-dial" onclick="tapRoomBead()">
+            <div class="dial-sub">My Count Today</div>
+            <div class="dial-number" id="dialCountVal">134</div>
+            <div class="dial-sub" style="color:#059669;">Daily Target: 100+ (✅ Qualified)</div>
+          </div>
+
+          <div class="tap-instruction">
+            👆 Tap counter or beads to recite Durood
+          </div>
+        </div>
+
+        <!-- Submit Zikr Button -->
+        <div class="submit-zikr-bar" onclick="submitDhikrBatch()">
+          <div>
+            <div style="font-size:13.5px; font-weight:800;">Submit Your Zikr</div>
+            <div style="font-size:10.5px; opacity:0.9;">Add <span id="pendingZikrVal">12</span> recitations to Global 1 Crore</div>
+          </div>
+          <div style="font-size:13px; font-weight:800;">Send ➔</div>
+        </div>
+
+        <!-- Google AdMob Native Advanced Video Ad Slot -->
+        <div class="native-ad-preview-box">
+          <div class="ad-icon-box">📢</div>
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span class="ad-badge-tag">Ad</span>
+              <b style="font-size:12px; color:#0F172A;">Islamic Pilgrim &amp; Travel Guide</b>
+            </div>
+            <div style="font-size:10.5px; color:#64748B; margin-top:2px;">
+              Verified Umrah services &amp; authentic packages.
+            </div>
+          </div>
+          <button style="background:#053B2C; color:#FFF; border:none; padding:6px 10px; border-radius:8px; font-size:11px; font-weight:800; cursor:pointer;">
+            Install
+          </button>
+        </div>
+
+        <!-- Share Progress & Invite Card (WhatsApp) -->
+        <div class="share-invite-card">
+          <div class="share-header-row">
+            <span>📲 Share Progress &amp; Invite Reciters</span>
+          </div>
+          <div style="font-size:11px; color:#475569;">
+            Help reach the 1 Crore Durood milestone faster by inviting friends &amp; family!
+          </div>
+          <button class="share-wa-btn" onclick="shareWhatsApp()">
+            <span>Share on WhatsApp 💬</span>
+          </button>
+        </div>
+
+        <button class="btn-cancel-reg" style="width:100%;" onclick="setFlowView('pinned')">
+          ← Back to All Groups
+        </button>
+
+      </div>
+
+      <!-- ============================================================== -->
+      <!-- VIEW 4: ADMIN VERIFICATION & QUALIFICATION RULES              -->
+      <!-- ============================================================== -->
+      <div id="viewAdmin" class="admin-panel-preview">
+        <div class="admin-card-box">
+          <div style="font-size:14px; font-weight:900; color:var(--emerald-dark); margin-bottom:4px;">
+            🛠️ Admin Panel Verification (admin.html)
+          </div>
+          <div style="font-size:11.5px; color:#64748B; line-height:1.45;">
+            Jaise aapne bataya, <b>rules ke hisab se qualified users ka alag section</b> hota hai:
+          </div>
+
+          <!-- Admin Filter Tabs -->
+          <div class="admin-tabs-row">
+            <button class="admin-filter-pill active">
+              ⭐ Qualified (100+/Day) (12)
+            </button>
+            <button class="admin-filter-pill">
+              ⚠️ Ineligible (&lt;100/Day) (4)
+            </button>
+          </div>
+
+          <table class="participant-table">
+            <thead>
+              <tr>
+                <th>Ticket</th>
+                <th>Participant</th>
+                <th>Phone (Admin Only)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>#UMRAH-1048</b></td>
+                <td>Mohammed Imran<br><small style="color:#64748B;">Mumbai</small></td>
+                <td style="color:#053B2C; font-weight:700;">+91 98765 43210</td>
+                <td><span style="background:#ECFDF5; color:#059669; font-weight:800; padding:2px 6px; border-radius:4px; font-size:9.5px;">✅ QUALIFIED</span></td>
+              </tr>
+              <tr>
+                <td><b>#UMRAH-1049</b></td>
+                <td>Aisha Khan<br><small style="color:#64748B;">Delhi</small></td>
+                <td style="color:#053B2C; font-weight:700;">+91 98111 22334</td>
+                <td><span style="background:#ECFDF5; color:#059669; font-weight:800; padding:2px 6px; border-radius:4px; font-size:9.5px;">✅ QUALIFIED</span></td>
+              </tr>
+              <tr>
+                <td><b>#UMRAH-1052</b></td>
+                <td>Zaid Shaikh<br><small style="color:#64748B;">Lucknow</small></td>
+                <td style="color:#053B2C; font-weight:700;">+91 97234 56789</td>
+                <td><span style="background:#FEE2E2; color:#DC2626; font-weight:800; padding:2px 6px; border-radius:4px; font-size:9.5px;">⚠️ INELIGIBLE</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top:12px; font-size:11px; color:#475569; background:#FFFDF5; border:1px solid #FDE68A; border-radius:10px; padding:10px;">
+            🔒 <b>Privacy Security Guaranteed:</b> User ka mobile number sirf admin ko dikhta hai. Live app me ya kisi aur user ko kabhi nahi dikhega. Lucky Draw roll sirf <b>Qualified Pool</b> me se hoga!
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- VIEW 2: JOIN REGISTRATION SHEET MODAL                         -->
+    <!-- ============================================================== -->
+    <div class="modal-overlay-custom" id="modalJoinSheet">
+      <div class="modal-white-sheet">
+        <div class="sheet-handle"></div>
+
+        <div style="text-align:center; font-size:24px; margin-bottom:2px;">🕋 ✨</div>
+        <div class="sheet-title">Free Umrah Lucky Draw</div>
+        <div class="sheet-sub">Register for 1 Crore Durood Special Muhim</div>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label">👤 Full Name *</label>
+          <input type="text" class="form-input" id="inpFullName" value="Mohammed Bilal" placeholder="e.g. Mohammad Bilal">
+        </div>
+
+        <!-- WhatsApp / Mobile Number -->
+        <div class="form-group">
+          <label class="form-label">📱 WhatsApp / Mobile Number *</label>
+          <input type="tel" class="form-input" id="inpMobile" value="+91 98765 43210" placeholder="e.g. +91 98765 43210">
+          <div class="privacy-callout">
+            <span>🔒</span>
+            <span>Safe &amp; 100% Private: Only Admin can view this to contact you if you win. Public never sees it!</span>
+          </div>
+        </div>
+
+        <!-- Location / City -->
+        <div class="form-group">
+          <label class="form-label">📍 City / Location *</label>
+          <input type="text" class="form-input" id="inpCity" value="Mumbai, Maharashtra" placeholder="e.g. Mumbai, Delhi, Lucknow">
+        </div>
+
+        <!-- Terms & Conditions Embedded Box (With 100/day rule) -->
+        <div class="rules-embedded-card">
+          <div class="rules-hdr">
+            <span>📜 Event Terms &amp; Guidelines</span>
+            <span style="color:#059669; background:#ECFDF5; padding:2px 6px; border-radius:4px; font-size:9.5px;">100% Free Entry</span>
+          </div>
+          <div class="rules-body">
+            <ul>
+              <li><b>Daily Recital Criteria:</b> Lucky Draw me eligible rehne ke liye daily minimum <b>100 Durood Sharif</b> padhna lazmi (mandatory) hai.</li>
+              <li><b>Transparent Lucky Draw:</b> 1 Crore milestone poora hone par transparent lucky draw hoga.</li>
+              <li><b>1 Grand Prize:</b> 1 Lucky Winner ko Free Umrah Package milega (All expenses covered).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Checkbox 1: Terms Agree -->
+        <label class="check-row">
+          <input type="checkbox" id="chkTerms" checked>
+          <span>I have read and agree to the Terms &amp; Conditions and Lucky Draw Rules.</span>
+        </label>
+
+        <!-- Checkbox 2: Consent -->
+        <label class="check-row consent">
+          <input type="checkbox" id="chkConsent" checked>
+          <span>I agree to the collection and use of my details for this Lucky Draw. My name and city/location may be displayed as part of the campaign, while my WhatsApp/mobile number will remain confidential and will only be used by the campaign organiser to contact me if I am selected as a winner.</span>
+        </label>
+
+        <!-- CTA Buttons -->
+        <div class="btn-actions-row">
+          <button class="btn-submit-reg" onclick="submitJoinForm()">
+            JOIN &amp; START RECITING ➔
+          </button>
+          <button class="btn-cancel-reg" onclick="closeJoinSheet()">
+            Cancel
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Phone Bottom Nav -->
+    <div class="phone-bottom-nav">
+      <div class="nav-item">
+        <span>🏠</span>
+        <span>Home</span>
+      </div>
+      <div class="nav-item">
+        <span>📿</span>
+        <span>Tasbih</span>
+      </div>
+      <div class="nav-item active">
+        <span>👥</span>
+        <span>Live Dhikr</span>
+      </div>
+      <div class="nav-item">
+        <span>🤲</span>
+        <span>Dua</span>
+      </div>
+      <div class="nav-item">
+        <span>⚙️</span>
+        <span>Settings</span>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+  let sessionPersonalCount = 134;
+  let globalCount = 4821340;
+  let pendingCount = 12;
+
+  function setFlowView(view) {
+    document.querySelectorAll('.flow-btn').forEach(b => b.classList.remove('active'));
+    
+    // Hide all
+    document.getElementById('viewPinned').style.display = 'none';
+    document.getElementById('modalJoinSheet').style.display = 'none';
+    document.getElementById('viewRoom').style.display = 'none';
+    document.getElementById('viewAdmin').style.display = 'none';
+
+    if (view === 'pinned') {
+      document.querySelectorAll('.flow-btn')[0].classList.add('active');
+      document.getElementById('viewPinned').style.display = 'block';
+    } else if (view === 'modal') {
+      document.querySelectorAll('.flow-btn')[1].classList.add('active');
+      document.getElementById('viewPinned').style.display = 'block';
+      document.getElementById('modalJoinSheet').style.display = 'flex';
+    } else if (view === 'room') {
+      document.querySelectorAll('.flow-btn')[2].classList.add('active');
+      document.getElementById('viewRoom').style.display = 'flex';
+    } else if (view === 'admin') {
+      document.querySelectorAll('.flow-btn')[3].classList.add('active');
+      document.getElementById('viewAdmin').style.display = 'flex';
+    }
+  }
+
+  function closeJoinSheet() {
+    document.getElementById('modalJoinSheet').style.display = 'none';
+    setFlowView('pinned');
+  }
+
+  function submitJoinForm() {
+    const chk1 = document.getElementById('chkTerms').checked;
+    const chk2 = document.getElementById('chkConsent').checked;
+    if (!chk1 || !chk2) {
+      alert("Kripya dono Terms aur Data Consent checkboxes tick karein.");
+      return;
+    }
+    document.getElementById('modalJoinSheet').style.display = 'none';
+    setFlowView('room');
+  }
+
+  function tapRoomBead() {
+    sessionPersonalCount++;
+    pendingCount++;
+    globalCount++;
+    document.getElementById('dialCountVal').textContent = sessionPersonalCount;
+    document.getElementById('pendingZikrVal').textContent = pendingCount;
+    document.getElementById('mainRecitedDisplay').textContent = globalCount.toLocaleString();
+    
+    const pct = ((globalCount / 10000000) * 100).toFixed(1);
+    document.getElementById('mainFillProgress').style.width = pct + '%';
+  }
+
+  function submitDhikrBatch() {
+    alert("✨ Shukran! " + pendingCount + " Durood Shareef submitted to the 1 Crore Global Muhim.");
+    pendingCount = 0;
+    document.getElementById('pendingZikrVal').textContent = "0";
+  }
+
+  function shareWhatsApp() {
+    const text = encodeURIComponent("Assalamu Alaikum! Join the 1 Crore Durood Shareef Grand Muhim on Digital Tasbih App. Winner gets 1 Free Umrah Package! 🕋🤲 Download app now.");
+    window.open("https://wa.me/?text=" + text, "_blank");
+  }
+</script>
+
+</body>
+</html>

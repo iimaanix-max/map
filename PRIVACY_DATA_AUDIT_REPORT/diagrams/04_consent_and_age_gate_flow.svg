@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%" style="background:#0b131a; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="700">Digital Tasbih - Consent, DPDP Age Gate &amp; Deletion Architecture</text>
+  <text x="600" y="70" text-anchor="middle" fill="#94a3b8" font-size="13">Decision Tree: Child Protection (18+ Gate), Google UMP Ad Consent, and Current vs Target Deletion Flow</text>
+
+  <!-- Left Branch: DPDP Act 18+ Age Gate -->
+  <rect x="50" y="110" width="530" height="630" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+  <rect x="50" y="110" width="530" height="40" rx="14" fill="#132e24"/>
+  <text x="70" y="136" fill="#34d399" font-size="15" font-weight="700">⚖️ DPDP Act 2023 Compliance: Age Gate (18+)</text>
+
+  <!-- Step 1: User enters Community -->
+  <rect x="80" y="170" width="470" height="60" rx="8" fill="#1e293b"/>
+  <text x="100" y="195" fill="#f8fafc" font-size="12" font-weight="600">User taps "Live Dhikr Rooms" or "Umrah Contest"</text>
+  <text x="100" y="215" fill="#94a3b8" font-size="11">GroupCampaignRepository.kt#L308-L325 checks dt_user_is_18_plus</text>
+
+  <!-- Decision Diamond -->
+  <polygon points="315,260 415,310 315,360 215,310" fill="#1c2438" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="315" y="305" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">Is User 18+?</text>
+  <text x="315" y="322" text-anchor="middle" fill="#94a3b8" font-size="10">(Self-Declaration)</text>
+
+  <!-- YES Path -->
+  <path d="M 415 310 L 460 310 L 460 400" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrowG)"/>
+  <text x="430" y="300" fill="#34d399" font-size="11" font-weight="700">YES</text>
+
+  <rect x="350" y="400" width="200" height="120" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="365" y="425" fill="#6ee7b7" font-size="12" font-weight="700">✅ Full Community Access</text>
+  <text x="365" y="445" fill="#cbd5e1" font-size="11">• Join Live Rooms</text>
+  <text x="365" y="465" fill="#cbd5e1" font-size="11">• Submit Dhikr counts</text>
+  <text x="365" y="485" fill="#cbd5e1" font-size="11">• Participate in Umrah Contest</text>
+  <text x="365" y="505" fill="#cbd5e1" font-size="11">• Appears on Leaderboards</text>
+
+  <!-- NO Path -->
+  <path d="M 215 310 L 160 310 L 160 400" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowR)"/>
+  <text x="175" y="300" fill="#f87171" font-size="11" font-weight="700">NO</text>
+
+  <rect x="80" y="400" width="220" height="150" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="95" y="425" fill="#fca5a5" font-size="12" font-weight="700">⛔ Minor Restricted View</text>
+  <text x="95" y="445" fill="#cbd5e1" font-size="11">• Community features BLOCKED</text>
+  <text x="95" y="465" fill="#cbd5e1" font-size="11">• Contest participation DENIED</text>
+  <text x="95" y="485" fill="#cbd5e1" font-size="11">• Zero personal data uploaded</text>
+  <text x="95" y="505" fill="#34d399" font-size="11" font-weight="600">✅ Offline Tasbih &amp; Quran OPEN</text>
+  <text x="95" y="525" fill="#94a3b8" font-size="10">User can toggle back anytime</text>
+
+  <!-- Age Gate Evaluation Note -->
+  <rect x="80" y="575" width="470" height="140" rx="8" fill="#1e293b"/>
+  <text x="95" y="600" fill="#fbbf24" font-size="12" font-weight="700">⚠️ Legal Vulnerability &amp; Counsel Guidance</text>
+  <text x="95" y="620" fill="#cbd5e1" font-size="11">• Current implementation relies on self-declaration (checkbox/modal).</text>
+  <text x="95" y="640" fill="#cbd5e1" font-size="11">• Under DPDP Act Sec 9, Verifiable Parental Consent will be required by</text>
+  <text x="95" y="660" fill="#cbd5e1" font-size="11">  May 2027 if minors are allowed in community features.</text>
+  <text x="95" y="680" fill="#34d399" font-size="11" font-weight="600">RECOMMENDATION: Keep community features strictly 18+ only.</text>
+
+  <!-- Right Branch: Account Deletion & Ad Consent -->
+  <rect x="620" y="110" width="530" height="630" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+  <rect x="620" y="110" width="530" height="40" rx="14" fill="#1e1b4b"/>
+  <text x="640" y="136" fill="#818cf8" font-size="15" font-weight="700">🗑️ Account Deletion &amp; Ad Consent Reality</text>
+
+  <!-- In-App Deletion Analysis -->
+  <rect x="640" y="170" width="490" height="175" rx="8" fill="#1c1917" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="655" y="195" fill="#f87171" font-size="13" font-weight="700">❌ In-App "Delete My Data" (SettingsScreen.kt#L1151)</text>
+  <text x="655" y="220" fill="#fca5a5" font-size="11">• Actual Code: // Simulate legal request logging -> isSubmitted = true</text>
+  <text x="655" y="240" fill="#cbd5e1" font-size="11">• Network Call: NONE (Zero API requests sent)</text>
+  <text x="655" y="260" fill="#cbd5e1" font-size="11">• Cloudflare D1 Records: NOT DELETED (Email stays in otp_records)</text>
+  <text x="655" y="280" fill="#cbd5e1" font-size="11">• Firestore Contest Data: NOT DELETED (Phone/Name stays in entries)</text>
+  <text x="655" y="305" fill="#f87171" font-size="11" font-weight="700">⚠️ VIOLATION: Violates Google Play Account Deletion Requirement!</text>
+
+  <!-- Compliant Deletion Architecture (What is needed) -->
+  <rect x="640" y="365" width="490" height="185" rx="8" fill="#132328" stroke="#10b981" stroke-width="1.5"/>
+  <text x="655" y="390" fill="#34d399" font-size="13" font-weight="700">🛡️ Mandatory Remediation for Google Play &amp; DPDP</text>
+  <text x="655" y="415" fill="#cbd5e1" font-size="11">1. <tspan font-weight="600" fill="#f8fafc">Public Web Deletion URL:</tspan> Provide https://imaanix.in/delete-account</text>
+  <text x="655" y="435" fill="#cbd5e1" font-size="11">   (Play Console mandates web URL where users can request account erasure).</text>
+  <text x="655" y="460" fill="#cbd5e1" font-size="11">2. <tspan font-weight="600" fill="#f8fafc">Backend Deletion Endpoint:</tspan> Implement DELETE /api/user/me</text>
+  <text x="655" y="480" fill="#cbd5e1" font-size="11">   • Delete Firebase Auth User</text>
+  <text x="655" y="500" fill="#cbd5e1" font-size="11">   • Erase Cloudflare D1 otp_records &amp; rate_limits rows</text>
+  <text x="655" y="520" fill="#cbd5e1" font-size="11">   • Erase Firestore campaign_contestants entry &amp; phone number</text>
+
+  <!-- AdMob Consent Dialog -->
+  <rect x="640" y="570" width="490" height="145" rx="8" fill="#1e293b"/>
+  <text x="655" y="595" fill="#60a5fa" font-size="12" font-weight="700">📢 Google AdMob &amp; UMP Consent Choices</text>
+  <text x="655" y="618" fill="#cbd5e1" font-size="11">• EU/UK: Google UMP SDK shows interactive consent dialog automatically.</text>
+  <text x="655" y="638" fill="#cbd5e1" font-size="11">• India &amp; Rest of World: AdChoicesConsentModal allows switching between</text>
+  <text x="655" y="658" fill="#cbd5e1" font-size="11">  Personalized vs Non-Personalized Ads (Stored locally in AdManager.kt).</text>
+  <text x="655" y="682" fill="#94a3b8" font-size="10">Note: Even non-personalized ads transmit mobile identifiers for frequency capping.</text>
+</svg>

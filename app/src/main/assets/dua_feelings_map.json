@@ -1,0 +1,105 @@
+﻿[
+
+
+
+
+
+
+
+  {id:'anxiety_stress',icon:'😟',triggers:{hi:['pareshan hoon','tension me hoon','dil ghabra raha','dar lag raha','stress me hoon'],en:['anxious','stressed','scared','worried','panic']},maps_to:{cat:'mental_health',intent:['anxiety','fear','mental_health','stress','panic','worry','peace']},tk:'dua_feel_anxiety',label:{hi:'परेशानी / तनाव',en:'Anxiety / Stress'}},
+
+
+
+
+
+
+
+  {id:'financial_stress',icon:'💰',triggers:{hi:['paise ki tangi','karza','loan chukana hai','gharibi','maali museebat'],en:['money problems','debt','cant pay bills','poverty','financial trouble']},maps_to:{cat:'rizq',intent:['debt','provision','poverty','financial_stress','rizq','wealth','barakah']},tk:'dua_feel_financial',label:{hi:'पैसों की तंगी / क़र्ज़',en:'Money trouble / Debt'}},
+
+
+
+
+
+
+
+  {id:'job_loss_worry',icon:'💼',triggers:{hi:['job nahi lagri','naukri nahi mil rahi','kaam nahi mil raha','berozgar','job chali gayi'],en:['lost my job','unemployed','cant find work','job rejection','no job']},maps_to:{cat:'career',intent:['job','sustenance','financial_hardship','career','interview','work_stress','employment']},tk:'dua_feel_job_loss',label:{hi:'नौकरी / रोज़गार की परेशानी',en:'Job / Livelihood worry'}},
+
+
+
+
+
+
+
+  {id:'sadness_grief',icon:'😔',triggers:{hi:['udaas hoon','dukhi hoon','dil tut gaya','ro raha hoon'],en:['sad','heartbroken','grieving','crying']},maps_to:{cat:'sadness',intent:['sadness','grief','heartbreak','depression','sorrow']},tk:'dua_feel_sadness',label:{hi:'उदासी / ग़म',en:'Sadness / Grief'}},
+
+
+
+
+
+
+
+  {id:'illness_fever',icon:'🤒',triggers:{hi:['bukhar','bimar hoon','tabiyat kharab','flu','khansi'],en:['fever','sick','not feeling well','flu','cough']},maps_to:{cat:'health_shifa',intent:['fever','recovery','illness','disease','shifa','health']},tk:'dua_feel_illness',label:{hi:'बीमारी / बुख़ार',en:'Illness / Fever'}},
+
+
+
+
+
+
+
+  {id:'physical_pain',icon:'🤕',triggers:{hi:['pair me dard','sar dard','kamar dard','chot lagi','body pain','dard ho raha'],en:['leg pain','headache','back pain','injury','body ache']},maps_to:{cat:'health_shifa',intent:['pain','shifa','healing','illness']},tk:'dua_feel_pain',label:{hi:'शरीर में दर्द',en:'Physical pain'}},
+
+
+
+
+
+
+
+  {id:'gratitude_feel',icon:'🙏',triggers:{hi:['shukr ada karna hai','allah ka shukrguzar hoon','ehsaan mand hoon'],en:['grateful','thankful','feeling blessed','want to give thanks']},maps_to:{cat:'gratitude',intent:['gratitude','shukr','thankfulness','blessing']},tk:'dua_feel_gratitude',label:{hi:'शुक्रगुज़ारी',en:'Grateful'}},
+
+
+
+
+
+
+
+  {id:'travel_safety',icon:'🧳',triggers:{hi:['safar par ja raha','yatra','safar shuru'],en:['traveling','going on a trip','journey starting']},maps_to:{cat:'travel',intent:['journey','safety','travel']},tk:'dua_feel_travel',label:{hi:'सफ़र / यात्रा',en:'Travel'}},
+
+
+
+
+
+
+
+  {id:'protection_fear',icon:'🛡️',triggers:{hi:['darr lag raha','hifazat chahiye','koi nuksan pahuncha sakta'],en:['afraid of harm','need protection','someone might harm me']},maps_to:{cat:'fear',intent:['fear','protection','evil_eye','waswasa','harm','ruqyah']},tk:'dua_feel_protection',label:{hi:'हिफ़ाज़त / सुरक्षा',en:'Protection / Fear'}},
+
+
+
+
+
+
+
+  {id:'loneliness_feel',icon:'🫂',triggers:{hi:['akela mehsoos kar raha','tanha hoon','koi apna nahi'],en:['lonely','alone','isolated','no one around']},maps_to:{cat:'mental_health',intent:['loneliness','connection','sadness','peace']},tk:'dua_feel_loneliness',label:{hi:'तन्हाई',en:'Lonely'}},
+
+
+
+
+
+
+
+  {id:'overwhelmed_feel',icon:'😮‍💨',triggers:{hi:['bahut zyada ho gaya hai','sambhal nahi pa raha','overwhelmed hoon'],en:['overwhelmed','too much going on','cant handle it','burnt out']},maps_to:{cat:'hardship',intent:['overwhelmed','strength','hardship','ease']},tk:'dua_feel_overwhelmed',label:{hi:'बोझ महसूस होना',en:'Overwhelmed'}},
+
+
+
+
+
+
+
+  {id:'stressed_feel',icon:'😣',triggers:{hi:['stress ho raha hai','bahut pressure hai','tension bahut zyada hai'],en:['stressed out','under pressure','too much tension']},maps_to:{cat:'stress',intent:['stress','relief','mental_health','ease']},tk:'dua_feel_stressed',label:{hi:'दबाव महसूस होना',en:'Stressed'}}
+
+
+
+
+
+
+
+]

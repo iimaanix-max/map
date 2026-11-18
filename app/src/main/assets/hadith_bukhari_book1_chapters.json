@@ -1,0 +1,122 @@
+[
+  {
+    "bookNumber": "1",
+    "chapterId": "1.00",
+    "chapter": [
+      {
+        "lang": "en",
+        "chapterNumber": "1",
+        "chapterTitle": "How the Divine Revelation started being revealed to Allah's Messenger",
+        "intro": "<p>And the Statement of Allah جَلَّ ذِكْرُهُ: \"Verily, We have sent the revelation to you (O Muhammad ﷺ) as We sent the revelation to Noah and the Prophets after him.\" (V.4:163)</p>",
+        "ending": null
+      },
+      {
+        "lang": "ar",
+        "chapterNumber": "1",
+        "chapterTitle": "باب كَيْفَ كَانَ بَدْءُ الْوَحْىِ إِلَى رَسُولِ اللَّهِ صلى الله عليه وسلم",
+        "intro": "<p>وَقَوْلُ اللَّهِ جَلَّ ذِكْرُهُ: {إِنَّا أَوْحَيْنَا إِلَيْكَ كَمَا أَوْحَيْنَا إِلَى نُوحٍ وَالنَّبِيِّينَ مِنْ بَعْدِهِ}</p>",
+        "ending": null
+      }
+    ]
+  },
+  {
+    "bookNumber": "1",
+    "chapterId": "2.00",
+    "chapter": [
+      {
+        "lang": "en",
+        "chapterNumber": "2",
+        "chapterTitle": "",
+        "intro": null,
+        "ending": null
+      },
+      {
+        "lang": "ar",
+        "chapterNumber": "2",
+        "chapterTitle": "باب",
+        "intro": null,
+        "ending": null
+      }
+    ]
+  },
+  {
+    "bookNumber": "1",
+    "chapterId": "3.00",
+    "chapter": [
+      {
+        "lang": "en",
+        "chapterNumber": "3",
+        "chapterTitle": "",
+        "intro": null,
+        "ending": null
+      },
+      {
+        "lang": "ar",
+        "chapterNumber": "3",
+        "chapterTitle": "باب",
+        "intro": null,
+        "ending": null
+      }
+    ]
+  },
+  {
+    "bookNumber": "1",
+    "chapterId": "4.00",
+    "chapter": [
+      {
+        "lang": "en",
+        "chapterNumber": "4",
+        "chapterTitle": "",
+        "intro": null,
+        "ending": null
+      },
+      {
+        "lang": "ar",
+        "chapterNumber": "4",
+        "chapterTitle": "باب",
+        "intro": null,
+        "ending": null
+      }
+    ]
+  },
+  {
+    "bookNumber": "1",
+    "chapterId": "5.00",
+    "chapter": [
+      {
+        "lang": "en",
+        "chapterNumber": "5",
+        "chapterTitle": "",
+        "intro": null,
+        "ending": null
+      },
+      {
+        "lang": "ar",
+        "chapterNumber": "5",
+        "chapterTitle": "باب",
+        "intro": null,
+        "ending": null
+      }
+    ]
+  },
+  {
+    "bookNumber": "1",
+    "chapterId": "6.00",
+    "chapter": [
+      {
+        "lang": "en",
+        "chapterNumber": "6",
+        "chapterTitle": "",
+        "intro": null,
+        "ending": null
+      },
+      {
+        "lang": "ar",
+        "chapterNumber": "6",
+        "chapterTitle": "باب",
+        "intro": null,
+        "ending": null
+      }
+    ]
+  }
+]

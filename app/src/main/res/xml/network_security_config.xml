@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Network Security Configuration for Digital Tasbih.
+
+    SECURITY STRATEGY:
+    - base-config: Strict HTTPS-only for entire app (no cleartext allowed)
+    - domain-config: Only Google/AdMob/Firebase domains are explicitly allowed
+      (These serve HTTPS but need trust-anchor and redirect chain permissions)
+
+    WHY THIS LIST:
+    Google Mobile Ads SDK dynamically communicates with all these domains for:
+    - Ad serving & creative delivery   → googlesyndication.com, doubleclick.net
+    - Ad click & conversion tracking   → googleadservices.com, googletagmanager.com
+    - SDK config & feature flags       → googleapis.com
+    - Firebase Analytics & Crashlytics → app-measurement.com, firebase.io, firebaseio.com
+    - Video/image CDN assets           → gstatic.com, googleusercontent.com, ggpht.com
+    - Privacy Sandbox / Topics API     → sandbox.google.com
+    - App Open & Rewarded ad creatives → imasdk.googleapis.com (IMA SDK)
+-->
+<network-security-config>
+
+    <!-- 1. Strict HTTPS for all traffic by default -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- 2. Google AdMob & Ad Delivery Core Domains -->
+    <domain-config cleartextTrafficPermitted="false">
+        <!-- Primary ad serving & header bidding -->
+        <domain includeSubdomains="true">googlesyndication.com</domain>
+        <domain includeSubdomains="true">doubleclick.net</domain>
+        <domain includeSubdomains="true">googleadservices.com</domain>
+        <!-- AdMob dashboard & reporting APIs -->
+        <domain includeSubdomains="true">admob.com</domain>
+        <!-- Google core + Play Services API calls -->
+        <domain includeSubdomains="true">google.com</domain>
+        <domain includeSubdomains="true">googleapis.com</domain>
+        <!-- IMA SDK — video/rewarded ad playback (CRITICAL for video ads) -->
+        <domain includeSubdomains="true">imasdk.googleapis.com</domain>
+        <!-- CDN: images, icons, thumbnails in native ads -->
+        <domain includeSubdomains="true">gstatic.com</domain>
+        <domain includeSubdomains="true">googleusercontent.com</domain>
+        <domain includeSubdomains="true">ggpht.com</domain>
+        <!-- Ad click tracking & tag firing -->
+        <domain includeSubdomains="true">googletagmanager.com</domain>
+        <!-- Firebase Analytics + Crashlytics events -->
+        <domain includeSubdomains="true">app-measurement.com</domain>
+        <domain includeSubdomains="true">firebase.io</domain>
+        <domain includeSubdomains="true">firebaseio.com</domain>
+        <!-- Android Privacy Sandbox / Topics API -->
+        <domain includeSubdomains="true">sandbox.google.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+
+</network-security-config>

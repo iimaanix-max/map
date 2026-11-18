@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%" style="background:#0b131a; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+  <defs>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <text x="600" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="700">Digital Tasbih - PII &amp; Sensitive Data Storage Reality Map</text>
+  <text x="600" y="70" text-anchor="middle" fill="#94a3b8" font-size="13">Code-Verified Inventory: Plain-Text Identifiers vs Cryptographic Hashes vs Sandboxed Local Data</text>
+
+  <!-- Legend -->
+  <rect x="250" y="90" width="140" height="30" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="265" cy="105" r="6" fill="#ef4444"/>
+  <text x="280" y="110" fill="#fca5a5" font-size="11" font-weight="700">PLAIN-TEXT PII</text>
+
+  <rect x="420" y="90" width="170" height="30" rx="6" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.5"/>
+  <circle cx="435" cy="105" r="6" fill="#818cf8"/>
+  <text x="450" y="110" fill="#c7d2fe" font-size="11" font-weight="700">HMAC-SHA256 HASH</text>
+
+  <rect x="620" y="90" width="170" height="30" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="635" cy="105" r="6" fill="#10b981"/>
+  <text x="650" y="110" fill="#6ee7b7" font-size="11" font-weight="700">LOCAL DEVICE ONLY</text>
+
+  <rect x="820" y="90" width="140" height="30" rx="6" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+  <circle cx="835" cy="105" r="6" fill="#94a3b8"/>
+  <text x="850" y="110" fill="#cbd5e1" font-size="11" font-weight="700">PUBLIC DISPLAY</text>
+
+  <!-- Column 1: Local Device Storage -->
+  <rect x="50" y="140" width="340" height="600" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="50" y="140" width="340" height="40" rx="14" fill="#132e24"/>
+  <text x="70" y="166" fill="#34d399" font-size="15" font-weight="700">📱 Local Android Storage</text>
+  <text x="70" y="200" fill="#fca5a5" font-size="12" font-weight="700">File: SharedPref ("dt_gc_phone")</text>
+  <text x="70" y="218" fill="#cbd5e1" font-size="11">• Phone Number: Plain text E.164 (+91...)</text>
+  <text x="70" y="234" fill="#cbd5e1" font-size="11">• Display Name: Plain text ("dt_gc_name")</text>
+  <text x="70" y="250" fill="#cbd5e1" font-size="11">• City / State: Plain text ("dt_gc_city")</text>
+  <text x="70" y="266" fill="#ef4444" font-size="10" font-weight="600">❌ UNENCRYPTED: Stored via standard getSharedPreferences()</text>
+  <text x="70" y="282" fill="#ef4444" font-size="10" font-weight="600">⚠️ AUTO-BACKUP: Uploaded to Google Drive unencrypted</text>
+
+  <line x1="60" y1="300" x2="380" y2="300" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="70" y="325" fill="#6ee7b7" font-size="12" font-weight="700">File: "tasbih_prefs" (100% Local)</text>
+  <text x="70" y="343" fill="#cbd5e1" font-size="11">• Session Count, All-Time Count</text>
+  <text x="70" y="359" fill="#cbd5e1" font-size="11">• Lifetime Dhikr Badges &amp; Goals</text>
+  <text x="70" y="375" fill="#cbd5e1" font-size="11">• Bead Marble &amp; Dial Color Themes</text>
+  <text x="70" y="393" fill="#10b981" font-size="11" font-weight="600">✅ NEVER TRANSMITTED: Stays on phone</text>
+
+  <line x1="60" y1="410" x2="380" y2="410" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="70" y="435" fill="#fca5a5" font-size="12" font-weight="700">File: "pr_prefs" (Prayer Location)</text>
+  <text x="70" y="453" fill="#cbd5e1" font-size="11">• Exact Latitude: "pr_lat" (Double)</text>
+  <text x="70" y="469" fill="#cbd5e1" font-size="11">• Exact Longitude: "pr_lon" (Double)</text>
+  <text x="70" y="487" fill="#f59e0b" font-size="11" font-weight="600">⚠️ Sent to Aladhan API in cleartext parameters</text>
+
+  <line x1="60" y1="505" x2="380" y2="505" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="70" y="530" fill="#c7d2fe" font-size="12" font-weight="700">File: "dt_app_prefs" (Device Identity)</text>
+  <text x="70" y="548" fill="#cbd5e1" font-size="11">• Install ID: UUID.randomUUID()</text>
+  <text x="70" y="564" fill="#cbd5e1" font-size="11">• 18+ Age Gate Flag: Boolean</text>
+  <text x="70" y="580" fill="#cbd5e1" font-size="11">• Ad Consent Choice: Boolean</text>
+
+  <!-- Column 2: Cloudflare D1 SQL -->
+  <rect x="430" y="140" width="340" height="600" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="430" y="140" width="340" height="40" rx="14" fill="#0c4a6e"/>
+  <text x="450" y="166" fill="#38bdf8" font-size="15" font-weight="700">☁️ Cloudflare D1 SQL Database</text>
+  <text x="450" y="200" fill="#fca5a5" font-size="12" font-weight="700">Table: otp_records</text>
+  <text x="450" y="218" fill="#fca5a5" font-size="11">• email TEXT PRIMARY KEY <tspan fill="#ef4444">(PLAIN TEXT!)</tspan></text>
+  <text x="450" y="234" fill="#c7d2fe" font-size="11">• otp_hash TEXT (SHA-256)</text>
+  <text x="450" y="250" fill="#cbd5e1" font-size="11">• attempts INTEGER (Max 5)</text>
+  <text x="450" y="266" fill="#cbd5e1" font-size="11">• expires_at INTEGER (10 min TTL in code)</text>
+  <text x="450" y="284" fill="#ef4444" font-size="10" font-weight="600">❌ NO AUTO-PURGE: Stays in D1 until row overwrite</text>
+
+  <line x1="440" y1="300" x2="760" y2="300" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="450" y="325" fill="#fca5a5" font-size="12" font-weight="700">Table: rate_limits</text>
+  <text x="450" y="343" fill="#fca5a5" font-size="11">• key TEXT PRIMARY KEY <tspan fill="#ef4444">(email:plain_user_email)</tspan></text>
+  <text x="450" y="359" fill="#c7d2fe" font-size="11">• key: ip:HMAC_SHA256 (IP is hashed)</text>
+  <text x="450" y="375" fill="#cbd5e1" font-size="11">• count INTEGER, reset_at INTEGER</text>
+
+  <line x1="440" y1="410" x2="760" y2="410" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="450" y="435" fill="#c7d2fe" font-size="12" font-weight="700">Table: user_submit_cooldowns</text>
+  <text x="450" y="453" fill="#cbd5e1" font-size="11">• uid TEXT PRIMARY KEY</text>
+  <text x="450" y="469" fill="#cbd5e1" font-size="11">• last_submitted_at INTEGER</text>
+  <text x="450" y="487" fill="#94a3b8" font-size="10">Cooldown: 60 seconds per count submission</text>
+
+  <line x1="440" y1="505" x2="760" y2="505" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="450" y="530" fill="#cbd5e1" font-size="12" font-weight="700">Table: analytics_metrics</text>
+  <text x="450" y="548" fill="#cbd5e1" font-size="11">• metric_name TEXT, date TEXT</text>
+  <text x="450" y="564" fill="#cbd5e1" font-size="11">• count INTEGER</text>
+  <text x="450" y="582" fill="#10b981" font-size="11">Aggregated counts only; zero user PII</text>
+
+  <!-- Column 3: Cloud Firestore -->
+  <rect x="810" y="140" width="340" height="600" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="810" y="140" width="340" height="40" rx="14" fill="#581c87"/>
+  <text x="830" y="166" fill="#c084fc" font-size="15" font-weight="700">🔥 Cloud Firestore Database</text>
+  <text x="830" y="200" fill="#fca5a5" font-size="12" font-weight="700">Doc: campaign_contestants/{id}/entries/{uid}</text>
+  <text x="830" y="218" fill="#fca5a5" font-size="11">• phone: <tspan fill="#ef4444">Plain Text E.164 (+91...)</tspan></text>
+  <text x="830" y="234" fill="#fca5a5" font-size="11">• normalizedEmail: <tspan fill="#ef4444">Plain Text Email</tspan></text>
+  <text x="830" y="250" fill="#cbd5e1" font-size="11">• name: Plain Text Full Name</text>
+  <text x="830" y="266" fill="#cbd5e1" font-size="11">• city, state, country: Plain Text</text>
+  <text x="830" y="284" fill="#ef4444" font-size="10" font-weight="600">❌ NO AUTOMATED PURGE: Stays until admin Purge API</text>
+
+  <line x1="820" y1="300" x2="1140" y2="300" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="830" y="325" fill="#c7d2fe" font-size="12" font-weight="700">Collection: contest_registry/{campaignId}</text>
+  <text x="830" y="343" fill="#c7d2fe" font-size="11">• phoneKey: HMAC_SHA256(phone, SECRET)</text>
+  <text x="830" y="359" fill="#c7d2fe" font-size="11">• emailKey: HMAC_SHA256(email, SECRET)</text>
+  <text x="830" y="375" fill="#c7d2fe" font-size="11">• devKey: HMAC_SHA256(deviceId, SECRET)</text>
+  <text x="830" y="393" fill="#10b981" font-size="11">Used for 1-entry-per-person deduplication</text>
+
+  <line x1="820" y1="410" x2="1140" y2="410" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="830" y="435" fill="#cbd5e1" font-size="12" font-weight="700">Public Leaderboard Output</text>
+  <text x="830" y="453" fill="#cbd5e1" font-size="11">• displayName (User name or 'Anonymous')</text>
+  <text x="830" y="469" fill="#cbd5e1" font-size="11">• city (e.g. 'Mumbai', 'London')</text>
+  <text x="830" y="485" fill="#cbd5e1" font-size="11">• count (Submitted Dhikr integer)</text>
+  <text x="830" y="501" fill="#c7d2fe" font-size="11">• publicId: HMAC(uid)[0..8] (Masked)</text>
+  <text x="830" y="520" fill="#10b981" font-size="11" font-weight="600">✅ Phone and Email are NEVER in Leaderboard</text>
+</svg>

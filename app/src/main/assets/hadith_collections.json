@@ -1,0 +1,515 @@
+[
+  {
+    "name": "bukhari",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sahih al-Bukhari",
+        "shortIntro": "Sahih al-Bukhari is a collection of hadith compiled by Imam Muhammad al-Bukhari (d. 256 AH/870 CE) (rahimahullah).\r\n\r\nHis collection is recognized by the overwhelming majority of the Muslim world to be the most authentic collection of reports of the <i>Sunnah</i> of the Prophet Muhammad (ﷺ). It contains over 7500 hadith (with repetitions) in 97 books.\r\n\r\nThe translation provided here is by Dr. M. Muhsin Khan."
+      },
+      {
+        "lang": "ar",
+        "title": "صحيح البخاري",
+        "shortIntro": "Sahih al-Bukhari is a collection of hadith compiled by Imam Muhammad al-Bukhari (d. 256 AH/870 CE) (rahimahullah).\r\n\r\nHis collection is recognized by the overwhelming majority of the Muslim world to be the most authentic collection of reports of the <i>Sunnah</i> of the Prophet Muhammad (ﷺ). It contains over 7500 hadith (with repetitions) in 97 books.\r\n\r\nThe translation provided here is by Dr. M. Muhsin Khan."
+      }
+    ],
+    "totalHadith": 7291,
+    "totalAvailableHadith": 7277
+  },
+  {
+    "name": "muslim",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sahih Muslim",
+        "shortIntro": "Sahih Muslim is a collection of hadith compiled by Imam Muslim ibn al-Hajjaj al-Naysaburi (rahimahullah).\r\nHis collection is considered to be one of the most authentic\r\ncollections of the Sunnah of the Prophet (ﷺ), and along with\r\nSahih al-Bukhari forms the \"Sahihain,\" or the \"Two Sahihs.\"\r\nIt contains roughly 7500 hadith (with repetitions) in 57 books.\r\n<br>\r\nThe translation provided here is by Abdul Hamid Siddiqui."
+      },
+      {
+        "lang": "ar",
+        "title": "صحيح مسلم",
+        "shortIntro": "Sahih Muslim is a collection of hadith compiled by Imam Muslim ibn al-Hajjaj al-Naysaburi (rahimahullah).\r\nHis collection is considered to be one of the most authentic\r\ncollections of the Sunnah of the Prophet (ﷺ), and along with\r\nSahih al-Bukhari forms the \"Sahihain,\" or the \"Two Sahihs.\"\r\nIt contains roughly 7500 hadith (with repetitions) in 57 books.\r\n<br>\r\nThe translation provided here is by Abdul Hamid Siddiqui."
+      }
+    ],
+    "totalHadith": 7470,
+    "totalAvailableHadith": 7459
+  },
+  {
+    "name": "nasai",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sunan an-Nasa'i",
+        "shortIntro": "Sunan an-Nasa'i is a collection of hadith compiled by Imam Ahmad an-Nasa'i (rahimahullah).\r\nHis collection is unanimously considered to be one of the six canonical collections of hadith (Kutub as-Sittah)\r\nof the Sunnah of the Prophet (ﷺ).\r\nIt contains roughly 5700 hadith (with repetitions) in 52 books.\r\n"
+      },
+      {
+        "lang": "ar",
+        "title": "سنن النسائي",
+        "shortIntro": "Sunan an-Nasa'i is a collection of hadith compiled by Imam Ahmad an-Nasa'i (rahimahullah).\r\nHis collection is unanimously considered to be one of the six canonical collections of hadith (Kutub as-Sittah)\r\nof the Sunnah of the Prophet (ﷺ).\r\nIt contains roughly 5700 hadith (with repetitions) in 52 books.\r\n"
+      }
+    ],
+    "totalHadith": 5766,
+    "totalAvailableHadith": 5768
+  },
+  {
+    "name": "abudawud",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sunan Abi Dawud",
+        "shortIntro": "Sunan Abi Dawud is a collection of hadith compiled by Imam Abu Dawud Sulayman ibn al-Ash'ath as-Sijistani (rahimahullah). It is widely considered to be among the six canonical collections of hadith (Kutub as-Sittah) of the Sunnah of the Prophet (ﷺ). It consists of 5274 ahadith in 43 books.\r\n<br><br><a href=\"/abudawud/letter\">Letter from Imam Abu Dawud to the people of Makkah explaining his book, terms he uses, and his methodology.</a>"
+      },
+      {
+        "lang": "ar",
+        "title": "سنن أبي داود",
+        "shortIntro": "Sunan Abi Dawud is a collection of hadith compiled by Imam Abu Dawud Sulayman ibn al-Ash'ath as-Sijistani (rahimahullah). It is widely considered to be among the six canonical collections of hadith (Kutub as-Sittah) of the Sunnah of the Prophet (ﷺ). It consists of 5274 ahadith in 43 books.\r\n<br><br><a href=\"/abudawud/letter\">Letter from Imam Abu Dawud to the people of Makkah explaining his book, terms he uses, and his methodology.</a>"
+      }
+    ],
+    "totalHadith": 5276,
+    "totalAvailableHadith": 5276
+  },
+  {
+    "name": "tirmidhi",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Jami` at-Tirmidhi",
+        "shortIntro": "Jami` at-Tirmidhi is a collection of hadith compiled by Imam Abu `Isa Muhammad at-Tirmidhi (rahimahullah). His collection is unanimously considered to be one of the six canonical collections of hadith (Kutub as-Sittah) of the Sunnah of the Prophet (ﷺ). It contains roughly 4400 hadith (with repetitions) in 46 books. \r\n"
+      },
+      {
+        "lang": "ar",
+        "title": "جامع الترمذي ",
+        "shortIntro": "Jami` at-Tirmidhi is a collection of hadith compiled by Imam Abu `Isa Muhammad at-Tirmidhi (rahimahullah). His collection is unanimously considered to be one of the six canonical collections of hadith (Kutub as-Sittah) of the Sunnah of the Prophet (ﷺ). It contains roughly 4400 hadith (with repetitions) in 46 books. \r\n"
+      }
+    ],
+    "totalHadith": 3956,
+    "totalAvailableHadith": 4053
+  },
+  {
+    "name": "ibnmajah",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sunan Ibn Majah",
+        "shortIntro": "Sunan Ibn Majah is a collection of hadith compiled by Imam Muhammad bin Yazid Ibn Majah al-Qazvini (rahimahullah). It is widely considered to be the sixth of the six canonical collection of hadith (Kutub as-Sittah) of the Sunnah of the Prophet (ﷺ). It consists of 4341 ahadith in 37 books.\n"
+      },
+      {
+        "lang": "ar",
+        "title": "سنن ابن ماجه",
+        "shortIntro": "Sunan Ibn Majah is a collection of hadith compiled by Imam Muhammad bin Yazid Ibn Majah al-Qazvini (rahimahullah). It is widely considered to be the sixth of the six canonical collection of hadith (Kutub as-Sittah) of the Sunnah of the Prophet (ﷺ). It consists of 4341 ahadith in 37 books.\n"
+      }
+    ],
+    "totalHadith": 4341,
+    "totalAvailableHadith": 4345
+  },
+  {
+    "name": "malik",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Muwatta Malik",
+        "shortIntro": ""
+      },
+      {
+        "lang": "ar",
+        "title": " موطأ مالك",
+        "shortIntro": ""
+      }
+    ],
+    "totalHadith": 1973,
+    "totalAvailableHadith": 1973
+  },
+  {
+    "name": "ahmad",
+    "hasBooks": "yes",
+    "hasChapters": "no",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Musnad Ahmad",
+        "shortIntro": "Musnad Ahmad is a collection of hadith compiled by Imam Ahmad ibn Hanbal (d. 241 AH/855 AD - rahimahullah). It is one of the most famous and important collections of reports of the Sunnah of the Prophet Muhammad (ﷺ). It is the largest of the main books of hadith containing approximately 28,199 hadith sectioned based on individual Companions. The translation provided here is by Nasir Khattab."
+      },
+      {
+        "lang": "ar",
+        "title": "مسند أحمد",
+        "shortIntro": "Musnad Ahmad is a collection of hadith compiled by Imam Ahmad ibn Hanbal (d. 241 AH/855 AD - rahimahullah). It is one of the most famous and important collections of reports of the Sunnah of the Prophet Muhammad (ﷺ). It is the largest of the main books of hadith containing approximately 28,199 hadith sectioned based on individual Companions. The translation provided here is by Nasir Khattab."
+      }
+    ],
+    "totalHadith": 28199,
+    "totalAvailableHadith": 1359
+  },
+  {
+    "name": "darimi",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sunan ad-Darimi",
+        "shortIntro": "Sunan ad-Darimi is a collection of hadith compiled by Imam Abdullah ibn Abd ar-Rahman ad-Darimi (d. 255 AH/869 CE - rahimahullah). It is considered to be one of the important collections of reports of the Sunnah of the Prophet Muhammad (ﷺ), typically included in the \"Nine Books\" of hadith collections. It contains approximately 3,400 hadith sectioned by topic (as in a <i>Sunan</i>). It has unfortunately not been translated into English yet."
+      },
+      {
+        "lang": "ar",
+        "title": "سنن الدارمي",
+        "shortIntro": "Sunan ad-Darimi is a collection of hadith compiled by Imam Abdullah ibn Abd ar-Rahman ad-Darimi (d. 255 AH/869 CE - rahimahullah). It is considered to be one of the important collections of reports of the Sunnah of the Prophet Muhammad (ﷺ), typically included in the \"Nine Books\" of hadith collections. It contains approximately 3,400 hadith sectioned by topic (as in a <i>Sunan</i>). It has unfortunately not been translated into English yet."
+      }
+    ],
+    "totalHadith": 3406,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "ibnkhuzayma",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sahih Ibn Khuzayma",
+        "shortIntro": "Sahih Ibn Khuzaymah is a collection of hadith compiled by Imam Abu Bakr Muḥammad ibn Isḥaq ibn Khuzaymah al-Sulami al-Naysaburi (d. 311 AH/c. 923–924 CE - rahimahullah). Its formal title is Mukhtasar al-Mukhtasar min al-Musnad al-Sahih, and it is an important collection of reports of the Sunnah of the Prophet Muhammad (ﷺ) in which Ibn Khuzaymah aimed to include narrations he judged authentic, while sometimes noting hesitation or defects. The surviving published portion contains a little over 3,000 hadith, arranged by topic. We will be working on its translation into English shortly in sha Allah."
+      },
+      {
+        "lang": "ar",
+        "title": "صحيح ابن خزيمة",
+        "shortIntro": "Sahih Ibn Khuzaymah is a collection of hadith compiled by Imam Abu Bakr Muḥammad ibn Isḥaq ibn Khuzaymah al-Sulami al-Naysaburi (d. 311 AH/c. 923–924 CE - rahimahullah). Its formal title is Mukhtasar al-Mukhtasar min al-Musnad al-Sahih, and it is an important collection of reports of the Sunnah of the Prophet Muhammad (ﷺ) in which Ibn Khuzaymah aimed to include narrations he judged authentic, while sometimes noting hesitation or defects. The surviving published portion contains a little over 3,000 hadith, arranged by topic. We will be working on its translation into English shortly in sha Allah."
+      }
+    ],
+    "totalHadith": 3573,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "ibnhibban",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sahih Ibn Hibban",
+        "shortIntro": "Sahih Ibn Hibban is a collection of hadith compiled by Imam Abu Hatim Muhammad ibn Hibban ibn Ahmad al-Tamimi al-Busti (d. 354 AH/965 CE - rahimahullah). Also known by the title al-Musnad al-Sahih `ala al-Taqasim wa al-Anwa`, it is an important collection of reports of the Sunnah of the Prophet Muhammad (ﷺ) in which Ibn Hibban gathered narrations he judged sound according to his criteria. It contains approximately 7,500 reports, originally arranged by divisions and types. The later arrangement al-Iḥsān by ibn Balban made it easier to browse by topic and is the edition we have here."
+      },
+      {
+        "lang": "ar",
+        "title": "صحيح ابن حبان",
+        "shortIntro": "Sahih Ibn Hibban is a collection of hadith compiled by Imam Abu Hatim Muhammad ibn Hibban ibn Ahmad al-Tamimi al-Busti (d. 354 AH/965 CE - rahimahullah). Also known by the title al-Musnad al-Sahih `ala al-Taqasim wa al-Anwa`, it is an important collection of reports of the Sunnah of the Prophet Muhammad (ﷺ) in which Ibn Hibban gathered narrations he judged sound according to his criteria. It contains approximately 7,500 reports, originally arranged by divisions and types. The later arrangement al-Iḥsān by ibn Balban made it easier to browse by topic and is the edition we have here."
+      }
+    ],
+    "totalHadith": 7491,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "hakim",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Mustadrak al-Hakim",
+        "shortIntro": "Mustadrak al-Hakim, or more properly al-Mustadrak `ala al-Sahihayn is a collection of hadith compiled by Imam Abu `Abdullah Muhammad ibn `Abdullah al-Hakim al-Naysaburi (d. 405 AH/1014 CE - rahimahullah). It is an important supplementary collection to Sahih al-Bukhari and Sahih Muslim, containing reports not included in those two works that al-Hakim judged to meet the conditions of one or both of them, or otherwise judged authentic. It contains about 9,000 reports arranged by topic. Later scholars, including al-Dhahabi, revised many of al-Hakim’s rulings."
+      },
+      {
+        "lang": "ar",
+        "title": "مستدرك الحاكم",
+        "shortIntro": "Mustadrak al-Hakim, or more properly al-Mustadrak `ala al-Sahihayn is a collection of hadith compiled by Imam Abu `Abdullah Muhammad ibn `Abdullah al-Hakim al-Naysaburi (d. 405 AH/1014 CE - rahimahullah). It is an important supplementary collection to Sahih al-Bukhari and Sahih Muslim, containing reports not included in those two works that al-Hakim judged to meet the conditions of one or both of them, or otherwise judged authentic. It contains about 9,000 reports arranged by topic. Later scholars, including al-Dhahabi, revised many of al-Hakim’s rulings."
+      }
+    ],
+    "totalHadith": 9029,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "abdurrazzaq",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Musannaf `Abd ar-Razzaq",
+        "shortIntro": "Musannaf `Abd al-Razzaq is a collection of hadith and other reports compiled by Imam Abu Bakr `Abd al-Razzaq ibn Hammam al-San`ani (d. 211 AH/827 CE - rahimahullah). It is an early topical compendium arranged mainly by legal chapters, gathering reports from the Prophet Muhammad (ﷺ) together with reports from the Companions and later early authorities. The printed work contains 18,700-22,000 reports, with numbering varying by edition and by the inclusion of the appended Kitāb al-Jami`."
+      },
+      {
+        "lang": "ar",
+        "title": "مصنف عبد الرزاق",
+        "shortIntro": "Musannaf `Abd al-Razzaq is a collection of hadith and other reports compiled by Imam Abu Bakr `Abd al-Razzaq ibn Hammam al-San`ani (d. 211 AH/827 CE - rahimahullah). It is an early topical compendium arranged mainly by legal chapters, gathering reports from the Prophet Muhammad (ﷺ) together with reports from the Companions and later early authorities. The printed work contains 18,700-22,000 reports, with numbering varying by edition and by the inclusion of the appended Kitāb al-Jami`."
+      }
+    ],
+    "totalHadith": 21958,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "ibnabishayba",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Musannaf Ibn Abi Shayba",
+        "shortIntro": "Musannaf Ibn Abī Shaybah, more formally known as al-Kitab al-Musannaf fi al-Ahadith wa al-Athar, is a collection compiled by Imam Abu Bakr `Abdullah ibn Muhammad ibn Abi Shaybah al-`Absi al-Kufi (d. 235 AH/849 CE - rahimahullah). It is a major topical compendium, gathering reports from the Prophet Muhammad (ﷺ), the Companions, and later early authorities, arranged by subject. It contains over 39,000 reports."
+      },
+      {
+        "lang": "ar",
+        "title": "مصنف ابن ابي شىيبة",
+        "shortIntro": "Musannaf Ibn Abī Shaybah, more formally known as al-Kitab al-Musannaf fi al-Ahadith wa al-Athar, is a collection compiled by Imam Abu Bakr `Abdullah ibn Muhammad ibn Abi Shaybah al-`Absi al-Kufi (d. 235 AH/849 CE - rahimahullah). It is a major topical compendium, gathering reports from the Prophet Muhammad (ﷺ), the Companions, and later early authorities, arranged by subject. It contains over 39,000 reports."
+      }
+    ],
+    "totalHadith": 39098,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "daraqutni",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sunan ad-Daraqutni",
+        "shortIntro": "Sunan ad-Daraqutni is a collection of hadith compiled by Imam Abu al-Hasan `Ali ibn `Umar ibn Ahmad ibn Mahdi al-Baghdadi al-Daraqutni (d. 385 AH/995 CE - rahimahullah). It is an important collection of reports of the Sunnah of the Prophet Muhammad (ﷺ), arranged mainly by legal chapters and known for gathering variant routes, juristic evidence, and reports of differing grades, often with comments on narrators and hidden defects. It contains approximately 4,700 reports."
+      },
+      {
+        "lang": "ar",
+        "title": "سنن الدارقطني",
+        "shortIntro": "Sunan ad-Daraqutni is a collection of hadith compiled by Imam Abu al-Hasan `Ali ibn `Umar ibn Ahmad ibn Mahdi al-Baghdadi al-Daraqutni (d. 385 AH/995 CE - rahimahullah). It is an important collection of reports of the Sunnah of the Prophet Muhammad (ﷺ), arranged mainly by legal chapters and known for gathering variant routes, juristic evidence, and reports of differing grades, often with comments on narrators and hidden defects. It contains approximately 4,700 reports."
+      }
+    ],
+    "totalHadith": 4750,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "bayhaqi",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "As-Sunan al-Kubra li al-Bayhaqi",
+        "shortIntro": "As-Sunan al-Kubra li al-Bayhaqi, also known as al-Sunan al-Kabir, is a collection of hadith and athar compiled by Imam Abu Bakr Ahmad ibn al-Husayn ibn `Ali al-Bayhaqi (d. 458 AH/1066 CE - rahimahullah). It is a major topical collection arranged by legal chapters, gathering reports from the Prophet Muhammad (ﷺ) together with reports from the Companions and early authorities, often with variant routes and hadith-critical discussion. Its stature is reflected in al-Dhahabī’s praise: he counted al-Bayhaqī’s al-Sunan al-Kabīr alongside Ibn Ḥazm’s al-Muḥallā, Ibn Qudāmah’s al-Mughnī, and Ibn ʿAbd al-Barr’s al-Tamhīd as works whose deep study makes one “the true scholar.” It contains approximately 22,000 reports."
+      },
+      {
+        "lang": "ar",
+        "title": "السُّنَن الْكُبْرَىٰ لِلْبَيْهَقِيّ",
+        "shortIntro": "As-Sunan al-Kubra li al-Bayhaqi, also known as al-Sunan al-Kabir, is a collection of hadith and athar compiled by Imam Abu Bakr Ahmad ibn al-Husayn ibn `Ali al-Bayhaqi (d. 458 AH/1066 CE - rahimahullah). It is a major topical collection arranged by legal chapters, gathering reports from the Prophet Muhammad (ﷺ) together with reports from the Companions and early authorities, often with variant routes and hadith-critical discussion. Its stature is reflected in al-Dhahabī’s praise: he counted al-Bayhaqī’s al-Sunan al-Kabīr alongside Ibn Ḥazm’s al-Muḥallā, Ibn Qudāmah’s al-Mughnī, and Ibn ʿAbd al-Barr’s al-Tamhīd as works whose deep study makes one “the true scholar.” It contains approximately 22,000 reports."
+      }
+    ],
+    "totalHadith": 22000,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "nasaikubra",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Sunan an-Nasa'i al-Kubra",
+        "shortIntro": "Sunan an-Nasaʾi al-Kubra is a collection of hadith compiled by Imam Abu `Abd al-Rahman Ahmad ibn Shu`ayb ibn `Ali al-Khurasani al-Nasaʾi (d. 303 AH/915 CE - rahimahullah). It is the larger collection associated with al-Nasaʾi, arranged by books and chapters and closely related to the shorter al-Mujtaba or al-Sunan al-Sughra, which is the version commonly counted among the Six Books. It contains approximately 12,000 reports."
+      },
+      {
+        "lang": "ar",
+        "title": " السُّنَن الكُبْرَى النَّسَائي",
+        "shortIntro": "Sunan an-Nasaʾi al-Kubra is a collection of hadith compiled by Imam Abu `Abd al-Rahman Ahmad ibn Shu`ayb ibn `Ali al-Khurasani al-Nasaʾi (d. 303 AH/915 CE - rahimahullah). It is the larger collection associated with al-Nasaʾi, arranged by books and chapters and closely related to the shorter al-Mujtaba or al-Sunan al-Sughra, which is the version commonly counted among the Six Books. It contains approximately 12,000 reports."
+      }
+    ],
+    "totalHadith": 12000,
+    "totalAvailableHadith": 0
+  },
+  {
+    "name": "adab",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Al-Adab Al-Mufrad",
+        "shortIntro": ""
+      },
+      {
+        "lang": "ar",
+        "title": "الأدب المفرد",
+        "shortIntro": ""
+      }
+    ],
+    "totalHadith": 1322,
+    "totalAvailableHadith": 1326
+  },
+  {
+    "name": "shamail",
+    "hasBooks": "yes",
+    "hasChapters": "no",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Ash-Shama'il Al-Muhammadiyah",
+        "shortIntro": ""
+      },
+      {
+        "lang": "ar",
+        "title": "الشمائل المحمدية",
+        "shortIntro": ""
+      }
+    ],
+    "totalHadith": 398,
+    "totalAvailableHadith": 402
+  },
+  {
+    "name": "nawawi40",
+    "hasBooks": "no",
+    "hasChapters": "no",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "An-Nawawi's 40 Hadith",
+        "shortIntro": ""
+      },
+      {
+        "lang": "ar",
+        "title": "الأربعون النووية",
+        "shortIntro": ""
+      }
+    ],
+    "totalHadith": 42,
+    "totalAvailableHadith": 42
+  },
+  {
+    "name": "riyadussalihin",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Riyad as-Salihin",
+        "shortIntro": "Riyad as-Salihin is a selection of hadith compiled by Imam Yahya ibn Sharaf an-Nawawi. It is one of the most widely known and read books of hadith all over the world, containing approximately 1,900 carefully chosen hadith on ethics, manners, worship, knowledge, and other topics compiled from the Six Books of hadith. It is practical and accessible to Muslims of all levels."
+      },
+      {
+        "lang": "ar",
+        "title": "رياض الصالحين ",
+        "shortIntro": "Riyad as-Salihin is a selection of hadith compiled by Imam Yahya ibn Sharaf an-Nawawi. It is one of the most widely known and read books of hadith all over the world, containing approximately 1,900 carefully chosen hadith on ethics, manners, worship, knowledge, and other topics compiled from the Six Books of hadith. It is practical and accessible to Muslims of all levels."
+      }
+    ],
+    "totalHadith": 1895,
+    "totalAvailableHadith": 1896
+  },
+  {
+    "name": "mishkat",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Mishkat al-Masabih",
+        "shortIntro": "Mishkat al-Masabih is a selection of hadith compiled by Imam Khatib at-Tabrizi. Imam at-Tabrizi expanded on an earlier selection of hadith named Masabih as-Sunnah by Imam al-Baghawi. Mishkat al-Masabih contains approximately 6,000 hadith chosen from the Six Books, Musnad Ahmad, and various others. It is a comprehensive selection of hadith that covers almost all aspects of Islamic belief, jurisprudence (<i>fiqh</i>), and virtues. The translation provided here is by James Robson."
+      },
+      {
+        "lang": "ar",
+        "title": "مشكاة المصابيح",
+        "shortIntro": "Mishkat al-Masabih is a selection of hadith compiled by Imam Khatib at-Tabrizi. Imam at-Tabrizi expanded on an earlier selection of hadith named Masabih as-Sunnah by Imam al-Baghawi. Mishkat al-Masabih contains approximately 6,000 hadith chosen from the Six Books, Musnad Ahmad, and various others. It is a comprehensive selection of hadith that covers almost all aspects of Islamic belief, jurisprudence (<i>fiqh</i>), and virtues. The translation provided here is by James Robson."
+      }
+    ],
+    "totalHadith": 6285,
+    "totalAvailableHadith": 5319
+  },
+  {
+    "name": "bulugh",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Bulugh al-Maram",
+        "shortIntro": ""
+      },
+      {
+        "lang": "ar",
+        "title": "بلوغ المرام",
+        "shortIntro": ""
+      }
+    ],
+    "totalHadith": 1582,
+    "totalAvailableHadith": 1767
+  },
+  {
+    "name": "forty",
+    "hasBooks": "yes",
+    "hasChapters": "no",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Collections of Forty",
+        "shortIntro": ""
+      },
+      {
+        "lang": "ar",
+        "title": "الأربعينات",
+        "shortIntro": ""
+      }
+    ],
+    "totalHadith": 0,
+    "totalAvailableHadith": 122
+  },
+  {
+    "name": "hisn",
+    "hasBooks": "no",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Hisn al-Muslim",
+        "shortIntro": ""
+      },
+      {
+        "lang": "ar",
+        "title": "حصن المسلم",
+        "shortIntro": ""
+      }
+    ],
+    "totalHadith": 268,
+    "totalAvailableHadith": 268
+  },
+  {
+    "name": "virtues",
+    "hasBooks": "no",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Special Virtues of the Qur'an's Chapters and Verses",
+        "shortIntro": "This is a short, fully authentic collection of ahadith compiled by <a href=\"https://imamsuleiman.com\">Shaykh Suleiman Hani</a> on the special virtues of the Qur'an's Chapters & Verses. The purpose of this collection is to make the English/Arabic compilation of narrations freely accessible in one place, while excluding weak or fabricated reports that are commonly shared by many Muslims. Shaykh Suleiman and his team have worked diligently to verify the authentication of the narrations with multiple scholars of hadith. His introduction to the compilation follows. This compilation is reproduced here with his generous permission."
+      },
+      {
+        "lang": "ar",
+        "title": "الجامع المختصر لفضائل الآيات والسور",
+        "shortIntro": "This is a short, fully authentic collection of ahadith compiled by <a href=\"https://imamsuleiman.com\">Shaykh Suleiman Hani</a> on the special virtues of the Qur'an's Chapters & Verses. The purpose of this collection is to make the English/Arabic compilation of narrations freely accessible in one place, while excluding weak or fabricated reports that are commonly shared by many Muslims. Shaykh Suleiman and his team have worked diligently to verify the authentication of the narrations with multiple scholars of hadith. His introduction to the compilation follows. This compilation is reproduced here with his generous permission."
+      }
+    ],
+    "totalHadith": 60,
+    "totalAvailableHadith": 93
+  },
+  {
+    "name": "thulathiyyat",
+    "hasBooks": "yes",
+    "hasChapters": "yes",
+    "collection": [
+      {
+        "lang": "en",
+        "title": "Three-Narrator Ahadith",
+        "shortIntro": "Al-Thulāthiyyāt is a collection of 568 ḥadīth drawn from eight ḥadīth compilations — Saʿīd ibn\r\nManṣūr, Musnad Isḥāq ibn Rāhwayh, Musnad Aḥmad ibn Ḥanbal, Sunan al-Dārimī, Ṣaḥīḥ al-\r\nBukhārī, Sunan Ibn Mājah, Jāmiʿ al-Tirmidhī, and al-Ṭabarānī&#39;s al-Muʿjam al-Ṣaghīr.\r\n<p>\r\nThulāthiyyāt (singular thulāthī) refers to a ḥadīth in which there are only three narrators in the\r\nchain of transmission (isnād) between the compiler (e.g., Imam al-Bukhārī) and the Prophet ﷺ.\r\nA shorter chain is generally considered stronger, since fewer links mean a lower margin of error\r\nin transmission.\r\n<p>\r\n<i>This book contains the introductory remarks of Shaykh Suleiman Hani placed at the beginning of\r\nhis compilation.</i>"
+      },
+      {
+        "lang": "ar",
+        "title": "الثّلاثيات",
+        "shortIntro": "Al-Thulāthiyyāt is a collection of 568 ḥadīth drawn from eight ḥadīth compilations — Saʿīd ibn\r\nManṣūr, Musnad Isḥāq ibn Rāhwayh, Musnad Aḥmad ibn Ḥanbal, Sunan al-Dārimī, Ṣaḥīḥ al-\r\nBukhārī, Sunan Ibn Mājah, Jāmiʿ al-Tirmidhī, and al-Ṭabarānī&#39;s al-Muʿjam al-Ṣaghīr.\r\n<p>\r\nThulāthiyyāt (singular thulāthī) refers to a ḥadīth in which there are only three narrators in the\r\nchain of transmission (isnād) between the compiler (e.g., Imam al-Bukhārī) and the Prophet ﷺ.\r\nA shorter chain is generally considered stronger, since fewer links mean a lower margin of error\r\nin transmission.\r\n<p>\r\n<i>This book contains the introductory remarks of Shaykh Suleiman Hani placed at the beginning of\r\nhis compilation.</i>"
+      }
+    ],
+    "totalHadith": 568,
+    "totalAvailableHadith": 393
+  }
+]

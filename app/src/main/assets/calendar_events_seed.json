@@ -1,0 +1,1664 @@
+{
+  "ursNumbers": {
+    "urs_suhrawardi": "816th Annual Urs",
+    "urs_maruf_karkhi": "1248th Annual Urs",
+    "urs_hasan_basri": "1338th Annual Urs",
+    "urs_ganjshakar": "784th Annual Urs",
+    "urs_mirza_janan": "253rd Annual Urs",
+    "urs_barkatullah_marehrawi": "306th Annual Urs",
+    "urs_mustafa_raza": "47th Annual Urs",
+    "urs_shah_waliullah": "272nd Annual Urs",
+    "urs_tajuddin": "104th Annual Urs",
+    "urs_ashraf_jahangir": "640th Annual Urs",
+    "urs_bahauddin_naqshband": "657th Annual Urs",
+    "urs_maneri": "666th Annual Urs",
+    "urs_mira_datar": "600th Annual Urs",
+    "urs_ali_akbar_datar": "371st Annual Urs",
+    "urs_waris_ali": "124th Annual Urs",
+    "urs_bahauddin_zakariya": "787th Annual Urs",
+    "urs_ibrahim_raza": "137th Annual Urs",
+    "urs_khairabadi": "170th Annual Urs",
+    "urs_data_ganj_bakhsh": "983rd Annual Urs",
+    "urs_shah_mina": "216th Annual Urs",
+    "urs_ahmed_raza": "108th Annual Urs",
+    "urs_ahmad_sirhindi": "414th Annual Urs",
+    "urs_mehr_ali": "92nd Annual Urs",
+    "urs_mian_mir": "403rd Annual Urs",
+    "urs_masoom_sirhindi": "369th Annual Urs",
+    "urs_sabir_kalyari": "758th Annual Urs",
+    "urs_bakhtiyar_kaki": "815th Annual Urs",
+    "urs_abdul_haq_dehlvi": "396th Annual Urs",
+    "urs_bu_ali_qalandar": "724th Annual Urs",
+    "urs_ghaus_pak": "887th Annual Urs",
+    "urs_haji_ali": "534th Annual Urs",
+    "urs_nizamuddin": "723rd Annual Urs",
+    "urs_mahimi": "613th Annual Urs",
+    "urs_shahul_hameed": "469th Annual Urs",
+    "urs_shah_alam": "568th Annual Urs",
+    "urs_moinuddin": "815th Annual Urs",
+    "urs_salar_masud": "1024th Annual Urs",
+    "urs_baba_sharfuddin": "759th Annual Urs",
+    "urs_lal_shahbaz": "775th Annual Urs",
+    "urs_shah_jalal": "702nd Annual Urs",
+    "urs_sultan_ibrahim": "746th Annual Urs",
+    "urs_banda_nawaz": "623rd Annual Urs"
+  },
+  "events": [
+    {
+      "id": "new_year",
+      "m": 1,
+      "d": 1,
+      "kind": "festival",
+      "name": {
+        "en": "Islamic New Year",
+        "hi": "इस्लामिक नया साल",
+        "ur": "اسلامی نیا سال",
+        "ar": "رأس السنة الهجرية",
+        "bn": "ইসলামিক নববর্ষ"
+      },
+      "title": {
+        "en": "Islamic New Year",
+        "hi": "इस्लामिक नया साल",
+        "ur": "اسلامی نیا سال",
+        "ar": "رأس السنة الهجرية",
+        "bn": "ইসলামিক নববর্ষ"
+      },
+      "short": {
+        "en": "New Year",
+        "hi": "नया साल",
+        "ur": "نیا سال",
+        "ar": "رأس السنة",
+        "bn": "নববর্ষ"
+      },
+      "color": "#4fa3ff",
+      "location": "",
+      "brief": {
+        "en": "The Hijri year begins with Muharram, a sacred month that invites reflection and renewal.",
+        "hi": "हिजरी साल मुहर्रम से शुरू होता है। यह मुबारक महीना सोच-विचार और नए इरादों का वक्त है।",
+        "ur": "ہجری سال محرم سے شروع ہوتا ہے، یہ بابرکت مہینہ غور و فکر اور نئے ارادوں کا وقت ہے۔",
+        "ar": "تبدأ السنة الهجرية بشهر المحرم، وهو شهر مبارك للتأمل وتجديد النية.",
+        "bn": "হিজরি বছর মুহাররম মাস দিয়ে শুরু হয়। এটি ভাবনা আর নতুন নিয়তের বরকতময় সময়।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "ashura",
+      "m": 1,
+      "d": 10,
+      "kind": "festival",
+      "name": {
+        "en": "Day of Ashura",
+        "hi": "यौम-ए-आशूरा",
+        "ur": "یومِ عاشوراء",
+        "ar": "يوم عاشوراء",
+        "bn": "আশুরার দিন"
+      },
+      "title": {
+        "en": "Day of Ashura",
+        "hi": "यौम-ए-आशूरा",
+        "ur": "یومِ عاشوراء",
+        "ar": "يوم عاشوراء",
+        "bn": "আশুরার দিন"
+      },
+      "short": {
+        "en": "Ashura",
+        "hi": "आशूरा",
+        "ur": "عاشوراء",
+        "ar": "عاشوراء",
+        "bn": "আশুরা"
+      },
+      "color": "#f97316",
+      "location": "",
+      "brief": {
+        "en": "The 10th of Muharram is a deeply significant day of fasting, gratitude and remembrance.",
+        "hi": "मुहर्रम की 10 तारीख़ रोज़े, शुक्र और इबरत का अहम दिन है।",
+        "ur": "محرم کی 10 تاریخ روزے، شکر اور نصیحت کا اہم دن ہے۔",
+        "ar": "اليوم العاشر من المحرم يوم عظيم للصيام والشكر والاعتبار.",
+        "bn": "মুহাররমের ১০ তারিখ রোজা, শুকরিয়া আর শিক্ষা নেওয়ার গুরুত্বপূর্ণ দিন।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "mawlid",
+      "m": 3,
+      "d": 12,
+      "kind": "festival",
+      "name": {
+        "en": "Mawlid an-Nabi",
+        "hi": "मिलादुन्नबी",
+        "ur": "میلاد النبی",
+        "ar": "المولد النبوي",
+        "bn": "মিলাদুন্নবী"
+      },
+      "title": {
+        "en": "Mawlid an-Nabi",
+        "hi": "मिलादुन्नबी",
+        "ur": "میلاد النبی",
+        "ar": "المولد النبوي",
+        "bn": "মিলাদুন্নবী"
+      },
+      "short": {
+        "en": "Mawlid",
+        "hi": "मिलाद",
+        "ur": "میلاد",
+        "ar": "المولد",
+        "bn": "মিলাদ"
+      },
+      "color": "#f43f5e",
+      "location": "",
+      "brief": {
+        "en": "A widely observed date connected with the blessed birth of Prophet Muhammad ﷺ.",
+        "hi": "यह तारीख़ आम तौर पर नबी मुहम्मद ﷺ की विलादत से जोड़ी जाती है।",
+        "ur": "یہ تاریخ عام طور پر نبی محمد ﷺ کی ولادتِ مبارکہ سے منسوب کی جاتی ہے۔",
+        "ar": "تاريخ يشتهر ارتباطه بميلاد النبي محمد ﷺ.",
+        "bn": "এই তারিখকে সাধারণভাবে নবী মুহাম্মদ ﷺ-এর জন্মের সঙ্গে সম্পর্কিত ধরা হয়।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "isra_miraj",
+      "m": 7,
+      "d": 27,
+      "kind": "festival",
+      "name": {
+        "en": "Isra and Mi'raj",
+        "hi": "इस्रा व मेराज",
+        "ur": "اسراء و معراج",
+        "ar": "الإسراء والمعراج",
+        "bn": "ইসরা ও মিরাজ"
+      },
+      "title": {
+        "en": "Isra and Mi'raj",
+        "hi": "इस्रा व मेराज",
+        "ur": "اسراء و معراج",
+        "ar": "الإسراء والمعراج",
+        "bn": "ইসরা ও মিরাজ"
+      },
+      "short": {
+        "en": "Isra",
+        "hi": "इस्रा",
+        "ur": "اسراء",
+        "ar": "الإسراء",
+        "bn": "ইসরা"
+      },
+      "color": "#8b5cf6",
+      "location": "",
+      "brief": {
+        "en": "A remembered night associated with the miraculous night journey and ascension.",
+        "hi": "यह मुबारक रात इस्रा और मेराज की याद से जुड़ी हुई है।",
+        "ur": "یہ مبارک رات اسراء و معراج کی یاد سے منسوب ہے۔",
+        "ar": "ليلة مباركة يُتذكر فيها الإسراء والمعراج.",
+        "bn": "এই বরকতময় রাত ইসরা ও মিরাজের স্মৃতির সঙ্গে জড়িত।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "mid_shaban",
+      "m": 8,
+      "d": 15,
+      "kind": "festival",
+      "name": {
+        "en": "Mid Sha'ban",
+        "hi": "निस्फ़ शाबान",
+        "ur": "نصف شعبان",
+        "ar": "منتصف شعبان",
+        "bn": "নিসফে শাবান"
+      },
+      "title": {
+        "en": "Mid Sha'ban",
+        "hi": "निस्फ़ शाबान",
+        "ur": "نصف شعبان",
+        "ar": "منتصف شعبان",
+        "bn": "নিসফে শাবান"
+      },
+      "short": {
+        "en": "Mid Sha'ban",
+        "hi": "शाबान 15",
+        "ur": "۱۵ شعبان",
+        "ar": "منتصف شعبان",
+        "bn": "শাবান ১৫"
+      },
+      "color": "#14b8a6",
+      "location": "",
+      "brief": {
+        "en": "A night many Muslims mark with dua, reflection and extra worship.",
+        "hi": "कई मुसलमान इस रात को दुआ, मुहासबा और इबादत के साथ याद करते हैं।",
+        "ur": "بہت سے مسلمان اس رات کو دعا، محاسبہ اور اضافی عبادت کے ساتھ گزارتے ہیں۔",
+        "ar": "ليلة يحييها كثير من المسلمين بالدعاء والتأمل وزيادة العبادة.",
+        "bn": "অনেক মুসলিম এই রাত দোয়া, আত্মসমালোচনা আর বেশি ইবাদতে কাটান।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "ramadan_start",
+      "m": 9,
+      "d": 1,
+      "kind": "festival",
+      "name": {
+        "en": "Beginning of Ramadan",
+        "hi": "रमज़ान की शुरुआत",
+        "ur": "رمضان کا آغاز",
+        "ar": "بداية رمضان",
+        "bn": "রমজানের শুরু"
+      },
+      "title": {
+        "en": "Beginning of Ramadan",
+        "hi": "रमज़ान की शुरुआत",
+        "ur": "رمضان کا آغاز",
+        "ar": "بداية رمضان",
+        "bn": "রমজানের শুরু"
+      },
+      "short": {
+        "en": "Ramadan",
+        "hi": "रमज़ान",
+        "ur": "رمضان",
+        "ar": "رمضان",
+        "bn": "রমজান"
+      },
+      "color": "#22c55e",
+      "location": "",
+      "brief": {
+        "en": "The fasting month of Ramadan begins, bringing mercy, discipline and the Quran's remembrance.",
+        "hi": "रमज़ान का मुबारक महीना शुरू होता है जो रोज़ा, रहमत और कुरआन की याद दिलाता है।",
+        "ur": "رمضان کا مبارک مہینہ شروع ہوتا ہے جو روزہ، رحمت اور قرآن کی یاد دلاتا ہے۔",
+        "ar": "يبدأ شهر رمضان المبارك، شهر الصيام والرحمة وتلاوة القرآن.",
+        "bn": "রমজানের সিয়ামের মাস শুরু হয়, যা রহমত, শৃঙ্খলা আর কুরআনের স্মরণ আনে।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "badr",
+      "m": 9,
+      "d": 17,
+      "kind": "festival",
+      "name": {
+        "en": "Battle of Badr",
+        "hi": "ग़ज़वा-ए-बद्र",
+        "ur": "غزوہ بدر",
+        "ar": "غزوة بدر",
+        "bn": "গাযওয়ায়ে বদর"
+      },
+      "title": {
+        "en": "Battle of Badr",
+        "hi": "ग़ज़वा-ए-बद्र",
+        "ur": "غزوہ بدر",
+        "ar": "غزوة بدر",
+        "bn": "গাযওয়ায়ে বদর"
+      },
+      "short": {
+        "en": "Badr",
+        "hi": "बद्र",
+        "ur": "بدر",
+        "ar": "بدر",
+        "bn": "বদর"
+      },
+      "color": "#f59e0b",
+      "location": "",
+      "brief": {
+        "en": "A historic victory that remains a symbol of faith, patience and divine help.",
+        "hi": "यह तारीख़ ईमान, सब्र और अल्लाह की मदद की ऐतिहासिक निशानी है।",
+        "ur": "یہ تاریخ ایمان، صبر اور اللہ کی مدد کی تاریخی علامت ہے۔",
+        "ar": "ذكرى نصر تاريخي يرمز إلى الإيمان والصبر ونصر الله.",
+        "bn": "এটি ঈমান, ধৈর্য আর আল্লাহর সাহায্যের এক ঐতিহাসিক নিদর্শন।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "laylat_qadr",
+      "m": 9,
+      "d": 27,
+      "kind": "festival",
+      "name": {
+        "en": "Laylat al-Qadr (widely observed)",
+        "hi": "लैलतुल क़द्र",
+        "ur": "لیلۃ القدر",
+        "ar": "ليلة القدر",
+        "bn": "লাইলাতুল কদর"
+      },
+      "title": {
+        "en": "Laylat al-Qadr (widely observed)",
+        "hi": "लैलतुल क़द्र",
+        "ur": "لیلۃ القدر",
+        "ar": "ليلة القدر",
+        "bn": "লাইলাতুল কদর"
+      },
+      "short": {
+        "en": "Qadr",
+        "hi": "क़द्र",
+        "ur": "قدر",
+        "ar": "القدر",
+        "bn": "কদর"
+      },
+      "color": "#eab308",
+      "location": "",
+      "brief": {
+        "en": "The last ten nights are special, and the 27th is widely observed as a likely night of Qadr.",
+        "hi": "आख़िरी अशरा बहुत अहम है और 27वीं रात आम तौर पर लैलतुल क़द्र के तौर पर मनाई जाती है।",
+        "ur": "آخری عشرہ بہت اہم ہے اور 27ویں رات کو عام طور پر لیلۃ القدر کے طور پر منایا جاتا ہے۔",
+        "ar": "العشر الأواخر عظيمة، وتُحيا ليلة السابع والعشرين على نطاق واسع باعتبارها من ليالي القدر.",
+        "bn": "শেষ দশ রাত খুবই গুরুত্বপূর্ণ, আর ২৭তম রাতকে সাধারণভাবে লাইলাতুল কদরের সম্ভাব্য রাত হিসেবে মানা হয়।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "eid_fitr",
+      "m": 10,
+      "d": 1,
+      "kind": "festival",
+      "name": {
+        "en": "Eid al-Fitr",
+        "hi": "ईदुल-फ़ितर",
+        "ur": "عید الفطر",
+        "ar": "عيد الفطر",
+        "bn": "ঈদুল ফিতর"
+      },
+      "title": {
+        "en": "Eid al-Fitr",
+        "hi": "ईदुल-फ़ितर",
+        "ur": "عید الفطر",
+        "ar": "عيد الفطر",
+        "bn": "ঈদুল ফিতর"
+      },
+      "short": {
+        "en": "Eid",
+        "hi": "ईद",
+        "ur": "عید",
+        "ar": "عيد",
+        "bn": "ঈদ"
+      },
+      "color": "#06b6d4",
+      "location": "",
+      "brief": {
+        "en": "The joyful day that marks the end of Ramadan and begins the month of Shawwal.",
+        "hi": "यह खुशी का दिन रमज़ान के खत्म होने और शव्वाल की शुरुआत का एलान करता है।",
+        "ur": "یہ خوشی کا دن رمضان کے اختتام اور شوال کے آغاز کا اعلان کرتا ہے۔",
+        "ar": "يوم الفرح الذي يعلن ختام رمضان وبداية شوال.",
+        "bn": "এই আনন্দের দিন রমজানের সমাপ্তি আর শাওয়ালের শুরু ঘোষণা করে।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "hajj_start",
+      "m": 12,
+      "d": 8,
+      "kind": "festival",
+      "name": {
+        "en": "Beginning of Hajj Days",
+        "hi": "हज्ज के दिन शुरू",
+        "ur": "حج کے ایام کا آغاز",
+        "ar": "بداية أيام الحج",
+        "bn": "হজের দিন শুরু"
+      },
+      "title": {
+        "en": "Beginning of Hajj Days",
+        "hi": "हज्ज के दिन शुरू",
+        "ur": "حج کے ایام کا آغاز",
+        "ar": "بداية أيام الحج",
+        "bn": "হজের দিন শুরু"
+      },
+      "short": {
+        "en": "Hajj",
+        "hi": "हज्ज",
+        "ur": "حج",
+        "ar": "الحج",
+        "bn": "হজ"
+      },
+      "color": "#7c3aed",
+      "location": "",
+      "brief": {
+        "en": "The sacred days of Hajj begin and hearts turn toward devotion, sacrifice and unity.",
+        "hi": "हज्ज के मुबारक दिन शुरू होते हैं और इबादत, कुर्बानी और उम्मत की यकजहती सामने आती है।",
+        "ur": "حج کے مبارک دن شروع ہوتے ہیں اور عبادت، قربانی اور امت کی وحدت نمایاں ہوتی ہے۔",
+        "ar": "تبدأ أيام الحج المباركة بما تحمله من عبادة وتضحية ووحدة.",
+        "bn": "হজের বরকতময় দিন শুরু হয়, যেখানে ইবাদত, কুরবানি আর ঐক্যের ছবি ফুটে ওঠে।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "arafah",
+      "m": 12,
+      "d": 9,
+      "kind": "festival",
+      "name": {
+        "en": "Day of Arafah",
+        "hi": "यौम-ए-अरफ़ा",
+        "ur": "یومِ عرفہ",
+        "ar": "يوم عرفة",
+        "bn": "আরাফার দিন"
+      },
+      "title": {
+        "en": "Day of Arafah",
+        "hi": "यौम-ए-अरफ़ा",
+        "ur": "یومِ عرفہ",
+        "ar": "يوم عرفة",
+        "bn": "আরাফার দিন"
+      },
+      "short": {
+        "en": "Arafah",
+        "hi": "अरफ़ा",
+        "ur": "عرفہ",
+        "ar": "عرفة",
+        "bn": "আরাফা"
+      },
+      "color": "#ef4444",
+      "location": "",
+      "brief": {
+        "en": "A highly virtuous day of dua, fasting for many, and one of the greatest days of the year.",
+        "hi": "यह दुआ, रोज़े और फज़ीलत वाला साल के सबसे अज़ीम दिनों में से एक दिन है।",
+        "ur": "یہ دعا، روزے اور فضیلت والا سال کے عظیم ترین دنوں میں سے ایک دن ہے۔",
+        "ar": "يوم عظيم من أيام السنة، يوم دعاء وفضل وصيام لكثير من المسلمين.",
+        "bn": "এটি দোয়া, রোজা আর ফজিলতের দিক থেকে বছরের অন্যতম মহান দিন।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "eid_adha",
+      "m": 12,
+      "d": 10,
+      "kind": "festival",
+      "name": {
+        "en": "Eid al-Adha",
+        "hi": "ईदुल-अज़हा",
+        "ur": "عید الاضحیٰ",
+        "ar": "عيد الأضحى",
+        "bn": "ঈদুল আজহা"
+      },
+      "title": {
+        "en": "Eid al-Adha",
+        "hi": "ईदुल-अज़हा",
+        "ur": "عید الاضحیٰ",
+        "ar": "عيد الأضحى",
+        "bn": "ঈদুল আজহা"
+      },
+      "short": {
+        "en": "Adha",
+        "hi": "अज़हा",
+        "ur": "اضحیٰ",
+        "ar": "الأضحى",
+        "bn": "আজহা"
+      },
+      "color": "#10b981",
+      "location": "",
+      "brief": {
+        "en": "The festival of sacrifice that honors devotion, obedience and generosity.",
+        "hi": "यह कुर्बानी की ईद है जो इख़लास, फ़रमांबरदारी और दरियादिली की याद दिलाती है।",
+        "ur": "یہ قربانی کی عید ہے جو اخلاص، اطاعت اور سخاوت کی یاد دلاتی ہے۔",
+        "ar": "عيد التضحية الذي يذكّر بالإخلاص والطاعة والكرم.",
+        "bn": "এটি কুরবানির ঈদ, যা আন্তরিকতা, আনুগত্য আর উদারতার শিক্ষা দেয়।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "tashreeq",
+      "m": 12,
+      "d": 11,
+      "kind": "festival",
+      "name": {
+        "en": "Days of Tashreeq",
+        "hi": "अय्याम-ए-तशरीक़",
+        "ur": "ایامِ تشریق",
+        "ar": "أيام التشريق",
+        "bn": "আইয়ামে তাশরীক"
+      },
+      "title": {
+        "en": "Days of Tashreeq",
+        "hi": "अय्याम-ए-तशरीक़",
+        "ur": "ایامِ تشریق",
+        "ar": "أيام التشريق",
+        "bn": "আইয়ামে তাশরীক"
+      },
+      "short": {
+        "en": "Tashreeq",
+        "hi": "तशरीक़",
+        "ur": "تشریق",
+        "ar": "التشريق",
+        "bn": "তাশরীক"
+      },
+      "color": "#84cc16",
+      "location": "",
+      "brief": {
+        "en": "The blessed days after Eid al-Adha are known for dhikr, gratitude and remembrance of Allah.",
+        "hi": "ईदुल-अज़हा के बाद के दिन अय्याम-ए-तशरीक़ कहलाते हैं और इन में ज़िक्र व शुक्र की अहमियत होती है।",
+        "ur": "عید الاضحیٰ کے بعد کے دن ایامِ تشریق کہلاتے ہیں اور ان میں ذکر و شکر کی بڑی اہمیت ہے۔",
+        "ar": "الأيام المباركة بعد عيد الأضحى، وهي أيام ذكر وشكر لله.",
+        "bn": "ঈদুল আজহার পরের বরকতময় দিনগুলো আয়্যামে তাশরীক নামে পরিচিত, যেখানে জিকির আর শুকরিয়ার গুরুত্ব বেশি।"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wiladat_fatimah",
+      "m": 6,
+      "d": 20,
+      "kind": "birth",
+      "name": "Sayyida Fatimah al-Zahra (RA)",
+      "color": "#ec4899",
+      "location": "Makkah al-Mukarramah",
+      "brief": {
+        "en": "Widely remembered as the blessed birth date of Sayyida Fatimah al-Zahra (RA), honored among Ahl al-Bayt.",
+        "hi": "सैयदा फातिमा अल-ज़हरा (र.अ.) की विलादत की मुबारक तारीख़ के तौर पर याद की जाती है, जो अहल-ए-बैत में इज़्ज़त की निगाह से देखी जाती हैं।",
+        "ur": "سیدہ فاطمہ الزہرا (رضی اللہ عنہا) کی ولادت کی مبارک تاریخ کے طور پر یاد کی جاتی ہے، جو اہل بیت میں بہت عزت سے دیکھی جاتی ہیں۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wiladat_ali",
+      "m": 7,
+      "d": 13,
+      "kind": "birth",
+      "name": "Sayyiduna Ali ibn Abi Talib (RA)",
+      "color": "#7c3aed",
+      "location": "Makkah al-Mukarramah",
+      "brief": {
+        "en": "Widely observed as the blessed birth date of Sayyiduna Ali (RA), whose courage, knowledge and devotion are remembered across the Muslim world.",
+        "hi": "सैयदुना अली (र.अ.) की मुबारक विलादत की तारीख़ के तौर पर याद किया जाता है, जिनकी हिम्मत, इल्म और इबादत पूरी दुनिया के मुसलमानों में मशहूर है।",
+        "ur": "سیدنا علی (رضی اللہ عنہ) کی مبارک ولادت کی تاریخ کے طور پر یاد کیا جاتا ہے، جن کی شجاعت، علم اور عبادت پوری دنیا کے مسلمانوں میں مشہور ہے۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wiladat_husayn",
+      "m": 8,
+      "d": 3,
+      "kind": "birth",
+      "name": "Imam Husayn ibn Ali (RA)",
+      "color": "#f97316",
+      "location": "Madinah al-Munawwarah",
+      "brief": {
+        "en": "Many calendars remember this date as the blessed birth of Imam Husayn (RA), beloved grandson of the Prophet ﷺ.",
+        "hi": "कई कैलेंडरों में इमाम हुसैन (र.अ.) की मुबारक विलादत की तारीख़ के तौर पर याद किया जाता है, जो नबी ﷺ के प्यारे नवासे हैं।",
+        "ur": "بہت سے کیلنڈروں میں امام حسین (رضی اللہ عنہ) کی مبارک ولادت کی تاریخ کے طور پر یاد کیا جاتا ہے، جو نبی ﷺ کے پیارے نواسے ہیں۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wiladat_hasan",
+      "m": 9,
+      "d": 15,
+      "kind": "birth",
+      "name": "Imam Hasan ibn Ali (RA)",
+      "color": "#22c55e",
+      "location": "Madinah al-Munawwarah",
+      "brief": {
+        "en": "Widely remembered as the blessed birth date of Imam Hasan (RA), known for generosity, dignity and peacemaking.",
+        "hi": "इमाम हसन (र.अ.) की मुबारक विलादत की तारीख़ के तौर पर याद किया जाता है, जो सखावत, वक़ार और सुलह के लिए जाने जाते हैं।",
+        "ur": "امام حسن (رضی اللہ عنہ) کی مبارک ولادت کی تاریخ کے طور پر یاد کیا جاتا ہے، جو سخاوت، وقار اور صلح کے لیے جانے جاتے ہیں۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "niyaz_imam_jafar_sadiq",
+      "m": 7,
+      "d": 22,
+      "kind": "festival",
+      "name": {
+        "en": "Niyaz of Imam Jafar Sadiq (RA)",
+        "hi": "नियाज़ इमाम जाफर सादिक़ (र.अ.)",
+        "ur": "نیاز امام جعفر صادقؓ",
+        "ar": "نياز الإمام جعفر الصادق رضي الله عنه",
+        "bn": "নিয়াজ ইমাম জাফর সাদিক (রাঃ)"
+      },
+      "color": "#a78bfa",
+      "location": {
+        "en": "Devotional observance in South Asia",
+        "hi": "दक्षिण एशिया की सुन्नी रिवायत",
+        "ur": "برصغیر کی سنی روایت",
+        "ar": "إحياء تعبدي في جنوب آسيا",
+        "bn": "দক্ষিণ এশিয়ার সুন্নি রেওয়ায়েত"
+      },
+      "brief": {
+        "en": "Observed on 22 Rajab as the well-known Kunde ki Fatiha / Niyaz of Imam Jafar Sadiq (RA) in many South Asian devotional calendars.",
+        "hi": "22 रजब को कई दक्षिण एशियाई सुन्नी कैलेंडरों में कुंडे की फातिहा / नियाज़ इमाम जाफर सादिक़ (र.अ.) के तौर पर याद किया जाता है।"
+      },
+      "ursCount": "",
+      "anniv": {
+        "en": "Image-based India calendar observance",
+        "hi": "इंडिया कैलेंडर इमेज के हिसाब से"
+      },
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wisaal_prophet",
+      "m": 2,
+      "d": 28,
+      "kind": "death",
+      "name": "Prophet Muhammad ﷺ",
+      "color": "#ef4444",
+      "location": "Madinah al-Munawwarah",
+      "brief": {
+        "en": "Many devotional calendars remember the passing of the Prophet Muhammad ﷺ around the end of Safar, with reflection on his mercy, sunnah and message.",
+        "hi": "कई इबादती कैलेंडर सफर के आखिर में नबी मुहम्मद ﷺ के विसाल को याद करते हैं, उनकी रहमत, सुन्नत और पैग़ाम पर सोचते हुए।",
+        "ur": "بہت سے عبادتی کیلنڈر صفر کے آخر میں نبی محمد ﷺ کے وصال کو یاد کرتے ہیں، ان کی رحمت، سنت اور پیغام پر غور کرتے ہوئے۔"
+      },
+      "ursCount": "",
+      "anniv": "Widely remembered in many calendars.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_suhrawardi",
+      "m": 1,
+      "d": 1,
+      "kind": "urs",
+      "name": "Hazrat Shihab al-Din Umar Suhrawardi (RA)",
+      "color": "",
+      "location": "Baghdad, Iraq",
+      "brief": {
+        "en": "Renowned Suhrawardi master whose teachings shaped classical tasawwuf and spread through South Asia and beyond.",
+        "hi": "सुहरावर्दी सिलसिले के इमाम, जिनकी तालीमात ने क्लासिकी तसव्वुफ को आकार दिया और पूरे दक्षिण एशिया में फैली।",
+        "ur": "سہروردی سلسلے کے امام، جن کی تعلیمات نے کلاسیکی تصوف کو شکل دی اور پورے جنوبی ایشیا میں پھیلی۔"
+      },
+      "ursCount": "816th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_maruf_karkhi",
+      "m": 1,
+      "d": 2,
+      "kind": "urs",
+      "name": "Hazrat Maruf Karkhi (RA)",
+      "color": "",
+      "location": "Baghdad, Iraq",
+      "brief": {
+        "en": "An early saint of Baghdad remembered for humility, devotion and spiritual influence on later generations.",
+        "hi": "बग़दाद के एक अज़ीम बुज़ुर्ग जिन्हें उनकी ख़ाकसारी, इबादत और बाद की नस्लों पर रूहानी असर के लिए याद किया जाता है।",
+        "ur": "بغداد کے ایک عظیم بزرگ جنہیں ان کی خاکساری، عبادت اور بعد کی نسلوں پر روحانی اثر کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "1248th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_hasan_basri",
+      "m": 1,
+      "d": 4,
+      "kind": "urs",
+      "name": "Hazrat Hasan al-Basri (RA)",
+      "color": "",
+      "location": "Basra, Iraq",
+      "brief": {
+        "en": "A towering early scholar and ascetic remembered for wisdom, sincerity and powerful reminders about the Hereafter.",
+        "hi": "एक अज़ीम शुरुआती आलिम और ज़ाहिद जिन्हें हिकमत, इख़लास और आखिरत की याद दिलाने वाले बयानात के लिए याद किया जाता है।",
+        "ur": "ایک عظیم ابتدائی عالم اور زاہد جنہیں حکمت، اخلاص اور آخرت کی یاد دلانے والے بیانات کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "1338th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_ganjshakar",
+      "m": 1,
+      "d": 5,
+      "kind": "urs",
+      "name": "Hazrat Fariduddin Ganjshakar (RA)",
+      "color": "",
+      "location": "Pakpattan, Pakistan",
+      "brief": {
+        "en": "Beloved Chishti saint of Pakpattan whose khanqah became a major center of love, service and remembrance.",
+        "hi": "पाकपत्तन के महबूब चिश्ती बुज़ुर्ग जिनकी ख़ानक़ाह मोहब्बत, ख़िदमत और ज़िक्र का अहम मरकज़ बनी।",
+        "ur": "پاکپتن کے محبوب چشتی بزرگ جن کی خانقاہ محبت، خدمت اور ذکر کا اہم مرکز بنی۔"
+      },
+      "ursCount": "784th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_mirza_janan",
+      "m": 1,
+      "d": 9,
+      "kind": "urs",
+      "name": "Hazrat Mirza Mazhar Jan-e-Janan (RA)",
+      "color": "",
+      "location": "Delhi, India",
+      "brief": {
+        "en": "A Naqshbandi-Mujaddidi master of Delhi remembered for scholarship, refinement and deep spiritual authority.",
+        "hi": "दिल्ली के नक़्शबंदी-मुजद्दिदी शेख़ जिन्हें इल्म, नज़ाकत और गहरी रूहानी शख़्सियत के लिए याद किया जाता है।",
+        "ur": "دہلی کے نقشبندی-مجددی شیخ جنہیں علم، نزاکت اور گہری روحانی شخصیت کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "253rd Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "shahadat_hussain",
+      "m": 1,
+      "d": 10,
+      "kind": "shahadat",
+      "name": "Imam Hussain ibn Ali (RA)",
+      "color": "#ef4444",
+      "location": "Karbala, Iraq",
+      "brief": {
+        "en": "The shahadat of Imam Hussain (RA) at Karbala remains one of the most powerful reminders of truth, sacrifice and steadfastness.",
+        "hi": "कर्बला में इमाम हुसैन (र.अ.) की शहादत हक़, क़ुर्बानी और इस्तिक़ामत की सबसे मज़बूत याद-दिहानियों में से एक है।",
+        "ur": "کربلا میں امام حسین (رضی اللہ عنہ) کی شہادت حق، قربانی اور استقامت کی سب سے طاقتور یاد دہانیوں میں سے ایک ہے۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_barkatullah_marehrawi",
+      "m": 1,
+      "d": 10,
+      "kind": "urs",
+      "name": "Hazrat Shah Barkatullah Marehrawi (RA)",
+      "color": "",
+      "location": "Marehra, Uttar Pradesh, India",
+      "brief": {
+        "en": "A leading Qadri saint whose silsila left a deep imprint on spiritual life in the subcontinent.",
+        "hi": "एक अहम क़ादरी बुज़ुर्ग जिनके सिलसिले ने उपमहाद्वीप की रूहानी ज़िंदगी पर गहरा असर छोड़ा।",
+        "ur": "ایک اہم قادری بزرگ جن کے سلسلے نے برصغیر کی روحانی زندگی پر گہرا اثر چھوڑا۔"
+      },
+      "ursCount": "306th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_mustafa_raza",
+      "m": 1,
+      "d": 14,
+      "kind": "urs",
+      "name": "Hazrat Mustafa Raza Khan (RA)",
+      "color": "",
+      "location": "Bareilly, Uttar Pradesh, India",
+      "brief": {
+        "en": "Remembered with love for his scholarship, naat, fatawa and service to Sunni devotional tradition.",
+        "hi": "अपने इल्म, नात, फ़तावा और सुन्नी इबादती रिवायत की ख़िदमत के लिए मोहब्बत से याद किए जाते हैं।",
+        "ur": "اپنے علم، نعت، فتاویٰ اور سنی عبادتی روایت کی خدمت کے لیے محبت سے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "47th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_mira_datar_rajab_fatiha",
+      "m": 7,
+      "d": 15,
+      "kind": "urs",
+      "name": {
+        "en": "Fatiha Urs of Hazrat Mira Datar (RA)",
+        "hi": "फ़ातिहा उर्स हज़रत मीरा दातार (रह.)",
+        "ur": "فاتحہ عرس حضرت میرا داتارؒ",
+        "ar": "فاتحة عرس حضرة ميرا داتار رحمه الله",
+        "bn": "ফাতিহা উরস হযরত মীরা দাতার (রহ.)"
+      },
+      "color": "#06b6d4",
+      "location": {
+        "en": "Mira Datar devotion observed in South Asia",
+        "hi": "मीरा दातार की फातिहा, दक्षिण एशिया",
+        "ur": "میرا داتار کی فاتحہ، برصغیر",
+        "ar": "إحياء ميرا داتار في جنوب آسيا",
+        "bn": "মীরা দাতার ফাতিহা, দক্ষিণ এশিয়া"
+      },
+      "brief": {
+        "en": "The user-shared India calendar marks 15-18 Rajab for the Fatiha Urs of Hazrat Mira Datar (RA).",
+        "hi": "यूज़र द्वारा भेजे गए इंडिया कैलेंडर में 15 से 18 रजब तक हज़रत मीरा दातार (रह.) की फ़ातिहा उर्स लिखी हुई है।"
+      },
+      "ursCount": "",
+      "anniv": {
+        "en": "15-18 Rajab",
+        "hi": "15-18 रजब"
+      },
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wisaal_zayn_abidin",
+      "m": 1,
+      "d": 18,
+      "kind": "death",
+      "name": "Hazrat Ali ibn Husayn Zayn al-Abidin (RA)",
+      "color": "",
+      "location": "Madinah, Saudi Arabia",
+      "brief": {
+        "en": "Known for worship, patience and profound supplications, Imam Zayn al-Abidin (RA) is remembered with reverence among Ahl al-Bayt.",
+        "hi": "इबादत, सब्र और गहरी दुआओं के लिए जाने जाने वाले इमाम ज़ैन अल-आबिदीन (र.अ.) को बड़े अदब से याद किया जाता है।",
+        "ur": "عبادت، صبر اور گہری دعاؤں کے لیے جانے جانے والے امام زین العابدین (رضی اللہ عنہ) کو بڑے ادب سے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wisaal_bilal",
+      "m": 1,
+      "d": 20,
+      "kind": "death",
+      "name": "Hazrat Bilal ibn Rabah (RA)",
+      "color": "",
+      "location": "Damascus, Syria",
+      "brief": {
+        "en": "The beloved muazzin of the Prophet ﷺ, remembered for steadfast iman, sacrifice and the honor of giving the adhan.",
+        "hi": "नबी ﷺ के प्यारे मुअज़्ज़िन, जिन्हें मज़बूत ईमान, क़ुर्बानी और अज़ान की इज़्ज़त के लिए याद किया जाता है।",
+        "ur": "نبی ﷺ کے پیارے مؤذن، جنہیں مضبوط ایمان، قربانی اور اذان کی عزت کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_shah_waliullah",
+      "m": 1,
+      "d": 20,
+      "kind": "urs",
+      "name": "Hazrat Shah Waliullah Dehlvi (RA)",
+      "color": "",
+      "location": "Delhi, India",
+      "brief": {
+        "en": "A major scholar, reformer and muhaddith whose works shaped later Islamic scholarship in the region.",
+        "hi": "एक बड़े आलिम, मुसलिह और मुहद्दिस जिनकी तसनीफ़ात ने खित्ते में बाद की इस्लामी तालीम को आकार दिया।",
+        "ur": "ایک بڑے عالم، مصلح اور محدث جن کی تصنیفات نے خطے میں بعد کی اسلامی تعلیم کو شکل دی۔"
+      },
+      "ursCount": "272nd Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wisaal_hasan_askari",
+      "m": 1,
+      "d": 22,
+      "kind": "death",
+      "name": "Hazrat Hasan al-Askari (RA)",
+      "color": "",
+      "location": "Samarra, Iraq",
+      "brief": {
+        "en": "Remembered among the noble Imams of Ahl al-Bayt for piety, knowledge and dignity.",
+        "hi": "अहल-ए-बैत के नेक इमामों में से एक, जिन्हें तक़वा, इल्म और वक़ार के लिए याद किया जाता है।",
+        "ur": "اہل بیت کے نیک اماموں میں سے ایک، جنہیں تقویٰ، علم اور وقار کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_tajuddin",
+      "m": 1,
+      "d": 26,
+      "kind": "urs",
+      "name": "Hazrat Tajuddin Muhammad Badruddin (RA)",
+      "color": "",
+      "location": "Tajbagh, Nagpur, Maharashtra, India",
+      "brief": {
+        "en": "The saint of Tajbagh, loved for miracles, compassion and spiritual healing.",
+        "hi": "ताजबाग के बुज़ुर्ग, जो करामात, रहम-दिली और रूहानी शिफ़ा के लिए मशहूर हैं।",
+        "ur": "تاج باغ کے بزرگ، جو کرامات، رحم دلی اور روحانی شفا کے لیے مشہور ہیں۔"
+      },
+      "ursCount": "104th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_ashraf_jahangir",
+      "m": 1,
+      "d": 28,
+      "kind": "urs",
+      "name": "Hazrat Ashraf Jahangir Semnani (RA)",
+      "color": "",
+      "location": "Kichaucha Sharif, Uttar Pradesh, India",
+      "brief": {
+        "en": "A revered Chishti saint remembered for renunciation, service and a lasting spiritual legacy.",
+        "hi": "एक मुतबर्रक चिश्ती बुज़ुर्ग जिन्हें तर्क-ए-दुनिया, ख़िदमत और एक स्थायी रूहानी विरासत के लिए याद किया जाता है।",
+        "ur": "ایک متبرک چشتی بزرگ جنہیں ترکِ دنیا، خدمت اور ایک دیرپا روحانی وراثت کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "640th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_bahauddin_naqshband",
+      "m": 1,
+      "d": 29,
+      "kind": "urs",
+      "name": "Hazrat Bahauddin Naqshband (RA)",
+      "color": "",
+      "location": "Bukhara, Uzbekistan",
+      "brief": {
+        "en": "The eponymous master of the Naqshbandi path, remembered for silent dhikr and sobriety in suluk.",
+        "hi": "नक़्शबंदी सिलसिले के बानी, जिन्हें ख़ामोश ज़िक्र और सुलूक में संजीदगी के लिए याद किया जाता है।",
+        "ur": "نقشبندی سلسلے کے بانی، جنہیں خاموش ذکر اور سلوک میں سنجیدگی کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "657th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_maneri",
+      "m": 1,
+      "d": 29,
+      "kind": "urs",
+      "name": "Hazrat Sharafuddin Yahya Maneri (RA)",
+      "color": "",
+      "location": "Bihar Sharif, Bihar, India",
+      "brief": {
+        "en": "A celebrated saint-scholar of Bihar whose letters and teachings remain deeply respected.",
+        "hi": "बिहार के एक मशहूर बुज़ुर्ग-आलिम जिनके मकतूबात और तालीमात आज भी बड़ी इज़्ज़त की निगाह से देखे जाते हैं।",
+        "ur": "بہار کے ایک مشہور بزرگ عالم جن کے مکتوبات اور تعلیمات آج بھی بڑی عزت کی نگاہ سے دیکھے جاتے ہیں۔"
+      },
+      "ursCount": "666th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_mira_datar",
+      "m": 1,
+      "d": 29,
+      "kind": "urs",
+      "name": "Hazrat Saiyed Ali Mira Datar (RA)",
+      "color": "#06b6d4",
+      "location": "Unava Sharif, Gujarat, India",
+      "brief": {
+        "en": "The annual Mira Datar urs draws devotees from many places for fateha, sandal and dua at Unava Sharif.",
+        "hi": "सालाना मीरा दातार उर्स पर मुनव्वा शरीफ़ में फातिहा, सन्दल और दुआ के लिए दूर-दूर से श्रद्धालु आते हैं।",
+        "ur": "سالانہ میرا داتار عرس پر انعوا شریف میں فاتحہ، صندل اور دعا کے لیے دور دور سے عقیدت مند آتے ہیں۔"
+      },
+      "ursCount": "600th Annual Urs",
+      "anniv": "Official urs observances run from 25 Muharram into early Safar.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_ali_akbar_datar",
+      "m": 1,
+      "d": 30,
+      "kind": "urs",
+      "name": "Hazrat Ali Akbar Shah Datar (RA)",
+      "color": "",
+      "location": "Unava, Mehsana, Gujarat, India",
+      "brief": {
+        "en": "Remembered with devotion at the Datar shrine for spiritual help, healing and service to devotees.",
+        "hi": "दातार दरगाह पर बड़े अक़ीदत से याद किए जाते हैं, जहाँ रूहानी मदद, शिफ़ा और ख़िदमत की तलब लेकर लोग आते हैं।",
+        "ur": "داتار درگاہ پر بڑی عقیدت سے یاد کیے جاتے ہیں، جہاں روحانی مدد، شفا اور خدمت کی طلب لے کر لوگ آتے ہیں۔"
+      },
+      "ursCount": "371st Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_waris_ali",
+      "m": 2,
+      "d": 1,
+      "kind": "urs",
+      "name": "Hazrat Haji Waris Ali Shah (RA)",
+      "color": "",
+      "location": "Dewa Sharif, Barabanki, Uttar Pradesh, India",
+      "brief": {
+        "en": "The saint of Dewa Sharif remembered for love, simplicity, hospitality and devotion.",
+        "hi": "देवा शरीफ़ के बुज़ुर्ग, जो मोहब्बत, सादगी, मेहमान-नवाज़ी और इबादत के लिए याद किए जाते हैं।",
+        "ur": "دیوا شریف کے بزرگ، جو محبت، سادگی، مہمان نوازی اور عبادت کے لیے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "124th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_bahauddin_zakariya",
+      "m": 2,
+      "d": 7,
+      "kind": "urs",
+      "name": "Hazrat Bahauddin Zakariya (RA)",
+      "color": "",
+      "location": "Multan, Pakistan",
+      "brief": {
+        "en": "A leading Suhrawardi master of Multan whose khanqah became a major center of learning and spirituality.",
+        "hi": "मुल्तान के अज़ीम सुहरावर्दी शेख़ जिनकी ख़ानक़ाह इल्म और रूहानियत का एक बड़ा मरकज़ बनी।",
+        "ur": "ملتان کے عظیم سہروردی شیخ جن کی خانقاہ علم اور روحانیت کا ایک بڑا مرکز بنی۔"
+      },
+      "ursCount": "787th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wisaal_ali_ridha",
+      "m": 2,
+      "d": 9,
+      "kind": "death",
+      "name": "Hazrat Ali al-Ridha (RA)",
+      "color": "",
+      "location": "Mashhad, Iran",
+      "brief": {
+        "en": "Remembered among the noble Imams for knowledge, forbearance and luminous character.",
+        "hi": "नेक इमामों में याद किए जाते हैं — इल्म, बुर्दबारी और नूरानी किरदार के लिए।",
+        "ur": "نیک اماموں میں یاد کیے جاتے ہیں — علم، بردباری اور نورانی کردار کے لیے۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_ibrahim_raza",
+      "m": 2,
+      "d": 11,
+      "kind": "urs",
+      "name": "Hazrat Ibrahim Raza Khan (RA)",
+      "color": "",
+      "location": "Bareilly, Uttar Pradesh, India",
+      "brief": {
+        "en": "A scholar and heir to a major scholarly household, remembered for devotion and service to sacred learning.",
+        "hi": "एक बड़े इल्मी घराने के वारिस और आलिम, जिन्हें इबादत और पवित्र इल्म की ख़िदमत के लिए याद किया जाता है।",
+        "ur": "ایک بڑے علمی گھرانے کے وارث اور عالم، جنہیں عبادت اور مقدس علم کی خدمت کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "137th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_khairabadi",
+      "m": 2,
+      "d": 12,
+      "kind": "urs",
+      "name": "Hazrat Fazl-e-Haq Khairabadi (RA)",
+      "color": "",
+      "location": "Khairabad, Uttar Pradesh, India",
+      "brief": {
+        "en": "Scholar, theologian and poet whose intellectual legacy remains influential.",
+        "hi": "आलिम, मुतकल्लिम और शायर जिनकी दीनी विरासत आज भी असरदार है।",
+        "ur": "عالم، متکلم اور شاعر جن کی دینی وراثت آج بھی اثرانداز ہے۔"
+      },
+      "ursCount": "170th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_data_ganj_bakhsh",
+      "m": 2,
+      "d": 18,
+      "kind": "urs",
+      "name": "Hazrat Ali Hujwiri (RA)",
+      "color": "",
+      "location": "Lahore, Pakistan",
+      "brief": {
+        "en": "Known as Data Ganj Bakhsh, he is remembered for Kashf al-Mahjub and his enduring spiritual influence.",
+        "hi": "डेटा गंज बख़्श के नाम से मशहूर, कश्फ़-अल-महजूब और अपने पाएदार रूहानी असर के लिए याद किए जाते हैं।",
+        "ur": "ڈیٹا گنج بخش کے نام سے مشہور، کشف المحجوب اور اپنے پائیدار روحانی اثر کے لیے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "983rd Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_shah_mina",
+      "m": 2,
+      "d": 23,
+      "kind": "urs",
+      "name": "Hazrat Shah Mina Shah (RA)",
+      "color": "",
+      "location": "Lucknow, Uttar Pradesh, India",
+      "brief": {
+        "en": "The saint of Lucknow remembered with annual urs observances and local devotion at his dargah.",
+        "hi": "लखनऊ के बुज़ुर्ग, जिनकी दरगाह पर सालाना उर्स और स्थानीय अक़ीदत की रिवायत जारी है।",
+        "ur": "لکھنو کے بزرگ، جن کی درگاہ پر سالانہ عرس اور مقامی عقیدت کی روایت جاری ہے۔"
+      },
+      "ursCount": "216th Annual Urs",
+      "anniv": "Commonly observed on 23 Safar; recent reports describe it as the 216th annual urs.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_ahmed_raza",
+      "m": 2,
+      "d": 25,
+      "kind": "urs",
+      "name": "Hazrat Ahmed Raza Khan Barelvi (RA)",
+      "color": "",
+      "location": "Bareilly, Uttar Pradesh, India",
+      "brief": {
+        "en": "A major jurist, theologian and lover of the Prophet ﷺ, remembered across the Sunni world.",
+        "hi": "एक बड़े फ़क़ीह, मुतकल्लिम और नबी ﷺ के आशिक़, जिन्हें सुन्नी दुनिया में शोहरत हासिल है।",
+        "ur": "ایک بڑے فقیہ، متکلم اور نبی ﷺ کے عاشق، جنہیں سنی دنیا میں شہرت حاصل ہے۔"
+      },
+      "ursCount": "108th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_ahmad_sirhindi",
+      "m": 2,
+      "d": 28,
+      "kind": "urs",
+      "name": "Hazrat Ahmad Sirhindi (RA)",
+      "color": "",
+      "location": "Sirhind, Punjab, India",
+      "brief": {
+        "en": "Known as Mujaddid Alf-e-Sani, remembered for tajdid, scholarship and spiritual reform.",
+        "hi": "मुजद्दिद अल्फ़-ए-सानी के नाम से मशहूर, तजदीद, इल्म और रूहानी इस्लाह के लिए याद किए जाते हैं।",
+        "ur": "مجدد الف ثانی کے نام سے مشہور، تجدید، علم اور روحانی اصلاح کے لیے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "414th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_mehr_ali",
+      "m": 2,
+      "d": 29,
+      "kind": "urs",
+      "name": "Hazrat Mehr Ali Shah (RA)",
+      "color": "",
+      "location": "Golra Sharif, Islamabad, Pakistan",
+      "brief": {
+        "en": "Beloved scholar-saint of Golra Sharif remembered for defense of the faith and spiritual guidance.",
+        "hi": "गोलरा शरीफ़ के मशहूर आलिम-बुज़ुर्ग, जो दीन की हिफ़ाज़त और रूहानी राहनुमाई के लिए याद किए जाते हैं।",
+        "ur": "گولڑہ شریف کے مشہور عالم بزرگ، جو دین کی حفاظت اور روحانی رہنمائی کے لیے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "92nd Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "wisaal_nawawi",
+      "m": 2,
+      "d": 29,
+      "kind": "death",
+      "name": "Hazrat Yahya ibn Sharaf al-Nawawi (RA)",
+      "color": "",
+      "location": "Damascus, Syria",
+      "brief": {
+        "en": "Imam Nawawi is remembered as one of the most beloved scholars of hadith, fiqh and piety.",
+        "hi": "इमाम नववी को हदीस, फ़िक़ह और तक़वा के सबसे प्यारे और अज़ीम आलिमों में से एक माना जाता है।",
+        "ur": "امام نووی کو حدیث، فقہ اور تقویٰ کے سب سے پیارے اور عظیم علماء میں سے ایک مانا جاتا ہے۔"
+      },
+      "ursCount": "",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_mian_mir",
+      "m": 3,
+      "d": 7,
+      "kind": "urs",
+      "name": "Hazrat Mian Mir (RA)",
+      "color": "",
+      "location": "Lahore, Pakistan",
+      "brief": {
+        "en": "A saint of Lahore remembered for spiritual depth, humility and broad respect across communities.",
+        "hi": "लाहौर के एक बुज़ुर्ग, जो रूहानी गहराई, इन्किसारी और तमाम फ़िरक़ों में इज़्ज़त के लिए याद किए जाते हैं।",
+        "ur": "لاہور کے ایک بزرگ، جو روحانی گہرائی، انکساری اور تمام فرقوں میں عزت کے لیے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "403rd Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_masoom_sirhindi",
+      "m": 3,
+      "d": 9,
+      "kind": "urs",
+      "name": "Hazrat Muhammad Masoom Sirhindi (RA)",
+      "color": "",
+      "location": "Sirhind, Punjab, India",
+      "brief": {
+        "en": "A Naqshbandi master whose letters and guidance carried forward the Mujaddidi tradition.",
+        "hi": "एक नक़्शबंदी शेख़ जिनके मकतूबात और राहनुमाई ने मुजद्दिदी रिवायत को आगे बढ़ाया।",
+        "ur": "ایک نقشبندی شیخ جن کے مکتوبات اور رہنمائی نے مجددی روایت کو آگے بڑھایا۔"
+      },
+      "ursCount": "369th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_sabir_kalyari",
+      "m": 3,
+      "d": 13,
+      "kind": "urs",
+      "name": "Hazrat Alauddin Ali Ahmed Sabir Kalyari (RA)",
+      "color": "",
+      "location": "Kaliyar Sharif, Uttarakhand, India",
+      "brief": {
+        "en": "Sabir Pak is remembered for austerity, inner strength and the famous shrine at Kaliyar Sharif.",
+        "hi": "सब्र, अंदरूनी ताक़त और कलियार शरीफ़ की मशहूर दरगाह के लिए याद किए जाते हैं।",
+        "ur": "صبر، اندرونی طاقت اور کالیار شریف کی مشہور درگاہ کے لیے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "758th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_bakhtiyar_kaki",
+      "m": 3,
+      "d": 14,
+      "kind": "urs",
+      "name": "Hazrat Qutbuddin Bakhtiyar Kaki (RA)",
+      "color": "",
+      "location": "Mehrauli, Delhi, India",
+      "brief": {
+        "en": "One of the great Chishti masters of Delhi, remembered for tawakkul, sama and luminous companionship.",
+        "hi": "दिल्ली के अज़ीम चिश्ती शेख़, जो तवक्कुल, समा और नूरानी सोहबत के लिए याद किए जाते हैं।",
+        "ur": "دہلی کے عظیم چشتی شیخ، جو توکل، سماع اور نورانی صحبت کے لیے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "815th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_abdul_haq_dehlvi",
+      "m": 3,
+      "d": 22,
+      "kind": "urs",
+      "name": "Hazrat Abdul Haq Muhaddis Dehlvi (RA)",
+      "color": "",
+      "location": "Delhi, India",
+      "brief": {
+        "en": "The celebrated muhaddith of Delhi whose service to hadith learning remains widely honored.",
+        "hi": "दिल्ली के मशहूर मुहद्दिस, जिनकी हदीस की इल्मी ख़िदमत आज भी सराही जाती है।",
+        "ur": "دہلی کے مشہور محدث، جن کی حدیث کی علمی خدمت آج بھی سراہی جاتی ہے۔"
+      },
+      "ursCount": "396th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_bu_ali_qalandar",
+      "m": 3,
+      "d": 26,
+      "kind": "urs",
+      "name": "Hazrat Sharafuddin Bu Ali Shah Qalandar (RA)",
+      "color": "",
+      "location": "Panipat, Haryana, India",
+      "brief": {
+        "en": "Remembered for qalandari devotion, mystical poetry and a beloved shrine in Panipat.",
+        "hi": "क़लंदरी अक़ीदत, सूफ़ी शायरी और पानीपत में मशहूर दरगाह के लिए याद किए जाते हैं।",
+        "ur": "قلندری عقیدت، صوفی شاعری اور پانی پت میں مشہور درگاہ کے لیے یاد کیے جاتے ہیں۔"
+      },
+      "ursCount": "724th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_ghaus_pak",
+      "m": 4,
+      "d": 11,
+      "kind": "urs",
+      "name": "Hazrat Abdul Qadir Jilani (RA)",
+      "color": "",
+      "location": "Baghdad, Iraq",
+      "brief": {
+        "en": "Ghaus al-Azam is remembered across the Muslim world for knowledge, generosity and spiritual authority.",
+        "hi": "ग़ौस-उल-आज़म को इल्म, सख़ावत और रूहानी मर्तबे के लिए पूरी दुनिया के मुसलमान याद करते हैं।",
+        "ur": "غوث الاعظم کو علم، سخاوت اور روحانی مرتبے کے لیے پوری دنیا کے مسلمان یاد کرتے ہیں۔"
+      },
+      "ursCount": "887th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_haji_ali",
+      "m": 4,
+      "d": 16,
+      "kind": "urs",
+      "name": "Hazrat Pir Haji Ali Shah Bukhari (RA)",
+      "color": "#0ea5e9",
+      "location": "Haji Ali Dargah, Mumbai, Maharashtra, India",
+      "brief": {
+        "en": "The sea-linked shrine of Haji Ali in Mumbai honors the saint remembered for renunciation, tawakkul and charity.",
+        "hi": "मुंबई में समुद्र से जुड़ी हाजी अली दरगाह, एक बुज़ुर्ग की याद में है जो तर्क-ए-दुनिया और तवक्कुल के लिए मशहूर हैं।",
+        "ur": "ممبئی میں سمندر سے جڑی حاجی علی درگاہ، ایک بزرگ کی یاد میں ہے جو ترکِ دنیا اور توکل کے لیے مشہور ہیں۔"
+      },
+      "ursCount": "534th Annual Urs",
+      "anniv": "Commonly observed on 16 Rabi al-Akhir.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_nizamuddin",
+      "m": 4,
+      "d": 18,
+      "kind": "urs",
+      "name": {
+        "en": "Hazrat Nizamuddin Auliya (RA)",
+        "hi": "हज़रत निज़ामुद्दीन औलिया (रह.)",
+        "ur": "حضرت نظام الدین اولیا (رح)",
+        "ar": "حضرة نظام الدين أولياء (رحمه الله)",
+        "bn": "হযরত নিজামউদ্দিন আউলিয়া (রহ.)"
+      },
+      "color": "",
+      "location": {
+        "en": "Nizamuddin, Delhi, India",
+        "hi": "निज़ामुद्दीन, दिल्ली, भारत",
+        "ur": "نظام الدین، دہلی، ہندوستان",
+        "ar": "نظام الدين، دلهي، الهند",
+        "bn": "নিজামউদ্দিন, দিল্লি, ভারত"
+      },
+      "brief": {
+        "en": "Mahbub-e-Ilahi of Delhi, beloved for compassion, langar and a message of divine love for all.",
+        "hi": "दिल्ली के महबूब-ए-इलाही, जो अपनी रहमत, लंगर और सबके लिए मोहब्बत के पैगाम की वजह से मशहूर हैं।",
+        "ur": "دہلی کے محبوبِ الٰہی، جو اپنی شفقت، لنگر اور سب کے لیے محبتِ الٰہی کے پیغام کی وجہ سے مشہور ہیں۔",
+        "ar": "محبوب إلهي في دلهي، واشتهر بالرحمة واللنگر ورسالة المحبة الإلهية للجميع.",
+        "bn": "দিল্লির মাহবুবে ইলাহি, যিনি দয়া, লঙ্গর ও সবার জন্য আল্লাহর মহব্বতের বার্তার জন্য প্রসিদ্ধ।"
+      },
+      "ursCount": "723rd Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_mahimi",
+      "m": 5,
+      "d": 13,
+      "kind": "urs",
+      "name": "Hazrat Makhdoom Ali Mahimi (RA)",
+      "color": "",
+      "location": "Mahim, Mumbai, Maharashtra, India",
+      "brief": {
+        "en": "A revered saint-scholar remembered at Mahim for service, guidance and barakah.",
+        "hi": "माहिम में एक मुतबर्रक बुज़ुर्ग-आलिम की याद, जिन्हें ख़िदमत, राहनुमाई और बरकत के लिए याद किया जाता है।",
+        "ur": "ماہم میں ایک متبرک بزرگ عالم کی یاد، جنہیں خدمت، رہنمائی اور برکت کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "613th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_shahul_hameed",
+      "m": 6,
+      "d": 10,
+      "kind": "urs",
+      "name": "Hazrat Shahul Hameed Qadir Wali (RA)",
+      "color": "#14b8a6",
+      "location": "Nagore, Tamil Nadu, India",
+      "brief": {
+        "en": "Nagore Andavar is remembered through the famous Kanduri at Nagore Dargah, a major center of devotion in South India.",
+        "hi": "नागोर दरगाह का मशहूर कंदूरी, अक़ीदत का बड़ा मरकज़ है जहाँ नागोर अंडावर की याद में इजतिमाआत होते हैं।",
+        "ur": "ناگور درگاہ کا مشہور کندوری، عقیدت کا بڑا مرکز ہے جہاں ناگور اندوار کی یاد میں اجتماعات ہوتے ہیں۔"
+      },
+      "ursCount": "469th Annual Urs",
+      "anniv": "Kanduri observances peak on 10 Jumada al-Akhirah after the 9th-day sandal rites.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_shah_alam",
+      "m": 6,
+      "d": 20,
+      "kind": "urs",
+      "name": "Hazrat Shah Alam Bukhari (RA)",
+      "color": "",
+      "location": "Shah Alam Roza, Ahmedabad, Gujarat, India",
+      "brief": {
+        "en": "The shrine complex of Shah Alam in Ahmedabad is a major spiritual landmark associated with annual urs observances.",
+        "hi": "अहमदाबाद में शाह आलम का दरगाह परिसर एक अहम रूहानी निशान है जहाँ सालाना उर्स होता है।",
+        "ur": "احمدآباد میں شاہ عالم کا درگاہ کمپلیکس ایک اہم روحانی نشان ہے جہاں سالانہ عرس ہوتا ہے۔"
+      },
+      "ursCount": "568th Annual Urs",
+      "anniv": "Recent shrine reports place the 568th urs around 20 Jumada al-Akhirah.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_moinuddin",
+      "m": 7,
+      "d": 6,
+      "kind": "urs",
+      "name": "Hazrat Moinuddin Hasan Chishti (RA)",
+      "color": "#f59e0b",
+      "location": "Ajmer Sharif, Rajasthan, India",
+      "brief": {
+        "en": "Khwaja Gharib Nawaz of Ajmer is remembered for mercy, service and the wide embrace of the Chishti path.",
+        "hi": "ख़्वाजा ग़रीब नवाज़ को रहमत, ख़िदमत और चिश्ती सिलसिले की वुस्अत के लिए याद किया जाता है।",
+        "ur": "خواجہ غریب نواز کو رحمت، خدمت اور چشتی سلسلے کی وسعت کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "815th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_salar_masud",
+      "m": 7,
+      "d": 14,
+      "kind": "urs",
+      "name": "Hazrat Syed Salar Masud Ghazi (RA)",
+      "color": "",
+      "location": "Bahraich, Uttar Pradesh, India",
+      "brief": {
+        "en": "Remembered at the Bahraich shrine where devotees gather for annual observances.",
+        "hi": "बहराइच दरगाह पर श्रद्धालु सालाना इजतिमाआत के लिए जमा होते हैं।",
+        "ur": "بہرائچ درگاہ پر عقیدت مند سالانہ اجتماعات کے لیے جمع ہوتے ہیں۔"
+      },
+      "ursCount": "1024th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_baba_sharfuddin",
+      "m": 8,
+      "d": 16,
+      "kind": "urs",
+      "name": "Hazrat Baba Sharfuddin Soharwardi (RA)",
+      "color": "#f97316",
+      "location": "Pahadi Shareef, Hyderabad, Telangana, India",
+      "brief": {
+        "en": "Baba Sharfuddin is deeply loved in the Deccan, and the annual urs at Pahadi Shareef draws large crowds.",
+        "hi": "बाबा शरफुद्दीन को दक्कन में बड़े प्यार से याद किया जाता है और पहाड़ी शरीफ़ का उर्स बड़े इजतिमाआत का मंज़र पेश करता है।",
+        "ur": "بابا شرف الدین کو دکن میں بڑے پیار سے یاد کیا جاتا ہے اور پہاڑی شریف کا عرس بڑے اجتماعات کا منظر پیش کرتا ہے۔"
+      },
+      "ursCount": "759th Annual Urs",
+      "anniv": "Recent reports describe the 759th urs beginning on 16 Shaban and continuing till 22 Shaban.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_baba_chaman_shah",
+      "m": 8,
+      "d": 13,
+      "kind": "urs",
+      "name": {
+        "en": "Hazrat Baba Chaman Shah (RA)",
+        "hi": "हज़रत बाबा चमन शाह (रह.)",
+        "ur": "حضرت بابا چمن شاہؒ",
+        "ar": "حضرة بابا چمن شاه رحمه الله",
+        "bn": "হযরত বাবা চমন শাহ (রহ.)"
+      },
+      "color": "#10b981",
+      "location": {
+        "en": "Raipur, Chhattisgarh, India",
+        "hi": "रायपुर, छत्तीसगढ़, भारत",
+        "ur": "رائے پور، چھتیس گڑھ، ہندوستان",
+        "ar": "رايبور، تشهاتيسجاره، الهند",
+        "bn": "রায়পুর, ছত্তিশগড়, ভারত"
+      },
+      "brief": {
+        "en": "The user-shared India calendar marks a local urs observance of Hazrat Baba Chaman Shah (RA) on 13 Shaban in Raipur.",
+        "hi": "यूज़र द्वारा भेजे गए इंडिया कैलेंडर में 13 शाबान को रायपुर में हज़रत बाबा चमन शाह (रह.) का स्थानीय उर्स लिखा हुआ है।"
+      },
+      "ursCount": "",
+      "anniv": {
+        "en": "Image-based India calendar observance",
+        "hi": "इंडिया कैलेंडर इमेज के हिसाब से"
+      },
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_lal_shahbaz",
+      "m": 8,
+      "d": 18,
+      "kind": "urs",
+      "name": "Hazrat Usman Marwandi Lal Shahbaz Qalandar (RA)",
+      "color": "",
+      "location": "Sehwan Sharif, Sindh, Pakistan",
+      "brief": {
+        "en": "Lal Shahbaz Qalandar is remembered for ecstatic devotion, generosity and a shrine loved across communities.",
+        "hi": "लाल शाहबाज़ क़लंदर को वज्द-भरी इबादत, सख़ावत और एक मशहूर दरगाह के लिए याद किया जाता है।",
+        "ur": "لال شہباز قلندر کو وجد بھری عبادت، سخاوت اور ایک مشہور درگاہ کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "775th Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_shah_hadi_cricket_baba",
+      "m": 8,
+      "d": 28,
+      "kind": "urs",
+      "name": {
+        "en": "Hazrat Sayyid Shah Hadi (Cricket Wale Baba)",
+        "hi": "हज़रत सैय्यद शाह हादी (क्रिकेट वाले बाबा)",
+        "ur": "حضرت سید شاہ ہادی (کرکٹ والے بابا)",
+        "ar": "حضرة السيد شاه هادي (بابا الكريكيت)",
+        "bn": "হযরত সৈয়দ শাহ হাদি (ক্রিকেটওয়ালে বাবা)"
+      },
+      "color": "#f97316",
+      "location": {
+        "en": "Raipur, Chhattisgarh, India",
+        "hi": "रायपुर, छत्तीसगढ़, भारत",
+        "ur": "رائے پور، چھتیس گڑھ، ہندوستان",
+        "ar": "رايبور، تشهاتيسجاره، الهند",
+        "bn": "রায়পুর, ছত্তিশগড়, ভারত"
+      },
+      "brief": {
+        "en": "The user-shared India calendar marks a local urs of Hazrat Sayyid Shah Hadi, known as Cricket Wale Baba, on 28 Shaban in Raipur.",
+        "hi": "यूज़र द्वारा भेजे गए इंडिया कैलेंडर में 28 शाबान को रायपुर में हज़रत सैय्यद शाह हादी, यानी क्रिकेट वाले बाबा, का उर्स लिखा हुआ है।"
+      },
+      "ursCount": "",
+      "anniv": {
+        "en": "Image-based India calendar observance",
+        "hi": "इंडिया कैलेंडर इमेज के हिसाब से"
+      },
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_shah_jalal",
+      "m": 11,
+      "d": 19,
+      "kind": "urs",
+      "name": "Hazrat Shah Jalal Mujarrad (RA)",
+      "color": "",
+      "location": "Sylhet, Bangladesh",
+      "brief": {
+        "en": "The saint of Sylhet is remembered for dawah, spiritual influence and a shrine that draws devotees in large numbers.",
+        "hi": "सिलहट के बुज़ुर्ग, जिन्हें दावत, रूहानी असर और एक दरगाह के लिए याद किया जाता है जहाँ दूर-दूर से लोग आते हैं।",
+        "ur": "سلہٹ کے بزرگ، جنہیں دعوت، روحانی اثر اور ایک درگاہ کے لیے یاد کیا جاتا ہے جہاں دور دور سے لوگ آتے ہیں۔"
+      },
+      "ursCount": "702nd Annual Urs",
+      "anniv": "Reports connect the urs to 19 Dhu al-Qadah.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_sultan_ibrahim",
+      "m": 11,
+      "d": 23,
+      "kind": "urs",
+      "name": "Hazrat Sultan Syed Ibrahim Shaheed Badusha (RA)",
+      "color": "#22c55e",
+      "location": "Ervadi, Tamil Nadu, India",
+      "brief": {
+        "en": "The great Ervadi urs culminates with sandal rites and large gatherings at the shrine of Sultan Ibrahim Shaheed.",
+        "hi": "बड़े इरवाड़ी उर्स का समापन सन्दल रस्म और सुल्तान इब्राहीम शाहिद (र.अ.) की दरगाह पर बड़े इजतिमाआत से होता है।",
+        "ur": "بڑے اروڑی عرس کا اختتام صندل کی رسم اور سلطان ابراہیم شاہد (رح) کی درگاہ پر بڑے اجتماعات سے ہوتا ہے۔"
+      },
+      "ursCount": "746th Annual Urs",
+      "anniv": "The peak urs observance is held on 23 Dhu al-Qadah.",
+      "image": "",
+      "active": true
+    },
+    {
+      "id": "urs_banda_nawaz",
+      "m": 12,
+      "d": 15,
+      "kind": "urs",
+      "name": "Hazrat Khwaja Banda Nawaz Gesu Daraz (RA)",
+      "color": "",
+      "location": "Gulbarga, Karnataka, India",
+      "brief": {
+        "en": "The saint of Gulbarga is remembered for scholarship, spiritual grace and a major dargah of the Deccan.",
+        "hi": "गुलबर्गा के बुज़ुर्ग को इल्म, रूहानी लतافत और दक्कन की एक बड़ी दरगाह के लिए याद किया जाता है।",
+        "ur": "گلبرگہ کے بزرگ کو علم، روحانی لطافت اور دکن کی ایک بڑی درگاہ کے لیے یاد کیا جاتا ہے۔"
+      },
+      "ursCount": "623rd Annual Urs",
+      "anniv": "",
+      "image": "",
+      "active": true
+    }
+  ]
+}

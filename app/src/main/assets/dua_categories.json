@@ -1,0 +1,281 @@
+﻿[
+
+
+
+
+
+
+
+  {id:'travel',icon:'🧳',tk:'dua_cat_travel',label:'Travel'},
+
+
+
+
+
+
+
+  {id:'food',icon:'🍽️',tk:'dua_cat_food',label:'Food & Drink'},
+
+
+
+
+
+
+
+  {id:'health_shifa',icon:'💚',tk:'dua_cat_shifa',label:'Health & Healing'},
+
+
+
+
+
+
+
+  {id:'shifa',icon:'💚',tk:'dua_cat_shifa',label:'Shifa'},
+
+
+
+
+
+
+
+  {id:'sleep',icon:'🌙',tk:'dua_cat_sleep',label:'Sleep'},
+
+
+
+
+
+
+
+  {id:'home',icon:'🏠',tk:'dua_cat_home',label:'Home'},
+
+
+
+
+
+
+
+  {id:'mosque',icon:'🕌',tk:'dua_cat_mosque',label:'Mosque'},
+
+
+
+
+
+
+
+  {id:'bathroom',icon:'🚿',tk:'dua_cat_bathroom',label:'Bathroom'},
+
+
+
+
+
+
+
+  {id:'rain',icon:'🌧️',tk:'dua_cat_rain',label:'Rain'},
+
+
+
+
+
+
+
+  {id:'hardship',icon:'🤲',tk:'dua_cat_hardship',label:'Hardship & Ease'},
+
+
+
+
+
+
+
+  {id:'protection',icon:'🛡️',tk:'dua_cat_protection',label:'Protection'},
+
+
+
+
+
+
+
+  {id:'morning',icon:'☀️',tk:'dua_cat_morning',label:'Morning'},
+
+
+
+
+
+
+
+  {id:'evening',icon:'🌆',tk:'dua_cat_evening',label:'Evening'},
+
+
+
+
+
+
+
+  {id:'rizq',icon:'💰',tk:'dua_cat_rizq',label:'Rizq & Wealth'},
+
+
+
+
+
+
+
+  {id:'career',icon:'💼',tk:'',label:'Career & Job'},
+
+
+
+
+
+
+
+  {id:'family',icon:'👨‍👩‍👧‍👦',tk:'',label:'Family & Marriage'},
+
+
+
+
+
+
+
+  {id:'education',icon:'📚',tk:'',label:'Studies & Knowledge'},
+
+
+
+
+
+
+
+  {id:'faith_worship',icon:'✨',tk:'',label:'Faith & Worship'},
+
+
+
+
+
+
+
+  {id:'mental_health',icon:'🧠',tk:'',label:'Mental Peace'},
+
+
+
+
+
+
+
+  {id:'heart',icon:'❤️',tk:'',label:'Heart & Steadfastness'},
+
+
+
+
+
+
+
+  {id:'akhirah',icon:'🌌',tk:'',label:'Akhirah & Jannah'},
+
+
+
+
+
+
+
+  {id:'gratitude',icon:'🙏',tk:'',label:'Gratitude & Shukr'},
+
+
+
+
+
+
+
+  {id:'patience',icon:'⏳',tk:'',label:'Sabr & Patience'},
+
+
+
+
+
+
+
+  {id:'fear',icon:'🛡️',tk:'',label:'Fear & Protection'},
+
+
+
+
+
+
+
+  {id:'sadness',icon:'🌧️',tk:'',label:'Sadness & Grief'},
+
+
+
+
+
+
+
+  {id:'stress',icon:'💆',tk:'',label:'Stress Relief'},
+
+
+
+
+
+
+
+  {id:'self_control',icon:'🧘',tk:'',label:'Self Control & Nafs'},
+
+
+
+
+
+
+
+  {id:'purity',icon:'💧',tk:'',label:'Purity & Wudu'},
+
+
+
+
+
+
+
+  {id:'daily_life',icon:'🌅',tk:'',label:'Daily Life'},
+
+
+
+
+
+
+
+  {id:'death_janazah',icon:'⚰️',tk:'',label:'Death & Janazah'},
+
+
+
+
+
+
+
+  {id:'temptation',icon:'⛔',tk:'',label:'Temptation & Waswas'},
+
+
+
+
+
+
+
+  {id:'zina',icon:'🚫',tk:'',label:'Chastity & Protection'},
+
+
+
+
+
+
+
+  {id:'special_dua',icon:'🤲',tk:'dua_cat_special',label:'Special Duas'},
+
+
+
+
+
+
+
+  {id:'jumma_dua',icon:'🕌',tk:'dua_cat_jumma',label:'Jummah Duas'}
+
+
+
+
+
+
+
+]

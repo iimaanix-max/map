@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "158629477083",
+    "firebase_url": "https://digital-tasbih-19bca-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "digital-tasbih-19bca",
+    "storage_bucket": "digital-tasbih-19bca.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158629477083:android:1e7c8a469a7404ecaeeafe",
+        "android_client_info": {
+          "package_name": "com.tasbih.digitaltasbih"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158629477083-19jfpvb6t64bgc3ibdqka0use3la2jp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgVDJ59GRTHkPFIGJH8utWB3mR-0VjgtI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158629477083-19jfpvb6t64bgc3ibdqka0use3la2jp4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

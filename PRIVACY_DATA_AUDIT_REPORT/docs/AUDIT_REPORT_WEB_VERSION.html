@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Tasbih - Privacy & Data-Flow Audit Report</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 15mm 12mm 15mm 12mm;
+            @bottom-right {
+                content: "Page " counter(page);
+                font-size: 8pt;
+                color: #64748b;
+            }
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #475569;
+            --primary-emerald: #059669;
+            --primary-dark: #064e3b;
+            --gold: #b45309;
+            --border: #cbd5e1;
+            --card-bg: #f8fafc;
+            --code-bg: #f1f5f9;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            background: var(--bg-color);
+            line-height: 1.5;
+            font-size: 9.5pt;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-break {
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .cover-page {
+            text-align: center;
+            padding: 120px 20px 40px 20px;
+            page-break-after: always;
+            break-after: page;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #10b981;
+            font-size: 11pt;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-size: 26pt;
+            font-weight: 800;
+            color: #064e3b;
+            margin: 0 0 12px 0;
+            line-height: 1.2;
+        }
+
+        .cover-subtitle {
+            font-size: 13pt;
+            color: #334155;
+            max-width: 650px;
+            margin: 0 auto 36px auto;
+            line-height: 1.5;
+        }
+
+        .meta-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 30px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 10pt;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .meta-row:last-child {
+            border-bottom: none;
+        }
+        .meta-label {
+            font-weight: 600;
+            color: #64748b;
+        }
+        .meta-val {
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        h1, h2, h3, h4 {
+            color: #064e3b;
+            font-weight: 700;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            font-size: 14pt;
+            border-bottom: 1.5px solid #059669;
+            padding-bottom: 4px;
+            margin-top: 24px;
+        }
+
+        h3 {
+            font-size: 11pt;
+            margin-top: 14px;
+            color: #047857;
+        }
+
+        p, ul, ol {
+            margin-top: 4px;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 7.5pt;
+            margin: 10px 0 14px 0;
+            page-break-inside: auto;
+        }
+
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+
+        th {
+            background-color: #064e3b;
+            color: #ffffff;
+            font-weight: 700;
+            text-align: left;
+            padding: 6px 5px;
+            border: 1px solid #047857;
+            font-size: 7.5pt;
+        }
+
+        td {
+            padding: 5px 5px;
+            border: 1px solid #cbd5e1;
+            vertical-align: top;
+            line-height: 1.35;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .status-confirmed {
+            background: #dcfce7;
+            color: #15803d;
+            font-weight: 700;
+            padding: 2px 4px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 6.5pt;
+        }
+
+        .status-false {
+            background: #fee2e2;
+            color: #b91c1c;
+            font-weight: 700;
+            padding: 2px 4px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 6.5pt;
+        }
+
+        .status-alert {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 700;
+            padding: 2px 4px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 6.5pt;
+        }
+
+        .badge-red {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .diagram-container {
+            background: #0b131a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 12px 0 16px 0;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+
+        .diagram-caption {
+            font-size: 8pt;
+            font-weight: 600;
+            color: #64748b;
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        code {
+            font-family: Consolas, Monaco, monospace;
+            font-size: 7.5pt;
+            background: var(--code-bg);
+            padding: 1px 3px;
+            border-radius: 3px;
+            color: #0f172a;
+        }
+
+        .callout {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 8px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 8.5pt;
+        }
+
+        .callout-warning {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 8px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 8.5pt;
+        }
+
+        .callout-danger {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 8px 12px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 8.5pt;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- COVER PAGE -->
+    <div class="cover-page">
+        <div class="cover-badge">Evidence-Backed Privacy &amp; Data-Flow Audit</div>
+        <div class="cover-title">Digital Tasbih</div>
+        <div style="font-size: 14pt; font-weight: 700; color: #b45309; margin-bottom: 12px;">Android Client (com.tasbih.digitaltasbih) &amp; Cloudflare Edge Architecture</div>
+        <div class="cover-subtitle">
+            A comprehensive, line-by-line verification of personal data flows, permissions, third-party SDKs, and regulatory compliance (Google Play Data Safety, GDPR, COPPA &amp; DPDP Act 2023).
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-row"><span class="meta-label">App Identifier:</span> <span class="meta-val">com.tasbih.digitaltasbih</span></div>
+            <div class="meta-row"><span class="meta-label">Target Architecture:</span> <span class="meta-val">Android, Cloudflare Workers/D1, GCP Firestore</span></div>
+            <div class="meta-row"><span class="meta-label">Audit Methodology:</span> <span class="meta-val">Strict READ-ONLY Static Code Verification</span></div>
+            <div class="meta-row"><span class="meta-label">Tasbih Module Status:</span> <span class="meta-val" style="color: #047857;">FROZEN &amp; UNTOUCHED (Permanent Rule)</span></div>
+            <div class="meta-row"><span class="meta-label">Audit Date:</span> <span class="meta-val">November 2026</span></div>
+            <div class="meta-row"><span class="meta-label">Version:</span> <span class="meta-val">Release 1.0</span></div>
+        </div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <h2>1. Executive Summary &amp; Architecture Topology</h2>
+    <p>
+        <strong>Digital Tasbih by Imaanix</strong> implements a distinct dual-sphere privacy architecture:
+    </p>
+    <ul>
+        <li><strong>100% Offline Local Sphere:</strong> The primary core Islamic utility—including the realistic Bézier beads tasbih (<code>TasbihScreen.kt</code>), digital counters, lifetime badge progression, daily statistics, offline Quran text reading, and daily Athkar—operates entirely inside Android's private app sandbox. No account is required, and zero user counts or prayer markers are transmitted over the internet.</li>
+        <li><strong>Cloud &amp; Community Sphere:</strong> Optional features—specifically Live Dhikr Rooms, the Mega Umrah Contest, and prayer times geolocation—connect to external cloud endpoints:
+            Cloudflare Workers (<code>auth-worker.js</code>, <code>campaigns-worker.js</code>), Cloudflare D1 SQL, Google Cloud Firestore (<code>digital-tasbih-campaigns-e43ee</code>), and the Aladhan Prayer API.
+        </li>
+    </ul>
+
+    <div class="callout-danger">
+        <strong>CRITICAL AUDIT NOTICE (Tasbih Lock Rule):</strong> In strict compliance with project safety directives, the Tasbih module (<code>TasbihScreen.kt</code>, Bézier canvas math, dial progression, lifetime badges) was inspected in READ-ONLY mode and remains 100% untouched.
+    </div>
+
+    <div class="diagram-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%" style="background:#0b131a; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+  <defs>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="gradGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.1"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrowGold" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="700" letter-spacing="0.5">Digital Tasbih (com.tasbih.digitaltasbih) - System Architecture &amp; Data Flows</text>
+  <text x="600" y="70" text-anchor="middle" fill="#94a3b8" font-size="13">High-Level Data Topology: Local Sandboxed Storage, External 3rd Party APIs, and Cloud Infrastructure</text>
+
+  <!-- Box 1: Android Client Container -->
+  <rect x="50" y="100" width="480" height="640" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="50" y="100" width="480" height="42" rx="16" fill="url(#gradEmerald)"/>
+  <text x="75" y="128" fill="#10b981" font-size="16" font-weight="700">📱 Android Client Device</text>
+  <text x="380" y="127" fill="#64748b" font-size="11">Sandboxed Environment</text>
+
+  <!-- Section A: 100% Offline / Local Features -->
+  <rect x="70" y="160" width="440" height="150" rx="12" fill="#132328" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="85" y="185" fill="#34d399" font-size="13" font-weight="700">🔒 100% OFFLINE LOCAL SPHERE (Zero Server Contact)</text>
+  <text x="85" y="210" fill="#cbd5e1" font-size="12">• Tasbih Beads &amp; Digital Counter (TasbihScreen.kt - FROZEN)</text>
+  <text x="85" y="230" fill="#cbd5e1" font-size="12">• Lifetime Dhikr Badges &amp; Daily Statistics (TasbihPreferences.kt)</text>
+  <text x="85" y="250" fill="#cbd5e1" font-size="12">• Quran Reading Bookmarks, Offline Surahs, Personal Dua Lists</text>
+  <text x="85" y="275" fill="#f87171" font-size="11" font-weight="600">⚠️ Storage: Standard Unencrypted SharedPreferences (tasbih_prefs)</text>
+  <text x="85" y="295" fill="#94a3b8" font-size="10">Auto-Backup Leaks: backup_rules.xml includes all SharedPrefs to Google Drive</text>
+
+  <!-- Section B: Online Features -->
+  <rect x="70" y="325" width="440" height="235" rx="12" fill="#1e1e38" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="85" y="350" fill="#a5b4fc" font-size="13" font-weight="700">🌐 ONLINE &amp; COMMUNITY MODULES</text>
+  <text x="85" y="375" fill="#cbd5e1" font-size="12">• Group Dhikr Rooms (Anonymous Auth / Google Sign-In)</text>
+  <text x="85" y="395" fill="#cbd5e1" font-size="12">• Global Umrah Contest Registration (Name, Phone, Email, City)</text>
+  <text x="85" y="415" fill="#cbd5e1" font-size="12">• Prayer Times &amp; Qibla (GPS Coordinates to Aladhan API)</text>
+  <text x="85" y="435" fill="#cbd5e1" font-size="12">• Audio Recitation Streaming (Quran.com &amp; JSDelivr CDN)</text>
+  <text x="85" y="460" fill="#fbbf24" font-size="11" font-weight="600">⚠️ Local Cache: dt_gc_phone, dt_gc_name, dt_gc_city, pr_lat, pr_lon</text>
+  <text x="85" y="480" fill="#cbd5e1" font-size="11">• 18+ Age Self-Declaration Gate: dt_user_is_18_plus</text>
+  <text x="85" y="505" fill="#f87171" font-size="11" font-weight="600">❌ In-App Deletion: Simulated boolean flag (No API call)</text>
+  <text x="85" y="525" fill="#94a3b8" font-size="10">SettingsScreen.kt: DeleteMyDataDpdpModal sets isSubmitted = true</text>
+
+  <!-- Section C: Ad & Telemetry Client -->
+  <rect x="70" y="575" width="440" height="145" rx="12" fill="#1c2438" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="85" y="600" fill="#93c5fd" font-size="13" font-weight="700">📊 SDK &amp; TELEMETRY CLIENTS</text>
+  <text x="85" y="625" fill="#cbd5e1" font-size="12">• Google AdMob SDK 23.6.0 (AAID, Coarse Location, Ad events)</text>
+  <text x="85" y="645" fill="#cbd5e1" font-size="12">• Firebase Analytics &amp; Crashlytics (Instance ID, Stack traces)</text>
+  <text x="85" y="665" fill="#cbd5e1" font-size="12">• Google UMP Consent Dialog (EEA/UK compliance modal)</text>
+  <text x="85" y="695" fill="#38bdf8" font-size="11">Data is dispatched directly to Google servers via Google Play Services</text>
+
+  <!-- External 3rd Party APIs (Top Right) -->
+  <rect x="670" y="100" width="480" height="175" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="670" y="100" width="480" height="38" rx="16" fill="url(#gradBlue)"/>
+  <text x="695" y="126" fill="#60a5fa" font-size="15" font-weight="700">🌍 Direct 3rd-Party Service APIs</text>
+
+  <rect x="690" y="150" width="210" height="55" rx="8" fill="#1e293b"/>
+  <text x="705" y="172" fill="#f8fafc" font-size="12" font-weight="600">Aladhan API</text>
+  <text x="705" y="192" fill="#94a3b8" font-size="10">Sends: pr_lat, pr_lon (Exact GPS)</text>
+
+  <rect x="920" y="150" width="210" height="55" rx="8" fill="#1e293b"/>
+  <text x="935" y="172" fill="#f8fafc" font-size="12" font-weight="600">Quran.com &amp; JSDelivr</text>
+  <text x="935" y="192" fill="#94a3b8" font-size="10">Sends: IP, Stream Quran audio</text>
+
+  <rect x="690" y="215" width="210" height="50" rx="8" fill="#1e293b"/>
+  <text x="705" y="235" fill="#f8fafc" font-size="12" font-weight="600">Google AdMob</text>
+  <text x="705" y="253" fill="#94a3b8" font-size="10">Sends: AAID, Ad clicks, Telemetry</text>
+
+  <rect x="920" y="215" width="210" height="50" rx="8" fill="#1e293b"/>
+  <text x="935" y="235" fill="#f8fafc" font-size="12" font-weight="600">Firebase Analytics</text>
+  <text x="935" y="253" fill="#94a3b8" font-size="10">Sends: App Instance ID, Crashes</text>
+
+  <!-- Cloudflare & Backend Infrastructure (Bottom Right) -->
+  <rect x="670" y="300" width="480" height="440" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="670" y="300" width="480" height="38" rx="16" fill="url(#gradGold)"/>
+  <text x="695" y="326" fill="#fbbf24" font-size="15" font-weight="700">☁️ Imaanix Cloud Backend (Cloudflare &amp; GCP)</text>
+
+  <!-- auth-worker -->
+  <rect x="690" y="350" width="215" height="110" rx="10" fill="#1c1917" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="705" y="372" fill="#fbbf24" font-size="12" font-weight="700">auth-worker.js (Cloudflare)</text>
+  <text x="705" y="392" fill="#e2e8f0" font-size="11">• /api/auth/request-otp</text>
+  <text x="705" y="410" fill="#e2e8f0" font-size="11">• /api/auth/verify-otp</text>
+  <text x="705" y="430" fill="#f87171" font-size="10">Reads CF-Connecting-IP (Memory)</text>
+  <text x="705" y="448" fill="#94a3b8" font-size="10">Rate Limit: 5/hr, 120 req/min</text>
+
+  <!-- campaigns-worker -->
+  <rect x="925" y="350" width="210" height="110" rx="10" fill="#1c1917" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="940" y="372" fill="#fbbf24" font-size="12" font-weight="700">campaigns-worker.js</text>
+  <text x="940" y="392" fill="#e2e8f0" font-size="11">• /api/campaigns/register</text>
+  <text x="940" y="410" fill="#e2e8f0" font-size="11">• /api/campaigns/submit-batch</text>
+  <text x="940" y="430" fill="#e2e8f0" font-size="11">• /api/campaigns/leaderboard</text>
+  <text x="940" y="448" fill="#f87171" font-size="10">Purge is MANUAL (No auto-cron)</text>
+
+  <!-- Cloudflare D1 -->
+  <rect x="690" y="480" width="215" height="115" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="705" y="502" fill="#38bdf8" font-size="12" font-weight="700">Cloudflare D1 (SQL)</text>
+  <text x="705" y="522" fill="#cbd5e1" font-size="11">otp_records: <tspan fill="#f87171">Plain Email</tspan>, OTP Hash</text>
+  <text x="705" y="540" fill="#cbd5e1" font-size="11">rate_limits: <tspan fill="#f87171">email:user@domain</tspan></text>
+  <text x="705" y="558" fill="#cbd5e1" font-size="11">user_submit_cooldowns: uid</text>
+  <text x="705" y="576" fill="#cbd5e1" font-size="11">analytics_metrics: counters</text>
+
+  <!-- Google Cloud Firestore -->
+  <rect x="925" y="480" width="210" height="115" rx="10" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="940" y="502" fill="#c084fc" font-size="12" font-weight="700">Cloud Firestore</text>
+  <text x="940" y="522" fill="#cbd5e1" font-size="10">entries/{uid}: <tspan fill="#f87171">Plain Phone E.164</tspan></text>
+  <text x="940" y="538" fill="#cbd5e1" font-size="10">entries/{uid}: <tspan fill="#f87171">Plain Email, Name</tspan></text>
+  <text x="940" y="554" fill="#cbd5e1" font-size="10">contest_registry: HMAC Hashes</text>
+  <text x="940" y="570" fill="#cbd5e1" font-size="10">campaign_members: Counts</text>
+
+  <!-- Email Relays -->
+  <rect x="690" y="615" width="445" height="105" rx="10" fill="#172554" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="705" y="638" fill="#93c5fd" font-size="12" font-weight="700">✉️ Transactional Email Dispatch Gateways</text>
+  <text x="705" y="660" fill="#cbd5e1" font-size="11">1. <tspan font-weight="600" fill="#f8fafc">Resend API (Primary):</tspan> Sends single-use 6-digit OTP code to user's plain email address.</text>
+  <text x="705" y="682" fill="#cbd5e1" font-size="11">2. <tspan font-weight="600" fill="#f8fafc">Brevo SMTP Relay (Fallback/Alerts):</tspan> alerts@imaanix.in quota &amp; threshold alerts.</text>
+  <text x="705" y="704" fill="#94a3b8" font-size="10">Both receive user plain-text email address via TLS encrypted HTTPS/SMTP connections.</text>
+
+  <!-- Connecting Lines / Arrows -->
+  <!-- App -> Aladhan -->
+  <path d="M 510 420 Q 600 350 690 180" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <!-- App -> AdMob & Firebase -->
+  <path d="M 510 630 Q 580 500 690 240" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrowBlue)"/>
+  <!-- App -> auth-worker -->
+  <path d="M 510 380 L 685 390" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowGold)"/>
+  <!-- App -> campaigns-worker -->
+  <path d="M 510 405 Q 700 420 920 405" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowGold)"/>
+  <!-- auth-worker -> D1 -->
+  <path d="M 797 460 L 797 475" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <!-- auth-worker -> Email -->
+  <path d="M 750 460 Q 660 550 720 610" fill="none" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <!-- campaigns-worker -> Firestore -->
+  <path d="M 1030 460 L 1030 475" fill="none" stroke="#a855f7" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+</svg>
+
+        <div class="diagram-caption">Figure 1.1: End-to-End System Architecture, Client Data Boundaries, and External Processors</div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="page-break"></div>
+    <h2>2. Deliverable 1: Comprehensive Data Inventory Table</h2>
+    <p>Every field processed across the Android client, Cloudflare edge, and Firestore databases:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 14%;">Data Item</th>
+                <th style="width: 11%;">Feature / Trigger</th>
+                <th style="width: 16%;">Stored Where</th>
+                <th style="width: 9%;">Format</th>
+                <th style="width: 8%;">Visibility</th>
+                <th style="width: 16%;">Purpose</th>
+                <th style="width: 16%;">Evidence (File &amp; Line)</th>
+                <th style="width: 10%;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Email Address</strong> (OTP Login)</td>
+                <td>Email OTP sign-in / verify</td>
+                <td>Cloudflare D1 (<code>otp_records.email</code>, <code>rate_limits.key</code>)</td>
+                <td><span class="badge-red">Plain Text</span></td>
+                <td>Private</td>
+                <td>Authentication, sending 6-digit code</td>
+                <td><code>schema.sql#L10-L17</code><br><code>auth-worker.js#L324</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Email Address</strong> (Contest)</td>
+                <td>Registering for Umrah Contest</td>
+                <td>Firestore (<code>campaign_contestants/.../entries/{uid}.normalizedEmail</code>)</td>
+                <td><span class="badge-red">Plain Text</span> + HMAC in registry</td>
+                <td>Private</td>
+                <td>Winner verification, prize notification</td>
+                <td><code>campaigns-worker.js#L865-L872</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Phone Number</strong></td>
+                <td>Umrah Contest Registration</td>
+                <td>SharedPref (<code>dt_gc_phone</code>), Firestore (<code>.../entries/{uid}.phone</code>)</td>
+                <td><span class="badge-red">Plain Text E.164</span> (+91...)</td>
+                <td>Private</td>
+                <td>Contacting prize winner</td>
+                <td><code>campaigns-worker.js#L865-L872</code><br><code>GroupCampaignRepository.kt#L170</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Display Name / Full Name</strong></td>
+                <td>Live Rooms &amp; Contest form</td>
+                <td>SharedPref (<code>dt_gc_name</code>), Firestore (<code>entries/{uid}.name</code>)</td>
+                <td>Plain Text</td>
+                <td><strong>Public</strong> (Rooms &amp; Boards)</td>
+                <td>Leaderboard display, winner audit</td>
+                <td><code>GroupCampaignRepository.kt#L168</code><br><code>campaigns-worker.js#L357</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>City, State &amp; Country</strong></td>
+                <td>Contest registration &amp; Prayers</td>
+                <td>SharedPref (<code>dt_gc_city</code>), Firestore (<code>.../entries/{uid}.city</code>)</td>
+                <td>Plain Text</td>
+                <td><strong>Public</strong> (City on board)</td>
+                <td>Regional leaderboards, solar prayer math</td>
+                <td><code>campaigns-worker.js#L360</code><br><code>PrayerRepository.kt#L84</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Precise GPS Location</strong></td>
+                <td>Prayer calculation &amp; Qibla</td>
+                <td>SharedPref (<code>pr_lat</code>, <code>pr_lon</code>); sent to Aladhan API</td>
+                <td>Plain Float Coordinates</td>
+                <td>Private (Client-Aladhan only)</td>
+                <td>Solar prayer times &amp; Qibla azimuth</td>
+                <td><code>PrayerRepository.kt#L618-L620</code><br><code>QiblaRepository.kt#L140</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Firebase UID / Install ID</strong></td>
+                <td>Anonymous Auth &amp; Anti-cheat</td>
+                <td>Firebase Auth; SharedPref (<code>dt_install_id</code>); Firestore</td>
+                <td>HMAC-SHA256 in Firestore</td>
+                <td>Private (PublicId masked)</td>
+                <td>Syncing counts, anti-bot deduplication</td>
+                <td><code>GroupCampaignRepository.kt#L230</code><br><code>campaigns-worker.js#L840</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>IP Address</strong></td>
+                <td>Network request to Workers</td>
+                <td>Worker memory; HMAC-SHA256 in Firestore (<code>ipKey</code>)</td>
+                <td>HMAC-SHA256 hashed</td>
+                <td>Private</td>
+                <td>DDoS mitigation, rate-limiting (120 req/min)</td>
+                <td><code>auth-worker.js#L42-L46</code><br><code>campaigns-worker.js#L842</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Tasbih Count &amp; Badges</strong></td>
+                <td>Tapping beads / digital counter</td>
+                <td><strong>100% Local Device Storage</strong> (<code>tasbih_prefs</code>)</td>
+                <td>Plain Integers</td>
+                <td><strong>100% Private</strong></td>
+                <td>Personal worship tracking</td>
+                <td><code>TasbihScreen.kt</code> (FROZEN)<br><code>TasbihPreferences.kt</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Community Dhikr Count</strong></td>
+                <td>Submitting batch in live rooms</td>
+                <td>Firestore (<code>campaign_members/{uid}.count</code>)</td>
+                <td>Plain Integer</td>
+                <td><strong>Public</strong> (Aggregated)</td>
+                <td>Collective target progression</td>
+                <td><code>campaigns-worker.js#L280-L330</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Advertising ID (AAID)</strong></td>
+                <td>Banner / Rewarded Ad display</td>
+                <td>Google Play Services memory</td>
+                <td>Pseudonymous ID</td>
+                <td>AdMob Network</td>
+                <td>Monetization, ad frequency capping</td>
+                <td><code>build.gradle.kts#L115</code><br><code>play-services-ads:23.6.0</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Crash Diagnostics</strong></td>
+                <td>App crash / stack trace</td>
+                <td>Firebase Crashlytics servers</td>
+                <td>Pseudonymous Instance ID</td>
+                <td>Admin console</td>
+                <td>Bug fixing, crash stability</td>
+                <td><code>build.gradle.kts#L125-L128</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Age Gate Flag (18+)</strong></td>
+                <td>Joining Community / Contest</td>
+                <td>SharedPref (<code>dt_user_is_18_plus</code>)</td>
+                <td>Boolean (true/false)</td>
+                <td>Private (Local only)</td>
+                <td>DPDP compliance (blocks minors from groups)</td>
+                <td><code>GroupCampaignRepository.kt#L308</code><br><code>LiveDhikrDialogs.kt#L2206</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="diagram-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%" style="background:#0b131a; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+  <defs>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <text x="600" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="700">Digital Tasbih - PII &amp; Sensitive Data Storage Reality Map</text>
+  <text x="600" y="70" text-anchor="middle" fill="#94a3b8" font-size="13">Code-Verified Inventory: Plain-Text Identifiers vs Cryptographic Hashes vs Sandboxed Local Data</text>
+
+  <!-- Legend -->
+  <rect x="250" y="90" width="140" height="30" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+  <circle cx="265" cy="105" r="6" fill="#ef4444"/>
+  <text x="280" y="110" fill="#fca5a5" font-size="11" font-weight="700">PLAIN-TEXT PII</text>
+
+  <rect x="420" y="90" width="170" height="30" rx="6" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.5"/>
+  <circle cx="435" cy="105" r="6" fill="#818cf8"/>
+  <text x="450" y="110" fill="#c7d2fe" font-size="11" font-weight="700">HMAC-SHA256 HASH</text>
+
+  <rect x="620" y="90" width="170" height="30" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="635" cy="105" r="6" fill="#10b981"/>
+  <text x="650" y="110" fill="#6ee7b7" font-size="11" font-weight="700">LOCAL DEVICE ONLY</text>
+
+  <rect x="820" y="90" width="140" height="30" rx="6" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+  <circle cx="835" cy="105" r="6" fill="#94a3b8"/>
+  <text x="850" y="110" fill="#cbd5e1" font-size="11" font-weight="700">PUBLIC DISPLAY</text>
+
+  <!-- Column 1: Local Device Storage -->
+  <rect x="50" y="140" width="340" height="600" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="50" y="140" width="340" height="40" rx="14" fill="#132e24"/>
+  <text x="70" y="166" fill="#34d399" font-size="15" font-weight="700">📱 Local Android Storage</text>
+  <text x="70" y="200" fill="#fca5a5" font-size="12" font-weight="700">File: SharedPref ("dt_gc_phone")</text>
+  <text x="70" y="218" fill="#cbd5e1" font-size="11">• Phone Number: Plain text E.164 (+91...)</text>
+  <text x="70" y="234" fill="#cbd5e1" font-size="11">• Display Name: Plain text ("dt_gc_name")</text>
+  <text x="70" y="250" fill="#cbd5e1" font-size="11">• City / State: Plain text ("dt_gc_city")</text>
+  <text x="70" y="266" fill="#ef4444" font-size="10" font-weight="600">❌ UNENCRYPTED: Stored via standard getSharedPreferences()</text>
+  <text x="70" y="282" fill="#ef4444" font-size="10" font-weight="600">⚠️ AUTO-BACKUP: Uploaded to Google Drive unencrypted</text>
+
+  <line x1="60" y1="300" x2="380" y2="300" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="70" y="325" fill="#6ee7b7" font-size="12" font-weight="700">File: "tasbih_prefs" (100% Local)</text>
+  <text x="70" y="343" fill="#cbd5e1" font-size="11">• Session Count, All-Time Count</text>
+  <text x="70" y="359" fill="#cbd5e1" font-size="11">• Lifetime Dhikr Badges &amp; Goals</text>
+  <text x="70" y="375" fill="#cbd5e1" font-size="11">• Bead Marble &amp; Dial Color Themes</text>
+  <text x="70" y="393" fill="#10b981" font-size="11" font-weight="600">✅ NEVER TRANSMITTED: Stays on phone</text>
+
+  <line x1="60" y1="410" x2="380" y2="410" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="70" y="435" fill="#fca5a5" font-size="12" font-weight="700">File: "pr_prefs" (Prayer Location)</text>
+  <text x="70" y="453" fill="#cbd5e1" font-size="11">• Exact Latitude: "pr_lat" (Double)</text>
+  <text x="70" y="469" fill="#cbd5e1" font-size="11">• Exact Longitude: "pr_lon" (Double)</text>
+  <text x="70" y="487" fill="#f59e0b" font-size="11" font-weight="600">⚠️ Sent to Aladhan API in cleartext parameters</text>
+
+  <line x1="60" y1="505" x2="380" y2="505" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="70" y="530" fill="#c7d2fe" font-size="12" font-weight="700">File: "dt_app_prefs" (Device Identity)</text>
+  <text x="70" y="548" fill="#cbd5e1" font-size="11">• Install ID: UUID.randomUUID()</text>
+  <text x="70" y="564" fill="#cbd5e1" font-size="11">• 18+ Age Gate Flag: Boolean</text>
+  <text x="70" y="580" fill="#cbd5e1" font-size="11">• Ad Consent Choice: Boolean</text>
+
+  <!-- Column 2: Cloudflare D1 SQL -->
+  <rect x="430" y="140" width="340" height="600" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="430" y="140" width="340" height="40" rx="14" fill="#0c4a6e"/>
+  <text x="450" y="166" fill="#38bdf8" font-size="15" font-weight="700">☁️ Cloudflare D1 SQL Database</text>
+  <text x="450" y="200" fill="#fca5a5" font-size="12" font-weight="700">Table: otp_records</text>
+  <text x="450" y="218" fill="#fca5a5" font-size="11">• email TEXT PRIMARY KEY <tspan fill="#ef4444">(PLAIN TEXT!)</tspan></text>
+  <text x="450" y="234" fill="#c7d2fe" font-size="11">• otp_hash TEXT (SHA-256)</text>
+  <text x="450" y="250" fill="#cbd5e1" font-size="11">• attempts INTEGER (Max 5)</text>
+  <text x="450" y="266" fill="#cbd5e1" font-size="11">• expires_at INTEGER (10 min TTL in code)</text>
+  <text x="450" y="284" fill="#ef4444" font-size="10" font-weight="600">❌ NO AUTO-PURGE: Stays in D1 until row overwrite</text>
+
+  <line x1="440" y1="300" x2="760" y2="300" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="450" y="325" fill="#fca5a5" font-size="12" font-weight="700">Table: rate_limits</text>
+  <text x="450" y="343" fill="#fca5a5" font-size="11">• key TEXT PRIMARY KEY <tspan fill="#ef4444">(email:plain_user_email)</tspan></text>
+  <text x="450" y="359" fill="#c7d2fe" font-size="11">• key: ip:HMAC_SHA256 (IP is hashed)</text>
+  <text x="450" y="375" fill="#cbd5e1" font-size="11">• count INTEGER, reset_at INTEGER</text>
+
+  <line x1="440" y1="410" x2="760" y2="410" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="450" y="435" fill="#c7d2fe" font-size="12" font-weight="700">Table: user_submit_cooldowns</text>
+  <text x="450" y="453" fill="#cbd5e1" font-size="11">• uid TEXT PRIMARY KEY</text>
+  <text x="450" y="469" fill="#cbd5e1" font-size="11">• last_submitted_at INTEGER</text>
+  <text x="450" y="487" fill="#94a3b8" font-size="10">Cooldown: 60 seconds per count submission</text>
+
+  <line x1="440" y1="505" x2="760" y2="505" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="450" y="530" fill="#cbd5e1" font-size="12" font-weight="700">Table: analytics_metrics</text>
+  <text x="450" y="548" fill="#cbd5e1" font-size="11">• metric_name TEXT, date TEXT</text>
+  <text x="450" y="564" fill="#cbd5e1" font-size="11">• count INTEGER</text>
+  <text x="450" y="582" fill="#10b981" font-size="11">Aggregated counts only; zero user PII</text>
+
+  <!-- Column 3: Cloud Firestore -->
+  <rect x="810" y="140" width="340" height="600" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2" filter="url(#shadow2)"/>
+  <rect x="810" y="140" width="340" height="40" rx="14" fill="#581c87"/>
+  <text x="830" y="166" fill="#c084fc" font-size="15" font-weight="700">🔥 Cloud Firestore Database</text>
+  <text x="830" y="200" fill="#fca5a5" font-size="12" font-weight="700">Doc: campaign_contestants/{id}/entries/{uid}</text>
+  <text x="830" y="218" fill="#fca5a5" font-size="11">• phone: <tspan fill="#ef4444">Plain Text E.164 (+91...)</tspan></text>
+  <text x="830" y="234" fill="#fca5a5" font-size="11">• normalizedEmail: <tspan fill="#ef4444">Plain Text Email</tspan></text>
+  <text x="830" y="250" fill="#cbd5e1" font-size="11">• name: Plain Text Full Name</text>
+  <text x="830" y="266" fill="#cbd5e1" font-size="11">• city, state, country: Plain Text</text>
+  <text x="830" y="284" fill="#ef4444" font-size="10" font-weight="600">❌ NO AUTOMATED PURGE: Stays until admin Purge API</text>
+
+  <line x1="820" y1="300" x2="1140" y2="300" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="830" y="325" fill="#c7d2fe" font-size="12" font-weight="700">Collection: contest_registry/{campaignId}</text>
+  <text x="830" y="343" fill="#c7d2fe" font-size="11">• phoneKey: HMAC_SHA256(phone, SECRET)</text>
+  <text x="830" y="359" fill="#c7d2fe" font-size="11">• emailKey: HMAC_SHA256(email, SECRET)</text>
+  <text x="830" y="375" fill="#c7d2fe" font-size="11">• devKey: HMAC_SHA256(deviceId, SECRET)</text>
+  <text x="830" y="393" fill="#10b981" font-size="11">Used for 1-entry-per-person deduplication</text>
+
+  <line x1="820" y1="410" x2="1140" y2="410" stroke="#1e293b" stroke-width="1.5"/>
+
+  <text x="830" y="435" fill="#cbd5e1" font-size="12" font-weight="700">Public Leaderboard Output</text>
+  <text x="830" y="453" fill="#cbd5e1" font-size="11">• displayName (User name or 'Anonymous')</text>
+  <text x="830" y="469" fill="#cbd5e1" font-size="11">• city (e.g. 'Mumbai', 'London')</text>
+  <text x="830" y="485" fill="#cbd5e1" font-size="11">• count (Submitted Dhikr integer)</text>
+  <text x="830" y="501" fill="#c7d2fe" font-size="11">• publicId: HMAC(uid)[0..8] (Masked)</text>
+  <text x="830" y="520" fill="#10b981" font-size="11" font-weight="600">✅ Phone and Email are NEVER in Leaderboard</text>
+</svg>
+
+        <div class="diagram-caption">Figure 2.1: Storage Topology &amp; PII Reality Map across Local Storage, Cloudflare D1, and Cloud Firestore</div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="page-break"></div>
+    <h2>3. Deliverable 2: Third Parties &amp; Data Processors Table</h2>
+    <p>Every external SDK, network processor, and API service integrated into the application:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 18%;">Processor</th>
+                <th style="width: 15%;">Role</th>
+                <th style="width: 25%;">Data Received</th>
+                <th style="width: 12%;">Region</th>
+                <th style="width: 20%;">Evidence in Code</th>
+                <th style="width: 10%;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Google AdMob</strong> (Google LLC)</td>
+                <td>Advertising Network</td>
+                <td>AAID, coarse location, device specs, ad interactions</td>
+                <td>Global / USA</td>
+                <td><code>app/build.gradle.kts#L115</code><br><code>AdManager.kt</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Google Firebase</strong></td>
+                <td>Auth, Analytics &amp; Crashlytics</td>
+                <td>App instance ID, OS version, device model, stack traces</td>
+                <td>Global (<code>asia-southeast1</code>)</td>
+                <td><code>app/build.gradle.kts#L120-L128</code><br><code>google-services.json</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Google Cloud Firestore</strong></td>
+                <td>Database Infrastructure</td>
+                <td>Name, plain phone, plain email, group counts, anti-cheat</td>
+                <td>Global Multiregion</td>
+                <td><code>campaigns-worker.js#L25-L35</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Cloudflare, Inc.</strong></td>
+                <td>Edge Workers &amp; D1 SQL</td>
+                <td>IP address, User-Agent, plain email in D1, OTP hashes</td>
+                <td>Global Edge</td>
+                <td><code>auth-wrangler.toml</code><br><code>auth-worker.js#L1-L50</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Resend, Inc.</strong></td>
+                <td>Primary Email Delivery</td>
+                <td>Recipient plain-text email address, 6-digit OTP code</td>
+                <td>USA</td>
+                <td><code>auth-worker.js#L350-L375</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Brevo (Sendinblue)</strong></td>
+                <td>Fallback SMTP Relay</td>
+                <td>Recipient email address, quota &amp; sentinel threshold alerts</td>
+                <td>EU / Global</td>
+                <td><code>GEMINI.md#L45-L48</code><br><code>auth-worker.js#L380-L410</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Aladhan API</strong></td>
+                <td>Prayer Calculations</td>
+                <td>Exact latitude and longitude (<code>latitude=...&amp;longitude=...</code>)</td>
+                <td>Public Cloud</td>
+                <td><code>PrayerRepository.kt#L618-L620</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><strong>Quran.com &amp; JSDelivr</strong></td>
+                <td>Quran Text &amp; Audio</td>
+                <td>IP address, HTTP User-Agent for streaming audio files</td>
+                <td>Global CDN</td>
+                <td><code>AudioPlayerService.kt#L110</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 4 -->
+    <h2>4. Deliverable 3: Android Device Permissions Matrix</h2>
+    <p>All permissions declared in <code>AndroidManifest.xml</code> with technical triggers and degradation behavior:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">Permission</th>
+                <th style="width: 20%;">Why Needed in Code</th>
+                <th style="width: 10%;">Optional?</th>
+                <th style="width: 25%;">Behaviour if Denied</th>
+                <th style="width: 15%;">Evidence</th>
+                <th style="width: 10%;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>ACCESS_FINE_LOCATION</code></td>
+                <td>Prayer times &amp; Qibla alignment</td>
+                <td><strong>Yes</strong></td>
+                <td>Gracefully falls back to manual city selection</td>
+                <td><code>PrayerRepository.kt#L590</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><code>ACCESS_COARSE_LOCATION</code></td>
+                <td>Cell/WiFi tower prayer calculation</td>
+                <td><strong>Yes</strong></td>
+                <td>Falls back to manual city selection</td>
+                <td><code>PrayerRepository.kt#L590</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><code>POST_NOTIFICATIONS</code></td>
+                <td>Adhan audio &amp; daily reminders</td>
+                <td><strong>Yes</strong></td>
+                <td>Alarms trigger silently without banner popup</td>
+                <td><code>SettingsScreen.kt#L520</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><code>SCHEDULE_EXACT_ALARM</code></td>
+                <td>Exact-minute prayer Adhan</td>
+                <td><strong>Yes</strong></td>
+                <td>Alarms may drift 5-15 mins during Android Doze</td>
+                <td><code>PrayerAlarmReceiver.kt</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><code>VIBRATE</code></td>
+                <td>Haptic pulse on bead slide / dial</td>
+                <td><strong>Yes</strong></td>
+                <td>Beads slide smoothly without vibration</td>
+                <td><code>TasbihScreen.kt</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><code>INTERNET</code></td>
+                <td>Syncing, audio streaming, ads</td>
+                <td><strong>No</strong></td>
+                <td>Network calls fail; app operates in full offline mode</td>
+                <td><code>AndroidManifest.xml#L18</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><code>ACCESS_NETWORK_STATE</code></td>
+                <td>Verify online connectivity</td>
+                <td><strong>No</strong></td>
+                <td>Sync requests delayed until reconnection</td>
+                <td><code>AndroidManifest.xml#L19</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><code>RECEIVE_BOOT_COMPLETED</code></td>
+                <td>Reschedule alarms after reboot</td>
+                <td><strong>No</strong></td>
+                <td>Prayer alarms will not trigger until app is reopened</td>
+                <td><code>BootReceiver.kt</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+            <tr>
+                <td><code>FOREGROUND_SERVICE (MEDIA)</code></td>
+                <td>Continuous Quran audio playback</td>
+                <td><strong>Yes</strong></td>
+                <td>Audio stops when phone screen locks or app backgrounds</td>
+                <td><code>AudioPlayerService.kt#L45</code></td>
+                <td><span class="status-confirmed">CONFIRMED</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="diagram-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%" style="background:#0b131a; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+  <text x="600" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="700">Digital Tasbih - Android Permissions &amp; Data Boundary Matrix</text>
+  <text x="600" y="70" text-anchor="middle" fill="#94a3b8" font-size="13">Manifest Analysis: Hardware Triggers, Optionality, Data Leak Risks, and Fallback Degradation</text>
+
+  <!-- Table Header -->
+  <rect x="50" y="100" width="1100" height="40" rx="8" fill="#1e293b"/>
+  <text x="70" y="125" fill="#f8fafc" font-size="12" font-weight="700">ANDROID PERMISSION</text>
+  <text x="310" y="125" fill="#f8fafc" font-size="12" font-weight="700">TRIGGER IN CODE</text>
+  <text x="500" y="125" fill="#f8fafc" font-size="12" font-weight="700">OPTIONAL?</text>
+  <text x="610" y="125" fill="#f8fafc" font-size="12" font-weight="700">BEHAVIOUR IF DENIED</text>
+  <text x="880" y="125" fill="#f8fafc" font-size="12" font-weight="700">PRIVACY / EXPOSURE RISK</text>
+
+  <!-- Row 1: ACCESS_FINE_LOCATION -->
+  <rect x="50" y="150" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="175" fill="#38bdf8" font-size="12" font-weight="700">ACCESS_FINE_LOCATION</text>
+  <text x="70" y="195" fill="#94a3b8" font-size="10">android.permission.ACCESS_FINE_LOCATION</text>
+  <text x="310" y="175" fill="#cbd5e1" font-size="12">Prayer times &amp; Qibla compass</text>
+  <text x="310" y="195" fill="#94a3b8" font-size="10">PrayerRepository.kt#L590</text>
+  <rect x="500" y="165" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="181" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="175" fill="#cbd5e1" font-size="12">Falls back to manual city selection</text>
+  <text x="610" y="195" fill="#94a3b8" font-size="10">User chooses city from local list</text>
+  <text x="880" y="175" fill="#f59e0b" font-size="11" font-weight="600">HIGH: Exact coordinates sent to</text>
+  <text x="880" y="195" fill="#f59e0b" font-size="10">Aladhan API (api.aladhan.com)</text>
+
+  <!-- Row 2: ACCESS_COARSE_LOCATION -->
+  <rect x="50" y="220" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="245" fill="#38bdf8" font-size="12" font-weight="700">ACCESS_COARSE_LOCATION</text>
+  <text x="70" y="265" fill="#94a3b8" font-size="10">android.permission.ACCESS_COARSE_LOCATION</text>
+  <text x="310" y="245" fill="#cbd5e1" font-size="12">Cell / WiFi approximate prayer times</text>
+  <text x="310" y="265" fill="#94a3b8" font-size="10">Requested alongside fine location</text>
+  <rect x="500" y="235" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="251" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="245" fill="#cbd5e1" font-size="12">Manual city selection dropdown</text>
+  <text x="610" y="265" fill="#94a3b8" font-size="10">No GPS lock needed</text>
+  <text x="880" y="245" fill="#cbd5e1" font-size="11">MEDIUM: City-level accuracy</text>
+  <text x="880" y="265" fill="#94a3b8" font-size="10">AdMob may use for geo-targeting</text>
+
+  <!-- Row 3: POST_NOTIFICATIONS -->
+  <rect x="50" y="290" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="315" fill="#38bdf8" font-size="12" font-weight="700">POST_NOTIFICATIONS</text>
+  <text x="70" y="335" fill="#94a3b8" font-size="10">android.permission.POST_NOTIFICATIONS</text>
+  <text x="310" y="315" fill="#cbd5e1" font-size="12">Adhan prayer alarms &amp; Daily reminders</text>
+  <text x="310" y="335" fill="#94a3b8" font-size="10">Prompted on Android 13+ (API 33)</text>
+  <rect x="500" y="305" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="321" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="315" fill="#cbd5e1" font-size="12">Alarms trigger silently without banner</text>
+  <text x="610" y="335" fill="#94a3b8" font-size="10">User misses prayer times</text>
+  <text x="880" y="315" fill="#10b981" font-size="11" font-weight="600">ZERO: Local system notifications</text>
+  <text x="880" y="335" fill="#94a3b8" font-size="10">No remote push servers (No FCM)</text>
+
+  <!-- Row 4: SCHEDULE_EXACT_ALARM -->
+  <rect x="50" y="360" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="385" fill="#38bdf8" font-size="12" font-weight="700">SCHEDULE_EXACT_ALARM</text>
+  <text x="70" y="405" fill="#94a3b8" font-size="10">android.permission.SCHEDULE_EXACT_ALARM</text>
+  <text x="310" y="385" fill="#cbd5e1" font-size="12">Exact-minute Adhan playback</text>
+  <text x="310" y="405" fill="#94a3b8" font-size="10">PrayerAlarmReceiver.kt</text>
+  <rect x="500" y="375" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="391" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="385" fill="#cbd5e1" font-size="12">Adhan may drift by 5-15 mins in Doze</text>
+  <text x="610" y="405" fill="#94a3b8" font-size="10">Android OS batches background alarms</text>
+  <text x="880" y="385" fill="#10b981" font-size="11" font-weight="600">ZERO: Pure device scheduling</text>
+  <text x="880" y="405" fill="#94a3b8" font-size="10">No data transmitted</text>
+
+  <!-- Row 5: VIBRATE -->
+  <rect x="50" y="430" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="455" fill="#38bdf8" font-size="12" font-weight="700">VIBRATE</text>
+  <text x="70" y="475" fill="#94a3b8" font-size="10">android.permission.VIBRATE</text>
+  <text x="310" y="455" fill="#cbd5e1" font-size="12">Haptic pulse on bead slide / dial click</text>
+  <text x="310" y="475" fill="#94a3b8" font-size="10">TasbihScreen.kt (FROZEN)</text>
+  <rect x="500" y="445" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="461" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="455" fill="#cbd5e1" font-size="12">Beads slide without vibration</text>
+  <text x="610" y="475" fill="#94a3b8" font-size="10">Toggled in Tasbih settings</text>
+  <text x="880" y="455" fill="#10b981" font-size="11" font-weight="600">ZERO: Hardware motor only</text>
+  <text x="880" y="475" fill="#94a3b8" font-size="10">No data processed</text>
+
+  <!-- Row 6: INTERNET & ACCESS_NETWORK_STATE -->
+  <rect x="50" y="500" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="525" fill="#38bdf8" font-size="12" font-weight="700">INTERNET / NETWORK STATE</text>
+  <text x="70" y="545" fill="#94a3b8" font-size="10">android.permission.INTERNET</text>
+  <text x="310" y="525" fill="#cbd5e1" font-size="12">Syncing campaigns, OTP, Audio stream, Ads</text>
+  <text x="310" y="545" fill="#94a3b8" font-size="10">Standard normal permission</text>
+  <rect x="500" y="515" width="60" height="24" rx="4" fill="#450a0a"/>
+  <text x="516" y="531" fill="#f87171" font-size="11" font-weight="700">NO</text>
+  <text x="610" y="525" fill="#cbd5e1" font-size="12">Operating system grants automatically</text>
+  <text x="610" y="545" fill="#94a3b8" font-size="10">Airplane mode runs local Tasbih/Quran</text>
+  <text x="880" y="525" fill="#f59e0b" font-size="11" font-weight="600">MEDIUM: IP address exposed to</text>
+  <text x="880" y="545" fill="#f59e0b" font-size="10">Cloudflare edge &amp; Google servers</text>
+
+  <!-- Row 7: FOREGROUND_SERVICE_MEDIA_PLAYBACK -->
+  <rect x="50" y="570" width="1100" height="60" rx="6" fill="#0f172a" stroke="#1e293b"/>
+  <text x="70" y="595" fill="#38bdf8" font-size="12" font-weight="700">FOREGROUND_SERVICE (MEDIA)</text>
+  <text x="70" y="615" fill="#94a3b8" font-size="10">android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK</text>
+  <text x="310" y="595" fill="#cbd5e1" font-size="12">Continuous Quran recitation playback</text>
+  <text x="310" y="615" fill="#94a3b8" font-size="10">AudioPlayerService.kt</text>
+  <rect x="500" y="585" width="60" height="24" rx="4" fill="#064e3b"/>
+  <text x="512" y="601" fill="#34d399" font-size="11" font-weight="700">YES</text>
+  <text x="610" y="595" fill="#cbd5e1" font-size="12">Audio halts when app goes to background</text>
+  <text x="610" y="615" fill="#94a3b8" font-size="10">Screen must stay active to listen</text>
+  <text x="880" y="595" fill="#10b981" font-size="11" font-weight="600">ZERO: Media session controller</text>
+  <text x="880" y="615" fill="#94a3b8" font-size="10">No personal data collected</text>
+
+  <!-- Bottom Summary Note -->
+  <rect x="50" y="650" width="1100" height="70" rx="8" fill="#132328" stroke="#10b981"/>
+  <text x="70" y="675" fill="#34d399" font-size="13" font-weight="700">🛡️ Zero Dangerous Hardware Probes Found in Manifest</text>
+  <text x="70" y="695" fill="#cbd5e1" font-size="11">Audit Confirms: CAMERA, RECORD_AUDIO, READ_CONTACTS, READ_CALL_LOG, READ_SMS, READ_MEDIA_IMAGES are <tspan fill="#34d399" font-weight="700">COMPLETELY ABSENT</tspan>.</text>
+  <text x="70" y="710" fill="#94a3b8" font-size="10">The app cannot access user gallery, address book, microphone, or text messages under any circumstances.</text>
+</svg>
+
+        <div class="diagram-caption">Figure 4.1: Android Permissions &amp; Data Boundary Matrix</div>
+    </div>
+
+    <!-- SECTION 5 & 6 -->
+    <div class="page-break"></div>
+    <h2>5. Deliverable 4 &amp; 5: Public Visibility &amp; Retention Reality Check</h2>
+
+    <h3>Public Visibility Breakdown:</h3>
+    <ul>
+        <li><strong>Publicly Visible to Other Users:</strong> Display Name (<code>displayName</code>), City (<code>city</code>), Submitted Dhikr Count (<code>count</code>), Last Active Timestamp (<code>lastActive</code>), and a truncated HMAC mask (<code>publicId</code>).</li>
+        <li><strong>Strictly Confidential &amp; Never Displayed:</strong> Phone numbers (E.164), normalized email addresses, exact GPS coordinates, personal offline tasbih counts, and hardware UUIDs.</li>
+    </ul>
+
+    <h3>Data Retention &amp; Deletion Reality Check:</h3>
+    <div class="callout-danger">
+        <strong>VULNERABILITY 1: In-App "Delete My Data" is Simulated</strong><br>
+        In <code>SettingsScreen.kt#L1151-L1155</code>, tapping "Submit Erasure Request" inside <code>DeleteMyDataDpdpModal</code> only sets <code>isSubmitted = true</code> in memory. It makes <strong>no API call</strong>, does not delete the Firebase Auth user, and erases zero records from D1 or Firestore.
+    </div>
+
+    <div class="callout-danger">
+        <strong>VULNERABILITY 2: No Automated Retention Cron in Cloudflare D1</strong><br>
+        In <code>schema.sql</code> and <code>auth-worker.js</code>, OTP records in table <code>otp_records</code> and rate limits in <code>rate_limits</code> remain indefinitely until overwritten by a new OTP request. No scheduled cron exists in <code>auth-wrangler.toml</code>.
+    </div>
+
+    <div class="callout-warning">
+        <strong>VULNERABILITY 3: Android Auto-Backup Leaks PII to Google Drive</strong><br>
+        <code>backup_rules.xml#L3</code> and <code>data_extraction_rules.xml#L4-L9</code> include standard SharedPreferences. Plain-text phone numbers (<code>dt_gc_phone</code>), names (<code>dt_gc_name</code>), and GPS coordinates (<code>pr_lat</code>, <code>pr_lon</code>) are automatically uploaded unencrypted to the user's personal Google Drive.
+    </div>
+
+    <!-- SECTION 7 -->
+    <h2>6. Deliverable 6: Claims-vs-Code Mismatches Table</h2>
+    <p>Comparing statements in the existing <code>privacy-policy.html</code> against verified codebase truth:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 25%;">Policy Claim</th>
+                <th style="width: 28%;">Actual Codebase Truth</th>
+                <th style="width: 10%;">Verdict</th>
+                <th style="width: 15%;">Evidence</th>
+                <th style="width: 22%;">Mandatory Correction</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>"Stored locally using <strong>encrypted</strong> Android SharedPreferences / DataStore."</td>
+                <td>Standard unencrypted <code>MODE_PRIVATE</code> SharedPreferences is used everywhere. No Jetpack Security crypto.</td>
+                <td><span class="status-false">FALSE</span></td>
+                <td><code>GroupCampaignRepository.kt#L45</code><br><code>TasbihPreferences.kt#L25</code></td>
+                <td>Remove "encrypted". State: "Stored in private sandboxed application storage."</td>
+            </tr>
+            <tr>
+                <td>"Instant erasure... by tapping 'Delete My Data' in the in-app Settings menu."</td>
+                <td>Button is simulated in UI (<code>isSubmitted = true</code>). Zero network calls sent; zero database records deleted.</td>
+                <td><span class="status-false">FALSE</span></td>
+                <td><code>SettingsScreen.kt#L1151</code></td>
+                <td>Direct users to Android "Clear Data" for local wipe, and web URL for cloud erasure.</td>
+            </tr>
+            <tr>
+                <td>"Automated 30-day purge: All contestant logs deleted 30 days after winner announcement."</td>
+                <td>No automated Cron or TTL trigger exists. Purging is 100% manual via administrative API endpoint.</td>
+                <td><span class="status-false">FALSE</span></td>
+                <td><code>campaigns-wrangler.toml</code><br><code>campaigns-worker.js#L104</code></td>
+                <td>Clarify that data is manually purged by administrators post-audit.</td>
+            </tr>
+            <tr>
+                <td>"Phone numbers submitted for rewards are encrypted at rest."</td>
+                <td>Stored in plain-text E.164 (<code>+91...</code>) in Firestore fields and SharedPrefs. Disk encryption exists only at GCP infrastructure level.</td>
+                <td><span class="status-alert">MISLEADING</span></td>
+                <td><code>campaigns-worker.js#L865</code><br><code>GroupCampaignRepository.kt#L170</code></td>
+                <td>State that phone numbers are stored in access-controlled databases with server-side disk encryption.</td>
+            </tr>
+            <tr>
+                <td>"Resend, Inc. used exclusively to deliver verification emails."</td>
+                <td>Brevo SMTP relay is also integrated as a secondary gateway for sentinel alerts and emails.</td>
+                <td><span class="status-alert">INCOMPLETE</span></td>
+                <td><code>GEMINI.md#L45</code><br><code>auth-worker.js#L380</code></td>
+                <td>Disclose Brevo (Sendinblue) as an authorized email processor.</td>
+            </tr>
+            <tr>
+                <td>"We do not knowingly collect information from children under 13 (COPPA)."</td>
+                <td>App now implements an 18+ age gate for community features under DPDP Act 2023.</td>
+                <td><span class="status-alert">INCOMPLETE</span></td>
+                <td><code>GroupCampaignRepository.kt#L308</code></td>
+                <td>Update to disclose the 18+ requirement for online community features.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="diagram-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%" style="background:#0b131a; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+  <defs>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="45" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="700">Digital Tasbih - Consent, DPDP Age Gate &amp; Deletion Architecture</text>
+  <text x="600" y="70" text-anchor="middle" fill="#94a3b8" font-size="13">Decision Tree: Child Protection (18+ Gate), Google UMP Ad Consent, and Current vs Target Deletion Flow</text>
+
+  <!-- Left Branch: DPDP Act 18+ Age Gate -->
+  <rect x="50" y="110" width="530" height="630" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+  <rect x="50" y="110" width="530" height="40" rx="14" fill="#132e24"/>
+  <text x="70" y="136" fill="#34d399" font-size="15" font-weight="700">⚖️ DPDP Act 2023 Compliance: Age Gate (18+)</text>
+
+  <!-- Step 1: User enters Community -->
+  <rect x="80" y="170" width="470" height="60" rx="8" fill="#1e293b"/>
+  <text x="100" y="195" fill="#f8fafc" font-size="12" font-weight="600">User taps "Live Dhikr Rooms" or "Umrah Contest"</text>
+  <text x="100" y="215" fill="#94a3b8" font-size="11">GroupCampaignRepository.kt#L308-L325 checks dt_user_is_18_plus</text>
+
+  <!-- Decision Diamond -->
+  <polygon points="315,260 415,310 315,360 215,310" fill="#1c2438" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="315" y="305" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">Is User 18+?</text>
+  <text x="315" y="322" text-anchor="middle" fill="#94a3b8" font-size="10">(Self-Declaration)</text>
+
+  <!-- YES Path -->
+  <path d="M 415 310 L 460 310 L 460 400" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrowG)"/>
+  <text x="430" y="300" fill="#34d399" font-size="11" font-weight="700">YES</text>
+
+  <rect x="350" y="400" width="200" height="120" rx="8" fill="#064e3b" stroke="#10b981"/>
+  <text x="365" y="425" fill="#6ee7b7" font-size="12" font-weight="700">✅ Full Community Access</text>
+  <text x="365" y="445" fill="#cbd5e1" font-size="11">• Join Live Rooms</text>
+  <text x="365" y="465" fill="#cbd5e1" font-size="11">• Submit Dhikr counts</text>
+  <text x="365" y="485" fill="#cbd5e1" font-size="11">• Participate in Umrah Contest</text>
+  <text x="365" y="505" fill="#cbd5e1" font-size="11">• Appears on Leaderboards</text>
+
+  <!-- NO Path -->
+  <path d="M 215 310 L 160 310 L 160 400" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowR)"/>
+  <text x="175" y="300" fill="#f87171" font-size="11" font-weight="700">NO</text>
+
+  <rect x="80" y="400" width="220" height="150" rx="8" fill="#450a0a" stroke="#ef4444"/>
+  <text x="95" y="425" fill="#fca5a5" font-size="12" font-weight="700">⛔ Minor Restricted View</text>
+  <text x="95" y="445" fill="#cbd5e1" font-size="11">• Community features BLOCKED</text>
+  <text x="95" y="465" fill="#cbd5e1" font-size="11">• Contest participation DENIED</text>
+  <text x="95" y="485" fill="#cbd5e1" font-size="11">• Zero personal data uploaded</text>
+  <text x="95" y="505" fill="#34d399" font-size="11" font-weight="600">✅ Offline Tasbih &amp; Quran OPEN</text>
+  <text x="95" y="525" fill="#94a3b8" font-size="10">User can toggle back anytime</text>
+
+  <!-- Age Gate Evaluation Note -->
+  <rect x="80" y="575" width="470" height="140" rx="8" fill="#1e293b"/>
+  <text x="95" y="600" fill="#fbbf24" font-size="12" font-weight="700">⚠️ Legal Vulnerability &amp; Counsel Guidance</text>
+  <text x="95" y="620" fill="#cbd5e1" font-size="11">• Current implementation relies on self-declaration (checkbox/modal).</text>
+  <text x="95" y="640" fill="#cbd5e1" font-size="11">• Under DPDP Act Sec 9, Verifiable Parental Consent will be required by</text>
+  <text x="95" y="660" fill="#cbd5e1" font-size="11">  May 2027 if minors are allowed in community features.</text>
+  <text x="95" y="680" fill="#34d399" font-size="11" font-weight="600">RECOMMENDATION: Keep community features strictly 18+ only.</text>
+
+  <!-- Right Branch: Account Deletion & Ad Consent -->
+  <rect x="620" y="110" width="530" height="630" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+  <rect x="620" y="110" width="530" height="40" rx="14" fill="#1e1b4b"/>
+  <text x="640" y="136" fill="#818cf8" font-size="15" font-weight="700">🗑️ Account Deletion &amp; Ad Consent Reality</text>
+
+  <!-- In-App Deletion Analysis -->
+  <rect x="640" y="170" width="490" height="175" rx="8" fill="#1c1917" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="655" y="195" fill="#f87171" font-size="13" font-weight="700">❌ In-App "Delete My Data" (SettingsScreen.kt#L1151)</text>
+  <text x="655" y="220" fill="#fca5a5" font-size="11">• Actual Code: // Simulate legal request logging -> isSubmitted = true</text>
+  <text x="655" y="240" fill="#cbd5e1" font-size="11">• Network Call: NONE (Zero API requests sent)</text>
+  <text x="655" y="260" fill="#cbd5e1" font-size="11">• Cloudflare D1 Records: NOT DELETED (Email stays in otp_records)</text>
+  <text x="655" y="280" fill="#cbd5e1" font-size="11">• Firestore Contest Data: NOT DELETED (Phone/Name stays in entries)</text>
+  <text x="655" y="305" fill="#f87171" font-size="11" font-weight="700">⚠️ VIOLATION: Violates Google Play Account Deletion Requirement!</text>
+
+  <!-- Compliant Deletion Architecture (What is needed) -->
+  <rect x="640" y="365" width="490" height="185" rx="8" fill="#132328" stroke="#10b981" stroke-width="1.5"/>
+  <text x="655" y="390" fill="#34d399" font-size="13" font-weight="700">🛡️ Mandatory Remediation for Google Play &amp; DPDP</text>
+  <text x="655" y="415" fill="#cbd5e1" font-size="11">1. <tspan font-weight="600" fill="#f8fafc">Public Web Deletion URL:</tspan> Provide https://imaanix.in/delete-account</text>
+  <text x="655" y="435" fill="#cbd5e1" font-size="11">   (Play Console mandates web URL where users can request account erasure).</text>
+  <text x="655" y="460" fill="#cbd5e1" font-size="11">2. <tspan font-weight="600" fill="#f8fafc">Backend Deletion Endpoint:</tspan> Implement DELETE /api/user/me</text>
+  <text x="655" y="480" fill="#cbd5e1" font-size="11">   • Delete Firebase Auth User</text>
+  <text x="655" y="500" fill="#cbd5e1" font-size="11">   • Erase Cloudflare D1 otp_records &amp; rate_limits rows</text>
+  <text x="655" y="520" fill="#cbd5e1" font-size="11">   • Erase Firestore campaign_contestants entry &amp; phone number</text>
+
+  <!-- AdMob Consent Dialog -->
+  <rect x="640" y="570" width="490" height="145" rx="8" fill="#1e293b"/>
+  <text x="655" y="595" fill="#60a5fa" font-size="12" font-weight="700">📢 Google AdMob &amp; UMP Consent Choices</text>
+  <text x="655" y="618" fill="#cbd5e1" font-size="11">• EU/UK: Google UMP SDK shows interactive consent dialog automatically.</text>
+  <text x="655" y="638" fill="#cbd5e1" font-size="11">• India &amp; Rest of World: AdChoicesConsentModal allows switching between</text>
+  <text x="655" y="658" fill="#cbd5e1" font-size="11">  Personalized vs Non-Personalized Ads (Stored locally in AdManager.kt).</text>
+  <text x="655" y="682" fill="#94a3b8" font-size="10">Note: Even non-personalized ads transmit mobile identifiers for frequency capping.</text>
+</svg>
+
+        <div class="diagram-caption">Figure 6.1: Consent, DPDP Act 18+ Gate Decision Tree &amp; Deletion Remediation Architecture</div>
+    </div>
+
+    <!-- SECTION 8 -->
+    <div class="page-break"></div>
+    <h2>7. Deliverable 7: Google Play Data Safety Form Answers</h2>
+    <p>Exact declarations required for the Google Play Console Data Safety questionnaire:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 20%;">Play Console Data Type</th>
+                <th style="width: 10%;">Collected?</th>
+                <th style="width: 10%;">Shared?</th>
+                <th style="width: 10%;">Ephemeral?</th>
+                <th style="width: 12%;">Mandatory?</th>
+                <th style="width: 38%;">Purpose Declared in Play Console</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Name</strong></td>
+                <td>YES</td>
+                <td>YES (Board)</td>
+                <td>NO</td>
+                <td>Optional</td>
+                <td>App functionality, Community leaderboards, Contest verification</td>
+            </tr>
+            <tr>
+                <td><strong>Email address</strong></td>
+                <td>YES</td>
+                <td>NO</td>
+                <td>NO</td>
+                <td>Optional</td>
+                <td>Account management, Developer communication (OTP verification)</td>
+            </tr>
+            <tr>
+                <td><strong>Phone number</strong></td>
+                <td>YES</td>
+                <td>NO</td>
+                <td>NO</td>
+                <td>Optional</td>
+                <td>App functionality, Special campaign winner fulfillment</td>
+            </tr>
+            <tr>
+                <td><strong>User IDs</strong> (Firebase / Install UUID)</td>
+                <td>YES</td>
+                <td>NO</td>
+                <td>NO</td>
+                <td>Mandatory</td>
+                <td>App functionality, Anti-fraud rate-limiting, Account management</td>
+            </tr>
+            <tr>
+                <td><strong>Approximate Location</strong></td>
+                <td>YES</td>
+                <td>NO</td>
+                <td>YES</td>
+                <td>Optional</td>
+                <td>App functionality (Prayer time calculation)</td>
+            </tr>
+            <tr>
+                <td><strong>Precise Location</strong></td>
+                <td>YES</td>
+                <td>NO</td>
+                <td>YES</td>
+                <td>Optional</td>
+                <td>App functionality (Solar prayer calculation &amp; Qibla compass)</td>
+            </tr>
+            <tr>
+                <td><strong>App Actions</strong> (Dhikr submissions)</td>
+                <td>YES</td>
+                <td>YES (Aggregated)</td>
+                <td>NO</td>
+                <td>Optional</td>
+                <td>App functionality, Collective community goals &amp; leaderboards</td>
+            </tr>
+            <tr>
+                <td><strong>Crash Logs &amp; Diagnostics</strong></td>
+                <td>YES</td>
+                <td>NO</td>
+                <td>NO</td>
+                <td>Mandatory</td>
+                <td>Analytics, App stability &amp; Crash diagnostics (Firebase)</td>
+            </tr>
+            <tr>
+                <td><strong>Device or Other IDs</strong> (AAID)</td>
+                <td>YES</td>
+                <td>YES (AdMob)</td>
+                <td>NO</td>
+                <td>Mandatory</td>
+                <td>Advertising, Fraud prevention, Ad frequency capping</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- SECTION 9 -->
+    <h2>8. Deliverable 8 &amp; 10: Legal Questions &amp; Top 10 Pitfalls</h2>
+
+    <h3>Essential Questions for App Owner &amp; Legal Counsel:</h3>
+    <ol>
+        <li><strong>Legal Entity Name &amp; Address:</strong> What is the formal registered name and address of the entity operating Imaanix?</li>
+        <li><strong>DPDP Grievance Officer:</strong> Who is the appointed Data Grievance Redressal Officer (Name, official email e.g., <code>grievance@imaanix.in</code>)?</li>
+        <li><strong>Public Web Deletion URL:</strong> What is the publicly accessible URL for Google Play account deletion (e.g., <code>https://imaanix.in/delete-account</code>)?</li>
+        <li><strong>Umrah Contest Eligibility &amp; Tax:</strong> Is participation strictly restricted to 18+ Indian citizens, and who covers Section 194B TDS on prizes?</li>
+        <li><strong>Automated D1 Purge:</strong> When will the scheduled Cloudflare Worker cron be added to purge D1 <code>otp_records</code> older than 30 days?</li>
+    </ol>
+
+    <h3>Top 10 Things That Would Make the Policy False If Ignored:</h3>
+    <ol>
+        <li>Claiming Android local storage is encrypted using Keystore when standard SharedPreferences is used.</li>
+        <li>Claiming the in-app "Delete My Data" button erases server data when it is currently simulated.</li>
+        <li>Claiming an automated 30-day purge for contest entries when purging is completely manual.</li>
+        <li>Failing to disclose plain-text storage of phone numbers and emails in Firestore documents.</li>
+        <li>Failing to disclose Brevo (Sendinblue) as an active email infrastructure provider.</li>
+        <li>Ignoring Google Drive unencrypted cloud backups caused by <code>backup_rules.xml</code>.</li>
+        <li>Failing to disclose transmission of exact GPS coordinates to the third-party Aladhan API.</li>
+        <li>Claiming "zero third-party sharing" while utilizing Google AdMob and Google Play Services.</li>
+        <li>Omitting the 18+ age gate for community features under the India DPDP Act 2023.</li>
+        <li>Lacking a functioning, publicly accessible web URL for account and personal data deletion requests.</li>
+    </ol>
+
+    <div style="margin-top: 30px; padding-top: 14px; border-top: 1px solid #cbd5e1; font-size: 8pt; color: #64748b; text-align: center;">
+        &copy; 2026 Imaanix. All rights reserved. Technical and Privacy Verification Audit for Digital Tasbih.
+    </div>
+
+</body>
+</html>

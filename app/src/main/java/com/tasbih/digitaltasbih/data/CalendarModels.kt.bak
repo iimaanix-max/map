@@ -1,0 +1,887 @@
+package com.tasbih.digitaltasbih.data
+
+import androidx.compose.ui.graphics.Color
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
+
+/**
+ * Authentic Islamic Calendar Event model.
+ * Matches all events in original index.html and admin.html (/calendar_events).
+ */
+data class CalendarEvent(
+    val id: String,
+    val m: Int, // Hijri month (1-12)
+    val d: Int, // Hijri day (1-30)
+    val kind: String = "urs", // "urs", "festival", "death", "shahadat", "birth"
+    val namePack: Map<String, String>? = null,
+    val defaultName: String = "",
+    val titlePack: Map<String, String>? = null,
+    val defaultTitle: String? = null,
+    val shortPack: Map<String, String>? = null,
+    val defaultShort: String? = null,
+    val color: String = "#0E5D47",
+    val locationPack: Map<String, String>? = null,
+    val defaultLocation: String = "",
+    val briefPack: Map<String, String>? = null,
+    val defaultBrief: String = "",
+    val ursCount: String = "",
+    val annivPack: Map<String, String>? = null,
+    val defaultAnniv: String = "",
+    val image: String = "",
+    val hy: Int? = null,
+    val active: Boolean = true
+) {
+    fun getTitle(locale: String): String {
+        titlePack?.get(locale)?.takeIf { it.isNotBlank() }?.let { return it }
+        titlePack?.get("en")?.takeIf { it.isNotBlank() }?.let { return it }
+        defaultTitle?.takeIf { it.isNotBlank() }?.let { return it }
+        return getName(locale)
+    }
+
+    fun getName(locale: String): String {
+        namePack?.get(locale)?.takeIf { it.isNotBlank() }?.let { return it }
+        namePack?.get("en")?.takeIf { it.isNotBlank() }?.let { return it }
+        return defaultName.ifBlank { id }
+    }
+
+    fun getShort(locale: String): String {
+        shortPack?.get(locale)?.takeIf { it.isNotBlank() }?.let { return it }
+        shortPack?.get("en")?.takeIf { it.isNotBlank() }?.let { return it }
+        defaultShort?.takeIf { it.isNotBlank() }?.let { return it }
+        val name = getName(locale)
+        return if (name.length > 10) name.take(9) + "…" else name
+    }
+
+    fun getLocation(locale: String): String {
+        locationPack?.get(locale)?.takeIf { it.isNotBlank() }?.let { return it }
+        locationPack?.get("en")?.takeIf { it.isNotBlank() }?.let { return it }
+        return defaultLocation
+    }
+
+    fun getBrief(locale: String): String {
+        briefPack?.get(locale)?.takeIf { it.isNotBlank() }?.let { return it }
+        briefPack?.get("en")?.takeIf { it.isNotBlank() }?.let { return it }
+        return defaultBrief
+    }
+
+    fun getAnniv(locale: String): String {
+        annivPack?.get(locale)?.takeIf { it.isNotBlank() }?.let { return it }
+        annivPack?.get("en")?.takeIf { it.isNotBlank() }?.let { return it }
+        if (ursCount.isNotBlank()) return ursCount
+        return defaultAnniv
+    }
+
+    fun getKindBadge(locale: String): String {
+        return when (kind.lowercase(Locale.ROOT)) {
+            "urs" -> when (locale) {
+                "hi" -> "उर्स"
+                "ur" -> "عرس"
+                "ar" -> "عرس"
+                "bn" -> "উরস"
+                else -> "URS"
+            }
+            "festival" -> when (locale) {
+                "hi" -> "त्योहार"
+                "ur" -> "عید / تہوار"
+                "ar" -> "مناسبة"
+                "bn" -> "উৎসব"
+                else -> "FESTIVAL"
+            }
+            "death" -> when (locale) {
+                "hi" -> "विसाल"
+                "ur" -> "وصال"
+                "ar" -> "وفاة"
+                "bn" -> "ওফাত"
+                else -> "WISAAL"
+            }
+            "shahadat" -> when (locale) {
+                "hi" -> "शहादत"
+                "ur" -> "شہادت"
+                "ar" -> "شهادة"
+                "bn" -> "শাহাদাত"
+                else -> "SHAHADAT"
+            }
+            "birth" -> when (locale) {
+                "hi" -> "विलादत"
+                "ur" -> "ولادت"
+                "ar" -> "مولد"
+                "bn" -> "বেলাদত"
+                else -> "MILAD"
+            }
+            else -> kind.uppercase(Locale.ROOT)
+        }
+    }
+
+    fun getColorParsed(): Color {
+        if (color.isBlank()) return Color(0xFF0E5D47)
+        return try {
+            val hex = color.trim().removePrefix("#")
+            when (hex.length) {
+                6 -> Color(android.graphics.Color.parseColor("#$hex"))
+                8 -> Color(android.graphics.Color.parseColor("#$hex"))
+                3 -> {
+                    val r = hex[0]; val g = hex[1]; val b = hex[2]
+                    Color(android.graphics.Color.parseColor("#$r$r$g$g$b$b"))
+                }
+                else -> Color(0xFF0E5D47)
+            }
+        } catch (_: Exception) {
+            Color(0xFF0E5D47)
+        }
+    }
+}
+
+/**
+ * Represents a date in the Hijri calendar.
+ */
+data class HijriDate(
+    val day: Int,
+    val monthNumber: Int,
+    val year: Int,
+    val monthName: String,
+    val isSouthAsiaMoonVerified: Boolean = false
+) {
+    fun formatDisplay(suffix: String = "AH"): String {
+        return "$day $monthName $year $suffix"
+    }
+}
+
+/**
+ * Data model for a single day cell in the 7-column month grid.
+ */
+data class CalendarDayCell(
+    val gregorianYear: Int,
+    val gregorianMonth: Int, // 0-based
+    val gregorianDay: Int,
+    val isCurrentMonth: Boolean,
+    val isToday: Boolean,
+    val isSelected: Boolean,
+    val hijriDate: HijriDate,
+    val events: List<CalendarEvent>
+) {
+    val isoDate: String = String.format(Locale.US, "%04d-%02d-%02d", gregorianYear, gregorianMonth + 1, gregorianDay)
+}
+
+/**
+ * Month overview item for the 2-column Year View grid.
+ */
+data class MonthYearOverviewItem(
+    val year: Int,
+    val monthIndex: Int, // 0-11
+    val shortName: String,
+    val fullName: String,
+    val hijriRange: String,
+    val eventCount: Int,
+    val isActiveMonth: Boolean,
+    val isCurrentMonth: Boolean
+)
+
+/**
+ * Complete multilingual localization strings for the Islamic Calendar.
+ */
+data class CalendarScreenStrings(
+    val calTitle: String,
+    val calSubtitle: String,
+    val calToday: String,
+    val calSelected: String,
+    val calGreg: String,
+    val calHijri: String,
+    val calYearView: String,
+    val calEvent: String,
+    val calEventNone: String,
+    val calEventMore: String,
+    val calMonthEvents: String,
+    val calHijriSuffix: String,
+    val calSearchPlaceholder: String,
+    val calLocation: String,
+    val calEventsOnDate: String,
+    val calSearchEmpty: String = "No matching Islamic events found."
+)
+
+object CalendarLocalization {
+    fun get(locale: String): CalendarScreenStrings {
+        return when (locale) {
+            "hi" -> CalendarScreenStrings(
+                calTitle = "इस्लामिक कैलेंडर",
+                calSubtitle = "मौजूदा महीना, हिजरी तारीखें, अहम इस्लामी वाक़ियात और सालाना नज़ारा।",
+                calToday = "आज",
+                calSelected = "चयनित तारीख",
+                calGreg = "ईस्वी",
+                calHijri = "हिजरी",
+                calYearView = "सालाना नज़ारा",
+                calEvent = "आयोजन",
+                calEventNone = "इस तारीख के लिए कोई बड़ा इस्लामी आयोजन दर्ज नहीं है।",
+                calEventMore = "उसका आयोजन देखने के लिए किसी दूसरी हाइलाइट की गई तारीख पर टैप करें।",
+                calMonthEvents = "आयोजन",
+                calHijriSuffix = "हिजरी",
+                calSearchPlaceholder = "आयोजन खोजें...",
+                calLocation = "स्थान",
+                calEventsOnDate = "इस तारीख के आयोजन",
+                calSearchEmpty = "कोई मिलता-जुलता इस्लामी आयोजन नहीं मिला।"
+            )
+            "ur" -> CalendarScreenStrings(
+                calTitle = "اسلامی کیلنڈر",
+                calSubtitle = "موجودہ مہینہ، ہجری تاریخیں، اہم اسلامی واقعات اور سالانہ جائزہ۔",
+                calToday = "آج",
+                calSelected = "منتخب تاریخ",
+                calGreg = "عیسوی",
+                calHijri = "ہجری",
+                calYearView = "سالانہ جائزہ",
+                calEvent = "واقعہ",
+                calEventNone = "اس تاریخ پر کوئی بڑا اسلامی واقعہ درج نہیں ہے۔",
+                calEventMore = "کسی ہائی لائٹ شدہ تاریخ پر کلک کر کے اس کے واقعات پڑھیں۔",
+                calMonthEvents = "واقعات",
+                calHijriSuffix = "ھ",
+                calSearchPlaceholder = "واقعات تلاش کریں...",
+                calLocation = "مقام",
+                calEventsOnDate = "اس تاریخ کے واقعات",
+                calSearchEmpty = "کوئی مناسب اسلامی واقعہ نہیں ملا۔"
+            )
+            "ar" -> CalendarScreenStrings(
+                calTitle = "التقويم الإسلامي",
+                calSubtitle = "الشهر الحالي، التواريخ الهجرية، المناسبات الإسلامية ونظرة عامة على السنة.",
+                calToday = "اليوم",
+                calSelected = "التاريخ المحدد",
+                calGreg = "الميلادي",
+                calHijri = "الهجري",
+                calYearView = "عرض السنة",
+                calEvent = "المناسبة",
+                calEventNone = "لا توجد مناسبة إسلامية كبرى مسجلة في هذا التاريخ.",
+                calEventMore = "اضغط على تاريخ محدد آخر لقراءة مناسبته.",
+                calMonthEvents = "أحداث",
+                calHijriSuffix = "هـ",
+                calSearchPlaceholder = "ابحث عن الأحداث...",
+                calLocation = "الموقع",
+                calEventsOnDate = "أحداث هذا اليوم",
+                calSearchEmpty = "لم يتم العثور على مناسبات مطابقة."
+            )
+            "bn" -> CalendarScreenStrings(
+                calTitle = "ইসলামিক ক্যালেন্ডার",
+                calSubtitle = "চলতি মাস, হিজরি তারিখ, প্রধান ইসলামিক ঘটনাবলি এবং বার্ষিক বিবরণ।",
+                calToday = "আজ",
+                calSelected = "নির্বাচিত তারিখ",
+                calGreg = "ইংরেজি",
+                calHijri = "হিজরি",
+                calYearView = "বার্ষিক দৃশ্য",
+                calEvent = "ইভেন্ট",
+                calEventNone = "এই তারিখে কোনো বড় ইসলামিক ইভেন্ট লিপিবদ্ধ নেই।",
+                calEventMore = "অন্য কোনো চিহ্নিত তারিখে ট্যাপ করে ইভেন্ট দেখুন।",
+                calMonthEvents = "ইভেন্ট",
+                calHijriSuffix = "হিজরি",
+                calSearchPlaceholder = "ইভেন্ট অনুসন্ধান করুন...",
+                calLocation = "স্থান",
+                calEventsOnDate = "এই তারিখের ঘটনাবলি",
+                calSearchEmpty = "কোনো ইসলামিক ইভেন্ট পাওয়া যায়নি।"
+            )
+            "gu" -> CalendarScreenStrings(
+                calTitle = "ઇસ્લામિક કેલેન્ડર",
+                calSubtitle = "ચાલુ મહિનો, હિજરી તારીખો, મહત્વપૂર્ણ ઇસ્લામિક ઘટનાઓ અને વાર્ષિક ઝાંખી.",
+                calToday = "આજે",
+                calSelected = "પસંદ કરેલ તારીખ",
+                calGreg = "ઇસવી",
+                calHijri = "હિજરી",
+                calYearView = "વાર્ષિક ઝાંખી",
+                calEvent = "ઘટના",
+                calEventNone = "આ તારીખે કોઈ મોટી ઇસ્લામિક ઘટના નોંધાયેલ નથી.",
+                calEventMore = "તેની ઘટના જોવા માટે બીજી હાઇલાઇટ કરેલી તારીખ પર ટેપ કરો.",
+                calMonthEvents = "ઘટનાઓ",
+                calHijriSuffix = "હિજરી",
+                calSearchPlaceholder = "ઘટનાઓ શોધો...",
+                calLocation = "સ્થળ",
+                calEventsOnDate = "આ તારીખની ઘટનાઓ",
+                calSearchEmpty = "કોઈ મેળ ખાતી ઇસ્લામિક ઘટના મળી નથી."
+            )
+            "mr" -> CalendarScreenStrings(
+                calTitle = "इस्लामिक कॅलेंडर",
+                calSubtitle = "चालू महिना, हिजरी तारखा, महत्त्वाच्या इस्लामिक घटना आणि वार्षिक आढावा.",
+                calToday = "आज",
+                calSelected = "निवडलेली तारीख",
+                calGreg = "ईस्वी",
+                calHijri = "हिजरी",
+                calYearView = "वार्षिक दृश्य",
+                calEvent = "कार्यक्रम",
+                calEventNone = "या तारखेला कोणतीही मोठी इस्लामिक घटना नोंदवलेली नाही.",
+                calEventMore = "इतर हायलाइट केलेल्या तारखेवर टॅप करून घटना पहा.",
+                calMonthEvents = "कार्यक्रम",
+                calHijriSuffix = "हिजरी",
+                calSearchPlaceholder = "कार्यक्रम शोधा...",
+                calLocation = "स्थान",
+                calEventsOnDate = "या तारखेचे कार्यक्रम",
+                calSearchEmpty = "कोणतीही जुळणारी इस्लामिक घटना आढळली नाही."
+            )
+            "ta" -> CalendarScreenStrings(
+                calTitle = "இஸ்லாமிய நாட்காட்டி",
+                calSubtitle = "நடப்பு மாதம், ஹிஜ்ரி தேதிகள், முக்கிய நிகழ்வுகள் மற்றும் ஆண்டு பார்வை.",
+                calToday = "இன்று",
+                calSelected = "தேர்ந்தெடுக்கப்பட்ட தேதி",
+                calGreg = "கிரிகோரியன்",
+                calHijri = "ஹிஜ்ரி",
+                calYearView = "ஆண்டு பார்வை",
+                calEvent = "நிகழ்வு",
+                calEventNone = "இந்த தேதியில் பெரிய இஸ்லாமிய நிகழ்வுகள் எதுவும் இல்லை.",
+                calEventMore = "நிகழ்வைப் பார்க்க மற்றொரு ஹைலைட் செய்யப்பட்ட தேதியைத் தட்டவும்.",
+                calMonthEvents = "நிகழ்வுகள்",
+                calHijriSuffix = "ஹிஜ்ரி",
+                calSearchPlaceholder = "நிகழ்வுகளைத் தேடுங்கள்...",
+                calLocation = "இடம்",
+                calEventsOnDate = "இந்த தேதியின் நிகழ்வுகள்",
+                calSearchEmpty = "பொருந்தும் இஸ்லாமிய நிகழ்வுகள் எதுவும் கிடைக்கவில்லை."
+            )
+            "te" -> CalendarScreenStrings(
+                calTitle = "ఇస్లామిక్ క్యాలెండర్",
+                calSubtitle = "ప్రస్తుత నెల, హిజ్రీ తేదీలు, ప్రధాన ఇస్లామిక్ సంఘటనలు మరియు వార్షిక సమీక్ష.",
+                calToday = "ఈ రోజు",
+                calSelected = "ఎంచుకున్న తేదీ",
+                calGreg = "గ్రెగోరియన్",
+                calHijri = "హిజ్రీ",
+                calYearView = "సంవత్సర వీక్షణ",
+                calEvent = "సంఘటన",
+                calEventNone = "ఈ తేదీకి ఎటువంటి ప్రధాన ఇస్లామిక్ సంఘటనలు నమోదు కాలేదు.",
+                calEventMore = "సంఘటన చూడటానికి మరో హైలైట్ చేసిన తేదీని నొక్కండి.",
+                calMonthEvents = "సంఘటనలు",
+                calHijriSuffix = "హిజ్రీ",
+                calSearchPlaceholder = "సంఘటనలను శోధించండి...",
+                calLocation = "స్థలం",
+                calEventsOnDate = "ఈ తేదీలోని సంఘటనలు",
+                calSearchEmpty = "సరిపోలే ఇస్లామిక్ సంఘటనలు కనుగొనబడలేదు."
+            )
+            "ml" -> CalendarScreenStrings(
+                calTitle = "ഇസ്ലാമിക് കലണ്ടർ",
+                calSubtitle = "നിലവിലെ മാസം, ഹിജ്‌രി തീയതികൾ, പ്രധാന ഇസ്ലാമിക സംഭവങ്ങൾ, വാർഷിക കാഴ്ച.",
+                calToday = "ഇന്ന്",
+                calSelected = "തിരഞ്ഞെടുത്ത തീയതി",
+                calGreg = "ഗ്രിഗോറിയൻ",
+                calHijri = "ഹിജ്‌രി",
+                calYearView = "വർഷ കാഴ്ച",
+                calEvent = "ഇവന്റ്",
+                calEventNone = "ഈ തീയതിയിൽ പ്രധാന ഇസ്ലാമിക സംഭവങ്ങളൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല.",
+                calEventMore = "ഇവന്റ് കാണാൻ മറ്റൊരു ഹൈലൈറ്റ് ചെയ്ത തീയതിയിൽ ടാപ്പ് ചെയ്യുക.",
+                calMonthEvents = "ഇവന്റുകൾ",
+                calHijriSuffix = "ഹിജ്‌രി",
+                calSearchPlaceholder = "ഇവന്റുകൾ തിരയുക...",
+                calLocation = "സ്ഥലം",
+                calEventsOnDate = "ഈ തീയതിയിലെ ഇവന്റുകൾ",
+                calSearchEmpty = "യോജിച്ച ഇസ്ലാമിക ഇവന്റുകൾ കണ്ടെത്താനായില്ല."
+            )
+            "kn" -> CalendarScreenStrings(
+                calTitle = "ಇಸ್ಲಾಮಿಕ್ ಕ್ಯಾಲೆಂಡರ್",
+                calSubtitle = "ಪ್ರಸ್ತುತ ತಿಂಗಳು, ಹಿಜ್ರಿ ದಿನಾಂಕಗಳು, ಪ್ರಮುಖ ಇಸ್ಲಾಮಿಕ್ ಘಟನೆಗಳು ಮತ್ತು ವಾರ್ಷಿಕ ಅವಲೋಕನ.",
+                calToday = "ಇಂದು",
+                calSelected = "ಆಯ್ದ ದಿನಾಂಕ",
+                calGreg = "ಗ್ರೆಗೋರಿಯನ್",
+                calHijri = "ಹಿಜ್ರಿ",
+                calYearView = "ವರ್ಷದ ನೋಟ",
+                calEvent = "ಘಟನೆ",
+                calEventNone = "ಈ ದಿನಾಂಕಕ್ಕೆ ಯಾವುದೇ ಪ್ರಮುಖ ಇಸ್ಲಾಮಿಕ್ ಘಟನೆ ಗುರುತಿಸಲಾಗಿಲ್ಲ.",
+                calEventMore = "ಘಟನೆ ಓದಲು ಇನ್ನೊಂದು ಹೈಲೈಟ್ ಮಾಡಿದ ದಿನಾಂಕವನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ.",
+                calMonthEvents = "ಘಟನೆಗಳು",
+                calHijriSuffix = "ಹಿಜ್ರಿ",
+                calSearchPlaceholder = "ಘಟನೆಗಳನ್ನು ಹುಡುಕಿ...",
+                calLocation = "ಸ್ಥಳ",
+                calEventsOnDate = "ಈ ದಿನಾಂಕದ ಘಟನೆಗಳು",
+                calSearchEmpty = "ಹೊಂದಾಣಿಕೆಯ ಇಸ್ಲಾಮಿಕ್ ಘಟನೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ."
+            )
+            "pa" -> CalendarScreenStrings(
+                calTitle = "ਇਸਲਾਮਿਕ ਕੈਲੰਡਰ",
+                calSubtitle = "ਮੌਜੂਦਾ ਮਹੀਨਾ, ਹਿਜਰੀ ਤਾਰੀਖਾਂ, ਅਹਿਮ ਇਸਲਾਮੀ ਵਾਕਿਆਤ ਅਤੇ ਸਾਲਾਨਾ ਜਾਇਜ਼ਾ।",
+                calToday = "ਅੱਜ",
+                calSelected = "ਚੁਣੀ ਹੋਈ ਤਾਰੀਖ",
+                calGreg = "ਈਸਵੀ",
+                calHijri = "ਹਿਜਰੀ",
+                calYearView = "ਸਾਲਾਨਾ ਦ੍ਰਿਸ਼",
+                calEvent = "ਵਾਕਿਆ",
+                calEventNone = "ਇਸ ਤਾਰੀਖ ਲਈ ਕੋਈ ਵੱਡਾ ਇਸਲਾਮੀ ਵਾਕਿਆ ਦਰਜ ਨਹੀਂ ਹੈ।",
+                calEventMore = "ਇਸਦਾ ਵਾਕਿਆ ਦੇਖਣ ਲਈ ਕਿਸੇ ਦੂਜੀ ਹਾਈਲਾਈਟ ਕੀਤੀ ਤਾਰੀਖ 'ਤੇ ਟੈਪ ਕਰੋ।",
+                calMonthEvents = "ਵਾਕਿਆਤ",
+                calHijriSuffix = "ਹਿਜਰੀ",
+                calSearchPlaceholder = "ਵਾਕਿਆਤ ਖੋਜੋ...",
+                calLocation = "ਸਥਾਨ",
+                calEventsOnDate = "ਇਸ ਤਾਰੀਖ ਦੇ ਵਾਕਿਆਤ",
+                calSearchEmpty = "ਕੋਈ ਮੇਲ ਖਾਂਦਾ ਇਸਲਾਮੀ ਵਾਕਿਆ ਨਹੀਂ ਮਿਲਿਆ।"
+            )
+            "tr" -> CalendarScreenStrings(
+                calTitle = "İslami Takvim",
+                calSubtitle = "Mevcut ay, Hicri tarihler, önemli İslami olaylar ve yıllık genel bakış.",
+                calToday = "Bugün",
+                calSelected = "SEÇİLEN TARİH",
+                calGreg = "Miladi",
+                calHijri = "Hicri",
+                calYearView = "Yıllık Görünüm",
+                calEvent = "ETKİNLİK",
+                calEventNone = "Bu tarih için kayıtlı önemli bir İslami olay yok.",
+                calEventMore = "Olayını okumak için vurgulanan başka bir tarihe dokunun.",
+                calMonthEvents = "olay",
+                calHijriSuffix = "H",
+                calSearchPlaceholder = "Olaylarda ara...",
+                calLocation = "Konum",
+                calEventsOnDate = "BU TARİHTEKİ OLAYLAR",
+                calSearchEmpty = "Eşleşen İslami olay bulunamadı."
+            )
+            "id" -> CalendarScreenStrings(
+                calTitle = "Kalender Islam",
+                calSubtitle = "Bulan saat ini, tanggal Hijriah, peristiwa penting Islam dan ikhtisar tahunan.",
+                calToday = "Hari Ini",
+                calSelected = "TANGGAL TERPILIH",
+                calGreg = "Masehi",
+                calHijri = "Hijriah",
+                calYearView = "Tampilan Tahun",
+                calEvent = "PERISTIWA",
+                calEventNone = "Tidak ada peristiwa besar Islam untuk tanggal ini.",
+                calEventMore = "Ketuk tanggal bertanda lain untuk melihat peristiwanya.",
+                calMonthEvents = "peristiwa",
+                calHijriSuffix = "H",
+                calSearchPlaceholder = "Cari peristiwa...",
+                calLocation = "Lokasi",
+                calEventsOnDate = "PERISTIWA PADA TANGGAL INI",
+                calSearchEmpty = "Tidak ada peristiwa Islam yang cocok."
+            )
+            "ms" -> CalendarScreenStrings(
+                calTitle = "Kalendar Islam",
+                calSubtitle = "Bulan semasa, tarikh Hijrah, peristiwa penting Islam dan tinjauan tahunan.",
+                calToday = "Hari Ini",
+                calSelected = "TARIKH DIPILIH",
+                calGreg = "Masihi",
+                calHijri = "Hijrah",
+                calYearView = "Paparan Tahun",
+                calEvent = "PERISTIWA",
+                calEventNone = "Tiada peristiwa besar Islam dicatatkan untuk tarikh ini.",
+                calEventMore = "Ketik tarikh bertanda lain untuk membaca peristiwanya.",
+                calMonthEvents = "peristiwa",
+                calHijriSuffix = "H",
+                calSearchPlaceholder = "Cari peristiwa...",
+                calLocation = "Lokasi",
+                calEventsOnDate = "PERISTIWA PADA TARIKH INI",
+                calSearchEmpty = "Tiada peristiwa Islam yang sepadan ditemui."
+            )
+            "fa" -> CalendarScreenStrings(
+                calTitle = "تقویم اسلامی",
+                calSubtitle = "ماه جاری، تاریخ‌های هجری، مناسبت‌های مهم اسلامی و نمای کلی سال.",
+                calToday = "امروز",
+                calSelected = "تاریخ انتخابی",
+                calGreg = "میلادی",
+                calHijri = "قمری",
+                calYearView = "نمای سالانه",
+                calEvent = "مناسبت",
+                calEventNone = "هیچ مناسبت مهم اسلامی برای این تاریخ ثبت نشده است.",
+                calEventMore = "روی تاریخ مشخص شده دیگری ضربه بزنید تا مناسبت آن را بخوانید.",
+                calMonthEvents = "رویداد",
+                calHijriSuffix = "ق",
+                calSearchPlaceholder = "جستجوی رویدادها...",
+                calLocation = "مکان",
+                calEventsOnDate = "مناسبت‌های این تاریخ",
+                calSearchEmpty = "هیچ رویداد اسلامی منطبقی یافت نشد."
+            )
+            "fr" -> CalendarScreenStrings(
+                calTitle = "Calendrier Islamique",
+                calSubtitle = "Mois en cours, dates hégiriennes, événements islamiques majeurs et vue annuelle.",
+                calToday = "Aujourd'hui",
+                calSelected = "DATE SÉLECTIONNÉE",
+                calGreg = "Grégorien",
+                calHijri = "Hégirien",
+                calYearView = "Aperçu de l'année",
+                calEvent = "ÉVÉNEMENT",
+                calEventNone = "Aucun événement islamique majeur marqué pour cette date.",
+                calEventMore = "Appuyez sur une autre date en surbrillance pour lire son événement.",
+                calMonthEvents = "événements",
+                calHijriSuffix = "AH",
+                calSearchPlaceholder = "Rechercher des événements...",
+                calLocation = "Lieu",
+                calEventsOnDate = "ÉVÉNEMENTS À CETTE DATE",
+                calSearchEmpty = "Aucun événement islamique correspondant trouvé."
+            )
+            "de" -> CalendarScreenStrings(
+                calTitle = "Islamischer Kalender",
+                calSubtitle = "Aktueller Monat, Hidschri-Daten, wichtige islamische Ereignisse und Jahresübersicht.",
+                calToday = "Heute",
+                calSelected = "AUSGEWÄHLTES DATUM",
+                calGreg = "Gregorianisch",
+                calHijri = "Hidschri",
+                calYearView = "Jahresübersicht",
+                calEvent = "EREIGNIS",
+                calEventNone = "Kein wichtiges islamisches Ereignis für dieses Datum vermerkt.",
+                calEventMore = "Tippen Sie auf ein anderes hervorgehobenes Datum, um das Ereignis zu sehen.",
+                calMonthEvents = "Ereignisse",
+                calHijriSuffix = "n.H.",
+                calSearchPlaceholder = "Ereignisse suchen...",
+                calLocation = "Ort",
+                calEventsOnDate = "EREIGNISSE AN DIESEM DATUM",
+                calSearchEmpty = "Keine passenden islamischen Ereignisse gefunden."
+            )
+            "ru" -> CalendarScreenStrings(
+                calTitle = "Исламский Календарь",
+                calSubtitle = "Текущий месяц, даты Хиджры, важные исламские события и обзор года.",
+                calToday = "Сегодня",
+                calSelected = "ВЫБРАННАЯ ДАТА",
+                calGreg = "Григорианский",
+                calHijri = "Хиджра",
+                calYearView = "Обзор года",
+                calEvent = "СОБЫТИЕ",
+                calEventNone = "На эту дату нет крупных исламских событий.",
+                calEventMore = "Нажмите на другую выделенную дату, чтобы прочитать о событии.",
+                calMonthEvents = "событий",
+                calHijriSuffix = "г.х.",
+                calSearchPlaceholder = "Поиск событий...",
+                calLocation = "Место",
+                calEventsOnDate = "СОБЫТИЯ НА ЭТУ ДАТУ",
+                calSearchEmpty = "Подходящих исламских событий не найдено."
+            )
+            "sw" -> CalendarScreenStrings(
+                calTitle = "Kalenda ya Kiislamu",
+                calSubtitle = "Mwezi wa sasa, tarehe za Hijria, matukio muhimu ya Kiislamu na muhtasari wa mwaka.",
+                calToday = "Leo",
+                calSelected = "TAREHE ILIYOCHAGULIWA",
+                calGreg = "Miladi",
+                calHijri = "Hijria",
+                calYearView = "Mtazamo wa Mwaka",
+                calEvent = "TUKIO",
+                calEventNone = "Hakuna tukio kubwa la Kiislamu lililoandikwa kwa tarehe hii.",
+                calEventMore = "Gusa tarehe nyingine iliyoangaziwa kusoma tukio lake.",
+                calMonthEvents = "matukio",
+                calHijriSuffix = "AH",
+                calSearchPlaceholder = "Tafuta matukio...",
+                calLocation = "Mahali",
+                calEventsOnDate = "MATUKIO YA TAREHE HII",
+                calSearchEmpty = "Hakuna matukio ya Kiislamu yaliyopatikana."
+            )
+            "so" -> CalendarScreenStrings(
+                calTitle = "Kalandarka Islaamka",
+                calSubtitle = "Bisha hadda, taariikhaha Hijriga, dhacdooyinka muhiimka ah iyo dulmar sannadeed.",
+                calToday = "Maanta",
+                calSelected = "TAARIIKHDA LA DOORTAY",
+                calGreg = "Miilaadiga",
+                calHijri = "Hijriga",
+                calYearView = "Muuqaalka Sannadka",
+                calEvent = "DHACDO",
+                calEventNone = "Ma jirto dhacdo weyn oo Islaami ah oo taariikhdan ku qoran.",
+                calEventMore = "Taabo taariikh kale oo la muujiyay si aad u akhrido dhacdadeeda.",
+                calMonthEvents = "dhacdooyin",
+                calHijriSuffix = "H",
+                calSearchPlaceholder = "Raadi dhacdooyinka...",
+                calLocation = "Goobta",
+                calEventsOnDate = "DHACDOOYINKA TAARIIKHDAN",
+                calSearchEmpty = "Lama helin dhacdooyin Islaami ah oo u dhigma."
+            )
+            "ha" -> CalendarScreenStrings(
+                calTitle = "Kalandar Musulunci",
+                calSubtitle = "Watan yanzu, kwanakin Hijira, manyan al'amuran Musulunci da bayanin shekara.",
+                calToday = "Yau",
+                calSelected = "RANAR DA AKA ZAƁA",
+                calGreg = "Miladiyya",
+                calHijri = "Hijira",
+                calYearView = "Duba Shekara",
+                calEvent = "AL'AMARI",
+                calEventNone = "Babu wani babban al'amarin Musulunci da aka rubuta a wannan ranar.",
+                calEventMore = "Taɓa wata ranar don ganin al'amarinta.",
+                calMonthEvents = "al'amura",
+                calHijriSuffix = "AH",
+                calSearchPlaceholder = "Nemi al'amura...",
+                calLocation = "Wuri",
+                calEventsOnDate = "AL'AMURAN WANNAN RANAR",
+                calSearchEmpty = "Ba a sami al'amuran Musulunci masu dacewa ba."
+            )
+            "es" -> CalendarScreenStrings(
+                calTitle = "Calendario Islámico",
+                calSubtitle = "Mes actual, fechas de la Hégira, eventos islámicos importantes y resumen del año.",
+                calToday = "Hoy",
+                calSelected = "FECHA SELECCIONADA",
+                calGreg = "Gregoriano",
+                calHijri = "Hégira",
+                calYearView = "Vista del año",
+                calEvent = "EVENTO",
+                calEventNone = "No hay ningún evento islámico importante registrado para esta fecha.",
+                calEventMore = "Toque otra fecha resaltada para ver su evento.",
+                calMonthEvents = "eventos",
+                calHijriSuffix = "AH",
+                calSearchPlaceholder = "Buscar eventos...",
+                calLocation = "Ubicación",
+                calEventsOnDate = "EVENTOS EN ESTA FECHA",
+                calSearchEmpty = "No se encontraron eventos islámicos coincidentes."
+            )
+            "zh" -> CalendarScreenStrings(
+                calTitle = "伊斯兰历",
+                calSubtitle = "当前月份、伊斯兰历日期、重要伊斯兰事件和全年概览。",
+                calToday = "今天",
+                calSelected = "所选日期",
+                calGreg = "公历",
+                calHijri = "伊斯兰历",
+                calYearView = "全年概览",
+                calEvent = "事件",
+                calEventNone = "此日期没有标记重大的伊斯兰事件。",
+                calEventMore = "点击其他突出显示的日期以阅读其事件。",
+                calMonthEvents = "个事件",
+                calHijriSuffix = "回历",
+                calSearchPlaceholder = "搜索事件...",
+                calLocation = "地点",
+                calEventsOnDate = "此日期的事件",
+                calSearchEmpty = "未找到匹配的伊斯兰事件。"
+            )
+            "or" -> CalendarScreenStrings(
+                calTitle = "ଇସଲାମିକ କ୍ୟାଲେଣ୍ଡର",
+                calSubtitle = "ଚାଲୁ ମାସ, ହିଜରୀ ତାରିଖ, ପ୍ରମୁଖ ଇସଲାମିକ ଘଟଣା ଏବଂ ବାର୍ଷିକ ସମୀକ୍ଷା।",
+                calToday = "ଆଜି",
+                calSelected = "ମନୋନୀତ ତାରିଖ",
+                calGreg = "ଇସବୀ",
+                calHijri = "ହିଜରୀ",
+                calYearView = "ବାର୍ଷିକ ଦୃଶ୍ୟ",
+                calEvent = "ଘଟଣା",
+                calEventNone = "ଏହି ତାରିଖ ପାଇଁ କୌଣସି ପ୍ରମୁଖ ଇସଲାମିକ ଘଟଣା ଲିପିବଦ୍ଧ ନାହିଁ।",
+                calEventMore = "ଘଟଣା ଦେଖିବାକୁ ଅନ୍ୟ ଏକ ଚିହ୍ନିତ ତାରିଖକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ।",
+                calMonthEvents = "ଘଟଣା",
+                calHijriSuffix = "ହିଜରୀ",
+                calSearchPlaceholder = "ଘଟଣା ଖୋଜନ୍ତୁ...",
+                calLocation = "ସ୍ଥାନ",
+                calEventsOnDate = "ଏହି ତାରିଖର ଘଟଣା",
+                calSearchEmpty = "କୌଣସି ଇସଲାମିକ ଘଟଣା ମିଳିଲା ନାହିଁ।"
+            )
+            "as" -> CalendarScreenStrings(
+                calTitle = "ইছলামিক কেলেণ্ডাৰ",
+                calSubtitle = "চলিত মাহ, হিজৰী তাৰিখ, প্ৰধান ইছলামিক ঘটনাসমূহ আৰু বাৰ্ষিক বিৱৰণ।",
+                calToday = "আজি",
+                calSelected = "নিৰ্বাচিত তাৰিখ",
+                calGreg = "ইংৰাজী",
+                calHijri = "হিজৰী",
+                calYearView = "বাৰ্ষিক দৃশ্য",
+                calEvent = "ঘটনা",
+                calEventNone = "এই তাৰিখত কোনো ডাঙৰ ইছলামিক ঘটনা লিপিবদ্ধ নাই।",
+                calEventMore = "ঘটনা চাবলৈ আন এটা চিহ্নিত তাৰিখত টেপ কৰক।",
+                calMonthEvents = "ঘটনা",
+                calHijriSuffix = "হিজৰী",
+                calSearchPlaceholder = "ঘটনা সন্ধান কৰক...",
+                calLocation = "স্থান",
+                calEventsOnDate = "এই তাৰিখৰ ঘটনাসমূহ",
+                calSearchEmpty = "কোনো ইছলামিক ঘটনা পোৱা নগল।"
+            )
+            else -> CalendarScreenStrings(
+                calTitle = "ISLAMIC CALENDAR",
+                calSubtitle = "Current month, Hijri dates, major Islamic events and year overview.",
+                calToday = "Today",
+                calSelected = "SELECTED DATE",
+                calGreg = "Gregorian",
+                calHijri = "Hijri",
+                calYearView = "Year View",
+                calEvent = "EVENT",
+                calEventNone = "No major Islamic event marked for this date.",
+                calEventMore = "Tap another highlighted date to read its event.",
+                calMonthEvents = "events",
+                calHijriSuffix = "AH",
+                calSearchPlaceholder = "Search Events...",
+                calLocation = "Location",
+                calEventsOnDate = "EVENTS ON THIS DATE",
+                calSearchEmpty = "No matching Islamic events found."
+            )
+        }
+    }
+
+    fun getJavaLocale(code: String): Locale {
+        return when (code) {
+            "hi" -> Locale("hi", "IN")
+            "ur" -> Locale("ur", "PK")
+            "ar" -> Locale("ar", "SA")
+            "bn" -> Locale("bn", "BD")
+            "gu" -> Locale("gu", "IN")
+            "mr" -> Locale("mr", "IN")
+            "ta" -> Locale("ta", "IN")
+            "te" -> Locale("te", "IN")
+            "ml" -> Locale("ml", "IN")
+            "kn" -> Locale("kn", "IN")
+            "pa" -> Locale("pa", "IN")
+            "or" -> Locale("or", "IN")
+            "as" -> Locale("as", "IN")
+            "tr" -> Locale("tr", "TR")
+            "id" -> Locale("id", "ID")
+            "ms" -> Locale("ms", "MY")
+            "fa" -> Locale("fa", "IR")
+            "fr" -> Locale.FRANCE
+            "de" -> Locale.GERMANY
+            "ru" -> Locale("ru", "RU")
+            "sw" -> Locale("sw", "KE")
+            "so" -> Locale("so", "SO")
+            "ha" -> Locale("ha", "NG")
+            "es" -> Locale("es", "ES")
+            "zh" -> Locale.SIMPLIFIED_CHINESE
+            else -> Locale.US
+        }
+    }
+
+    fun getGregorianMonthNames(locale: String): List<String> {
+        return when (locale) {
+            "hi" -> listOf("जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर")
+            "ur" -> listOf("جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر")
+            "ar" -> listOf("يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر")
+            "bn" -> listOf("জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর")
+            "gu" -> listOf("જાન્યુઆરી", "ફેબ્રુઆરી", "માર્ચ", "એપ્રિલ", "મે", "જૂન", "જુલાઈ", "ઑગસ્ટ", "સપ્ટેમ્બર", "ઑક્ટોબર", "નવેમ્બર", "ડિસેમ્બર")
+            "mr" -> listOf("जानेवारी", "फेब्रुवारी", "मार्च", "एप्रिल", "मे", "जून", "जुलै", "ऑगस्ट", "सप्टेंबर", "ऑक्टोबर", "नोव्हेंबर", "डिसेंबर")
+            "ta" -> listOf("ஜனவரி", "பிப்ரவரி", "மார்ச்", "ஏப்ரல்", "மே", "ஜூன்", "ஜூலை", "ஆகஸ்ட்", "செப்டம்பர்", "அக்டோபர்", "நவம்பர்", "டிசம்பர்")
+            "te" -> listOf("జనవరి", "ఫిబ్రవరి", "మార్చి", "ఏప్రిల్", "మే", "జూన్", "జూలై", "ఆగస్టు", "సెప్టెంబర్", "అక్టోబర్", "నవంబర్", "డిసెంబర్")
+            "ml" -> listOf("ജനുവരി", "ഫെബ്രുവരി", "മാർച്ച്", "ഏപ്രിൽ", "മേയ്", "ജൂൺ", "ജൂലൈ", "ഓഗസ്റ്റ്", "സെപ്റ്റംബർ", "ഒക്ടോബർ", "നവംബർ", "ഡിസംബർ")
+            "kn" -> listOf("ಜನವರಿ", "ಫೆಬ್ರವರಿ", "ಮಾರ್ಚ್", "ಏಪ್ರಿಲ್", "ಮೇ", "ಜೂನ್", "ಜುಲೈ", "ಆಗಸ್ಟ್", "ಸೆಪ್ಟೆಂಬರ್", "ಅಕ್ಟೋಬರ್", "ನವೆಂಬರ್", "ಡಿಸೆಂಬರ್")
+            "pa" -> listOf("ਜਨਵਰੀ", "ਫ਼ਰਵਰੀ", "ਮਾਰਚ", "ਅਪ੍ਰੈਲ", "ਮਈ", "ਜੂਨ", "ਜੁਲਾਈ", "ਅਗਸਤ", "ਸਤੰਬਰ", "ਅਕਤੂਬਰ", "ਨਵੰਬਰ", "ਦਸੰਬਰ")
+            "or" -> listOf("ଜାନୁଆରୀ", "ଫେବୃଆରୀ", "ମାର୍ଚ୍ଚ", "ଏପ୍ରିଲ", "ମେ", "ଜୁନ", "ଜୁଲାଇ", "ଅଗଷ୍ଟ", "ସେପ୍ଟେମ୍ବର", "ଅକ୍ଟୋବର", "ନଭେମ୍ବର", "ଡିସେମ୍ବର")
+            "as" -> listOf("জানুৱাৰী", "ফেব্ৰুৱাৰী", "মাৰ্চ", "এপ্ৰিল", "মে'", "জুন", "জুলাই", "আগষ্ট", "ছেপ্টেম্বৰ", "অক্টোবৰ", "নৱেম্বৰ", "ডিচেম্বৰ")
+            "sw" -> listOf("Januari", "Februari", "Machi", "Aprili", "Mei", "Juni", "Julai", "Agosti", "Septemba", "Oktoba", "Novemba", "Desemba")
+            "so" -> listOf("Jannaayo", "Febraayo", "Maarso", "Abriil", "May", "Juun", "Luuliyo", "Ogosto", "Sebtembar", "Oktoobar", "Nofembar", "Desembar")
+            "ha" -> listOf("Janairu", "Fabrairu", "Marsi", "Afrilu", "Mayu", "Yuni", "Yuli", "Agusta", "Satumba", "Oktoba", "Nuwamba", "Disamba")
+            "tr" -> listOf("Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık")
+            "id", "ms" -> listOf("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember")
+            "fa" -> listOf("ژانویه", "فوریه", "مارس", "آوریل", "مه", "ژوئن", "ژوئیه", "اوت", "سپتامبر", "اکتبر", "نوامبر", "دسامبر")
+            "fr" -> listOf("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre")
+            "de" -> listOf("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember")
+            "ru" -> listOf("Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь")
+            "es" -> listOf("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+            "zh" -> listOf("一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月")
+            else -> listOf("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+        }
+    }
+
+    fun getGregorianShortMonthNames(locale: String): List<String> {
+        return when (locale) {
+            "hi" -> listOf("जन", "फ़र", "मार्च", "अप्रै", "मई", "जून", "जुला", "अग", "सितं", "अक्टू", "नवं", "दिसं")
+            "ur" -> listOf("جن", "فر", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستم", "اکت", "نوم", "دسم")
+            "ar" -> listOf("ينا", "فبر", "مار", "أبر", "ماي", "يون", "يول", "أغس", "سبت", "أكت", "نوف", "ديس")
+            "bn" -> listOf("জানু", "ফেব্রু", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টে", "অক্টো", "নভে", "ডিসে")
+            "gu" -> listOf("જાન્યુ", "ફેબ્રુ", "માર્ચ", "એપ્રિલ", "મે", "જૂન", "જુલાઈ", "ઑગસ્ટ", "સપ્ટે", "ઑક્ટો", "નવે", "ડિસે")
+            "mr" -> listOf("जाने", "फेब्रु", "মার্চ", "एप्रि", "मे", "जून", "जुलै", "ऑग", "सप्टें", "ऑक्टो", "नोव्हें", "डिसें")
+            "ta" -> listOf("ஜன", "பிப்", "மார்ச்", "ஏப்", "மே", "ஜூன்", "ஜூலை", "ஆக", "செப்", "அக்", "நவ", "டிச")
+            "te" -> listOf("జన", "ఫిబ్ర", "మార్చి", "ఏప్రి", "మే", "జూన్", "జూలై", "ఆగ", "సెప్టెం", "అక్టో", "నవం", "డిసెం")
+            "ml" -> listOf("ജനു", "ഫെബ്രു", "മാർച്ച്", "ഏപ്രി", "മേയ്", "ജൂൺ", "ജൂലൈ", "ഓഗ", "സെപ്റ്റം", "ഒക്ടോ", "നവം", "ഡിസം")
+            "kn" -> listOf("ಜನ", "ಫೆಬ್ರ", "ಮಾರ್ಚ್", "ಏಪ್ರಿ", "ಮೇ", "ಜೂನ್", "ಜುಲೈ", "ಆಗ", "ಸೆಪ್ಟೆಂ", "ಅಕ್ಟೋ", "ನವೆಂ", "ಡಿಸೆಂ")
+            "pa" -> listOf("ਜਨ", "ਫ਼ਰ", "ਮਾਰਚ", "ਅਪ੍ਰੈ", "ਮਈ", "ਜੂਨ", "ਜੁਲਾਈ", "ਅਗ", "ਸਤੰ", "ਅਕਤੂ", "ਨਵੰ", "ਦਸੰ")
+            "or" -> listOf("ଜାନୁ", "ଫେବ୍ରୁ", "ମାର୍ଚ୍ଚ", "ଏପ୍ରି", "ମେ", "ଜୁନ", "ଜୁଲାଇ", "ଅଗ", "ସେପ୍ଟେ", "ଅକ୍ଟୋ", "ନଭେ", "ଡିସେ")
+            "as" -> listOf("জানু", "ফেব্ৰু", "মাৰ্চ", "এপ্ৰি", "মে'", "জুন", "জুলাই", "আগ", "ছেপ্টে", "অক্টো", "নৱে", "ডিচে")
+            "sw" -> listOf("Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ago", "Sep", "Okt", "Nov", "Des")
+            "so" -> listOf("Jan", "Feb", "Mar", "Abr", "May", "Jun", "Luu", "Ogo", "Seb", "Okt", "Nof", "Des")
+            "ha" -> listOf("Jan", "Fab", "Mar", "Afr", "May", "Yun", "Yul", "Agu", "Sat", "Okt", "Nuw", "Dis")
+            "tr" -> listOf("Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara")
+            "id", "ms" -> listOf("Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agt", "Sep", "Okt", "Nov", "Des")
+            "fa" -> listOf("ژانویه", "فوریه", "مارس", "آوریل", "مه", "ژوئن", "ژوئیه", "اوت", "سپتامبر", "اکتبر", "نوامبر", "دسامبر")
+            "fr" -> listOf("Janv", "Févr", "Mars", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc")
+            "de" -> listOf("Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez")
+            "ru" -> listOf("Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек")
+            "es" -> listOf("Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic")
+            "zh" -> listOf("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月")
+            else -> listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+        }
+    }
+
+    fun getWeekdayHeaders(locale: String): List<String> {
+        return when (locale) {
+            "hi" -> listOf("रवि", "सोम", "मंगल", "बुध", "गुरु", "शुक्र", "शनि")
+            "ur" -> listOf("اتوار", "پیر", "منگل", "بدھ", "جمعرات", "جمعہ", "ہفتہ")
+            "ar" -> listOf("الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت")
+            "bn" -> listOf("রবি", "সোম", "মঙ্গল", "বুধ", "বৃহঃ", "শুক্র", "শনি")
+            "gu" -> listOf("રવિ", "સોમ", "મંગળ", "બુધ", "ગુરુ", "શુક્ર", "શનિ")
+            "mr" -> listOf("रवि", "सोम", "मंगळ", "बुध", "गुरु", "शुक्र", "शनि")
+            "ta" -> listOf("ஞாயிறு", "திங்கள்", "செவ்வாய்", "புதன்", "வியாழன்", "வெள்ளி", "சனி")
+            "te" -> listOf("ఆది", "సోమ", "మంగళ", "బుధ", "గురు", "శుక్ర", "శని")
+            "ml" -> listOf("ഞായർ", "തിങ്കൾ", "ചൊവ്വ", "ബുധൻ", "വ്യാഴം", "വെള്ളി", "ശനി")
+            "kn" -> listOf("ಭಾನು", "ಸೋಮ", "ಮಂಗಳ", "ಬುಧ", "ಗುರು", "ಶುಕ್ರ", "ಶನಿ")
+            "pa" -> listOf("ਐਤ", "ਸੋਮ", "ਮੰਗਲ", "ਬੁੱਧ", "ਵੀਰ", "ਸ਼ੁੱਕਰ", "ਸ਼ਨੀ")
+            "or" -> listOf("ରବି", "ସୋମ", "ମଙ୍ଗଳ", "ବୁଧ", "ଗୁରୁ", "ଶୁକ୍ର", "ଶନି")
+            "as" -> listOf("দেও", "সোম", "মঙ্গল", "বুধ", "বৃহঃ", "শুক্ৰ", "শনি")
+            "sw" -> listOf("JUM", "JMT", "JNN", "JTN", "ALH", "IJU", "JMS")
+            "so" -> listOf("AXA", "ISN", "TAL", "ARB", "KHA", "JIM", "SAB")
+            "ha" -> listOf("LAH", "LIT", "TAL", "LAR", "ALH", "JUM", "ASAB")
+            "tr" -> listOf("PAZ", "PZT", "SAL", "ÇAR", "PER", "CUM", "CTS")
+            "id" -> listOf("MIN", "SEN", "SEL", "RAB", "KAM", "JUM", "SAB")
+            "ms" -> listOf("AHA", "ISN", "SEL", "RAB", "KHA", "JUM", "SAB")
+            "fa" -> listOf("یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه")
+            "fr" -> listOf("DIM", "LUN", "MAR", "MER", "JEU", "VEN", "SAM")
+            "de" -> listOf("SO", "MO", "DI", "MI", "DO", "FR", "SA")
+            "ru" -> listOf("ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ")
+            "es" -> listOf("DOM", "LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB")
+            "zh" -> listOf("日", "一", "二", "三", "四", "五", "六")
+            else -> listOf("SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT")
+        }
+    }
+
+    fun getFullDayNames(locale: String): List<String> {
+        return when (locale) {
+            "hi" -> listOf("रविवार", "सोमवार", "मंगलवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार")
+            "ur" -> listOf("اتوار", "پیر", "منگل", "بدھ", "جمعرات", "جمعہ", "ہفتہ")
+            "ar" -> listOf("الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت")
+            "bn" -> listOf("রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার")
+            "gu" -> listOf("રવિવાર", "સોમવાર", "મંગળવાર", "બુધવાર", "ગુરુવાર", "શુક્રવાર", "શનિવાર")
+            "mr" -> listOf("रविवार", "सोमवार", "मंगळवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार")
+            "ta" -> listOf("ஞாயிற்றுக்கிழமை", "திங்கட்கிழமை", "செவ்வாய்க்கிழமை", "புதன்கிழமை", "வியாழக்கிழமை", "வெள்ளிக்கிழமை", "சனிக்கிழமை")
+            "te" -> listOf("ఆదివారం", "సోమవారం", "మంగళవారం", "బుధవారం", "గురువారం", "శుక్రవారం", "శనివారం")
+            "ml" -> listOf("ഞായറാഴ്ച", "തിങ്കളാഴ്ച", "ചൊവ്വാഴ്ച", "ബുധനാഴ്ച", "വ്യാഴാഴ്ച", "വെള്ളിയാഴ്ച", "ശനിയാഴ്ച")
+            "kn" -> listOf("ಭಾನುವಾರ", "ಸೋಮವಾರ", "ಮಂಗಳವಾರ", "ಬುಧವಾರ", "ಗುರುವಾರ", "ಶುಕ್ರವಾರ", "ಶನಿವಾರ")
+            "pa" -> listOf("ਐਤਵਾਰ", "ਸੋਮਵਾਰ", "ਮੰਗਲਵਾਰ", "ਬੁੱਧਵਾਰ", "ਵੀਰਵਾਰ", "ਸ਼ੁੱਕਰਵਾਰ", "ਸ਼ਨੀਵਾਰ")
+            "or" -> listOf("ରବିବାର", "ସୋମବାର", "ମଙ୍ଗଳବାର", "ବୁଧବାର", "ଗୁରୁବାର", "ଶୁକ୍ରବାର", "ଶନିବାର")
+            "as" -> listOf("দেওবাৰ", "সোমবাৰ", "মঙলবাৰ", "বুধবাৰ", "বৃহস্পতিবাৰ", "শুক্ৰবাৰ", "শনিবাৰ")
+            "sw" -> listOf("Jumapili", "Jumatatu", "Jumanne", "Jumatano", "Alhamisi", "Ijumaa", "Jumamosi")
+            "so" -> listOf("Axad", "Isniin", "Talaado", "Arbaco", "Khamiis", "Jimce", "Sabti")
+            "ha" -> listOf("Lahadi", "Litinin", "Talata", "Laraba", "Alhamis", "Juma'a", "Asabar")
+            "tr" -> listOf("Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi")
+            "id" -> listOf("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu")
+            "ms" -> listOf("Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu")
+            "fa" -> listOf("یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه")
+            "fr" -> listOf("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi")
+            "de" -> listOf("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag")
+            "ru" -> listOf("Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота")
+            "es" -> listOf("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado")
+            "zh" -> listOf("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
+            else -> listOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+        }
+    }
+
+    fun formatSelectedDateHeading(date: Date, locale: String): String {
+        val cal = Calendar.getInstance().apply { time = date }
+        val dayOfWeekIdx = cal.get(Calendar.DAY_OF_WEEK) // 1 = Sunday, 2 = Monday, ...
+        val day = cal.get(Calendar.DAY_OF_MONTH)
+        val monthIdx = cal.get(Calendar.MONTH) // 0-based
+        val year = cal.get(Calendar.YEAR)
+
+        val fullMonths = getGregorianMonthNames(locale)
+        val monthName = fullMonths.getOrElse(monthIdx) { SimpleDateFormat("MMMM", Locale.US).format(date) }
+
+        val fullDays = getFullDayNames(locale)
+        val dayName = fullDays.getOrElse(dayOfWeekIdx - 1) { SimpleDateFormat("EEEE", Locale.US).format(date) }
+
+        return when (locale) {
+            "hi", "mr", "gu", "pa", "bn", "ta", "te", "ml", "kn", "or", "as" -> "$dayName, $day $monthName $year"
+            "ur", "ar", "fa" -> "$dayName، $day $monthName $year"
+            "tr", "id", "ms", "fr", "de", "ru", "es", "sw", "so", "ha" -> "$dayName, $day $monthName $year"
+            "zh" -> "${year}年$monthName${day}日 $dayName"
+            else -> "$dayName, $monthName $day, $year"
+        }
+    }
+
+    fun formatGregorianDate(date: Date, locale: String): String {
+        val cal = Calendar.getInstance().apply { time = date }
+        val day = cal.get(Calendar.DAY_OF_MONTH)
+        val monthIdx = cal.get(Calendar.MONTH)
+        val year = cal.get(Calendar.YEAR)
+
+        val fullMonths = getGregorianMonthNames(locale)
+        val monthName = fullMonths.getOrElse(monthIdx) { SimpleDateFormat("MMMM", Locale.US).format(date) }
+
+        return when (locale) {
+            "hi", "mr", "gu", "pa", "bn", "ta", "te", "ml", "kn", "or", "as" -> "$day $monthName $year"
+            "ur", "ar", "fa" -> "$day $monthName $year"
+            "tr", "id", "ms", "fr", "de", "ru", "es", "sw", "so", "ha" -> "$day $monthName $year"
+            "zh" -> "${year}年$monthName${day}日"
+            else -> "$monthName $day, $year"
+        }
+    }
+
+    fun formatTodayButtonLabel(date: Date, locale: String): String {
+        val cal = Calendar.getInstance().apply { time = date }
+        val day = cal.get(Calendar.DAY_OF_MONTH)
+        val monthIdx = cal.get(Calendar.MONTH)
+
+        val shortMonths = getGregorianShortMonthNames(locale)
+        val monthName = shortMonths.getOrElse(monthIdx) { SimpleDateFormat("MMM", Locale.US).format(date) }
+
+        return when (locale) {
+            "hi", "mr", "gu", "pa", "bn", "ta", "te", "ml", "kn", "or", "as" -> "$day $monthName"
+            "ur", "ar", "fa" -> "$day $monthName"
+            "tr", "id", "ms", "fr", "de", "ru", "es", "sw", "so", "ha" -> "$day $monthName"
+            "zh" -> "$monthName${day}日"
+            else -> "$monthName $day"
+        }
+    }
+}
+

@@ -1,0 +1,1138 @@
+package com.tasbih.digitaltasbih.ui.screens.tasbih
+
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.interaction.MutableInteractionSource
+
+import android.widget.Toast
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import com.tasbih.digitaltasbih.data.BeadMarbleSkin
+import com.tasbih.digitaltasbih.data.TasbihDhikrItem
+import com.tasbih.digitaltasbih.data.TasbihRepository
+
+/**
+ * 1. SET TARGET MODAL (Exact Screenshot 000325)
+ * Presets: 7, 11, 33, 66, 99, 100, 200, 500
+ * Custom target input field + [ Done ✓ ]
+ */
+@Composable
+fun SetTargetModal(
+    currentTarget: Int,
+    onSelectTarget: (Int) -> Unit,
+    onDismiss: () -> Unit
+) {
+    var selectedVal by remember { mutableIntStateOf(currentTarget) }
+    var customText by remember { mutableStateOf("") }
+    val presets = listOf(7, 11, 33, 66, 99, 100, 200, 500)
+
+    Dialog(onDismissRequest = onDismiss) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(24.dp))
+                .background(Color(0xFFFAF7F2))
+                .border(1.5.dp, Color(0xFFC9A84C).copy(alpha = 0.5f), RoundedCornerShape(24.dp))
+                .padding(20.dp)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                // Top handle
+                Box(
+                    modifier = Modifier
+                        .width(42.dp)
+                        .height(4.dp)
+                        .clip(RoundedCornerShape(2.dp))
+                        .background(Color(0xFFC9A84C).copy(alpha = 0.4f))
+                )
+
+                // Title
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Text(text = "🎯", fontSize = 16.sp)
+                    Text(
+                        text = "SET TARGET",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = Color(0xFF0E5D47),
+                        letterSpacing = 0.8.sp
+                    )
+                }
+
+                // 8 Preset Buttons Grid (4x2)
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(4),
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    items(presets) { preset ->
+                        val isSelected = (selectedVal == preset)
+                        Box(
+                            modifier = Modifier
+                                .height(46.dp)
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(if (isSelected) Color(0xFFFEF9EE) else Color.White)
+                                .border(
+                                    width = if (isSelected) 2.dp else 1.dp,
+                                    color = if (isSelected) Color(0xFF0E5D47) else Color(0xFFE2E8F0),
+                                    shape = RoundedCornerShape(12.dp)
+                                )
+                                .clickable {
+                                    selectedVal = preset
+                                    customText = ""
+                                },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = preset.toString(),
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = if (isSelected) Color(0xFF0E5D47) else Color(0xFF8A6414)
+                            )
+                        }
+                    }
+                }
+
+                // Custom Target Input + [+ Set] Button
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    OutlinedTextField(
+                        value = customText,
+                        onValueChange = { customText = it.filter { char -> char.isDigit() } },
+                        placeholder = {
+                            Text(
+                                text = "Custom Target (e.g. 40, 1000)",
+                                fontSize = 12.sp,
+                                color = Color(0xFF94A3B8)
+                            )
+                        },
+                        singleLine = true,
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(50.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = Color(0xFF0E5D47),
+                            unfocusedBorderColor = Color(0xFF0E5D47).copy(alpha = 0.4f),
+                            focusedContainerColor = Color.White,
+                            unfocusedContainerColor = Color.White
+                        )
+                    )
+
+                    Button(
+                        onClick = {
+                            val parsed = customText.toIntOrNull()
+                            if (parsed != null && parsed > 0) {
+                                selectedVal = parsed
+                            }
+                        },
+                        modifier = Modifier.height(50.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0E5D47))
+                    ) {
+                        Text(text = "+ Set", fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+
+                // [ Done ✓ ] Button
+                Button(
+                    onClick = {
+                        val parsed = customText.toIntOrNull()
+                        val finalTarget = if (parsed != null && parsed > 0) parsed else selectedVal
+                        onSelectTarget(finalTarget)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(48.dp),
+                    shape = RoundedCornerShape(14.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0E5D47))
+                ) {
+                    Text(
+                        text = "Done ✓",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 2. ADD CUSTOM DHIKR MODAL (Exact Screenshot 000219)
+ */
+@Composable
+fun AddCustomDhikrModal(
+    onAddDhikr: (name: String, arabic: String) -> Unit,
+    onDismiss: () -> Unit
+) {
+    var inputText by remember { mutableStateOf("") }
+    val customDhikrs = remember {
+        TasbihRepository.getAllDhikrs().filter { it.isCustom }
+    }
+
+    Dialog(onDismissRequest = onDismiss) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(24.dp))
+                .background(Color(0xFFFAF7F2))
+                .border(1.5.dp, Color(0xFFC9A84C).copy(alpha = 0.5f), RoundedCornerShape(24.dp))
+                .padding(20.dp)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                // Top handle
+                Box(
+                    modifier = Modifier
+                        .width(42.dp)
+                        .height(4.dp)
+                        .clip(RoundedCornerShape(2.dp))
+                        .background(Color(0xFFC9A84C).copy(alpha = 0.4f))
+                        .align(Alignment.CenterHorizontally)
+                )
+
+                // Header with Close [✕]
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Text(text = "✏️", fontSize = 16.sp)
+                        Text(
+                            text = "Add Custom Dhikr",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF0E5D47)
+                        )
+                    }
+
+                    Text(
+                        text = "✕",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF64748B),
+                        modifier = Modifier.clickable { onDismiss() }
+                    )
+                }
+
+                Text(
+                    text = "Enter your Dhikr or Dua:",
+                    fontSize = 12.5.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xFF334155)
+                )
+
+                // Input + [+ Add]
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    OutlinedTextField(
+                        value = inputText,
+                        onValueChange = { inputText = it },
+                        placeholder = {
+                            Text(
+                                text = "e.g. SubhanAllah / سُبْحَانَ اللَّهِ",
+                                fontSize = 12.sp,
+                                color = Color(0xFF94A3B8)
+                            )
+                        },
+                        singleLine = true,
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(50.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = Color(0xFF0E5D47),
+                            unfocusedBorderColor = Color(0xFF0E5D47).copy(alpha = 0.4f),
+                            focusedContainerColor = Color.White,
+                            unfocusedContainerColor = Color.White
+                        )
+                    )
+
+                    Button(
+                        onClick = {
+                            if (inputText.isNotBlank()) {
+                                onAddDhikr(inputText.trim(), inputText.trim())
+                                inputText = ""
+                                onDismiss()
+                            }
+                        },
+                        modifier = Modifier.height(50.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0E5D47))
+                    ) {
+                        Text(text = "+ Add", fontSize = 13.5.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+
+                HorizontalDivider(color = Color(0xFFE2E8F0))
+
+                // Custom Dhikrs List or Empty State
+                Text(
+                    text = "📿 My Custom Dhikrs (${customDhikrs.size})",
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF1E293B)
+                )
+
+                if (customDhikrs.isEmpty()) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text(text = "✨", fontSize = 28.sp)
+                        Text(
+                            text = "No custom dhikrs yet. Type above to add one!",
+                            fontSize = 12.sp,
+                            color = Color(0xFF64748B),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(max = 200.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(customDhikrs) { d ->
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .background(Color.White)
+                                    .border(1.dp, Color(0xFFE2E8F0), RoundedCornerShape(12.dp))
+                                    .padding(12.dp)
+                            ) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(
+                                        text = d.getName("en"),
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color(0xFF0E5D47)
+                                    )
+                                    Text(
+                                        text = d.arabic,
+                                        fontSize = 15.sp,
+                                        fontFamily = FontFamily.Serif,
+                                        color = Color(0xFF0E5D47)
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 3. SELECT DHIKR BOTTOMSHEET MODAL (Exact Screenshot 000226)
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SelectDhikrModal(
+    activeDhikrId: String,
+    onSelectDhikr: (TasbihDhikrItem) -> Unit,
+    onOpenAddCustom: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    val allDhikrs = remember { TasbihRepository.getAllDhikrs() }
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = Color(0xFFFAF7F2),
+        shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        ) {
+            // Header: Select Dhikr + [✎] Edit
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Select Dhikr",
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color(0xFF14241E)
+                )
+
+                Box(
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color.White)
+                        .border(1.dp, Color(0xFFCBD5E1), RoundedCornerShape(8.dp))
+                        .clickable {
+                            onDismiss()
+                            onOpenAddCustom()
+                        },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = "✏️", fontSize = 14.sp)
+                }
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // Scrollable List of Dhikrs
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 480.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                items(allDhikrs) { item ->
+                    val isSelected = (item.id == activeDhikrId)
+                    val count = TasbihRepository.getAllTimeCount(item.id)
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(Color.White)
+                            .border(
+                                width = if (isSelected) 1.8.dp else 1.dp,
+                                color = if (isSelected) Color(0xFF0E5D47) else Color(0xFFE2E8F0),
+                                shape = RoundedCornerShape(16.dp)
+                            )
+                            .clickable {
+                                onSelectDhikr(item)
+                                onDismiss()
+                            }
+                            .padding(horizontal = 14.dp, vertical = 12.dp)
+                    ) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            // Circular icon badge
+                            Box(
+                                modifier = Modifier
+                                    .size(34.dp)
+                                    .clip(CircleShape)
+                                    .background(Color(0xFF0E5D47)),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(text = item.icon, fontSize = 15.sp)
+                            }
+
+                            Spacer(modifier = Modifier.width(10.dp))
+
+                            // Name
+                            Text(
+                                text = item.getName("en"),
+                                fontSize = 14.5.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color(0xFF14241E),
+                                modifier = Modifier.weight(1f)
+                            )
+
+                            // Arabic
+                            Text(
+                                text = item.arabic,
+                                fontSize = 15.5.sp,
+                                fontWeight = FontWeight.Bold,
+                                fontFamily = FontFamily.Serif,
+                                color = Color(0xFF0E5D47)
+                            )
+
+                            Spacer(modifier = Modifier.width(10.dp))
+
+                            // Count Pill Badge
+                            if (count > 0) {
+                                Box(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(10.dp))
+                                        .background(Color(0xFF0E5D47))
+                                        .padding(horizontal = 8.dp, vertical = 3.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = count.toString(),
+                                        fontSize = 11.5.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color(0xFFF3D48A)
+                                    )
+                                }
+                                Spacer(modifier = Modifier.width(8.dp))
+                            }
+
+                            // Active Checkmark
+                            if (isSelected) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(22.dp)
+                                        .clip(CircleShape)
+                                        .background(Color(0xFF0E5D47)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(text = "✓", fontSize = 12.sp, color = Color.White, fontWeight = FontWeight.Bold)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+        }
+    }
+}
+
+/**
+ * 4. COLOURS & MARBLES GALLERY MODAL
+ */
+@Composable
+fun MarbleGalleryModal(
+    activeSkinId: String,
+    onSelectSkin: (BeadMarbleSkin) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val context = LocalContext.current
+    val allSkins = remember { TasbihRepository.getAllBeadSkins() }
+    var selectedFamily by remember { mutableStateOf("all") }
+
+    val filtered = remember(selectedFamily, allSkins) {
+        if (selectedFamily == "all") allSkins else allSkins.filter { it.family == selectedFamily }
+    }
+
+    Dialog(onDismissRequest = onDismiss) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(24.dp))
+                .background(Color(0xFFFAF7F2))
+                .border(1.5.dp, Color(0xFFC9A84C).copy(alpha = 0.5f), RoundedCornerShape(24.dp))
+                .padding(18.dp)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                // Header
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Text(text = "🎨", fontSize = 16.sp)
+                        Text(
+                            text = "Colours & Marbles",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = Color(0xFF0E5D47)
+                        )
+                    }
+
+                    Text(
+                        text = "✕",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF64748B),
+                        modifier = Modifier.clickable { onDismiss() }
+                    )
+                }
+
+                // Category Filter Pills: [ All ] [ Wood ] [ Stone ] [ Glass ] [ Metal ]
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    listOf("all" to "All", "wood" to "Wood", "stone" to "Stone", "metal" to "Metal").forEach { (fKey, fLabel) ->
+                        val isSel = (selectedFamily == fKey)
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(if (isSel) Color(0xFF0E5D47) else Color.White)
+                                .border(1.dp, if (isSel) Color(0xFF0E5D47) else Color(0xFFCBD5E1), RoundedCornerShape(12.dp))
+                                .clickable { selectedFamily = fKey }
+                                .padding(horizontal = 10.dp, vertical = 5.dp)
+                        ) {
+                            Text(
+                                text = fLabel,
+                                fontSize = 11.5.sp,
+                                fontWeight = if (isSel) FontWeight.Bold else FontWeight.Medium,
+                                color = if (isSel) Color.White else Color(0xFF334155)
+                            )
+                        }
+                    }
+                }
+
+                // Grid of Marbles
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(3),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(max = 380.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    items(filtered) { skin ->
+                        val isSelected = (skin.id == activeSkinId)
+                        val isUnlocked = TasbihRepository.isMarbleUnlocked(skin.id)
+
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(14.dp))
+                                .background(Color.White)
+                                .border(
+                                    width = if (isSelected) 2.dp else 1.dp,
+                                    color = if (isSelected) Color(0xFF0E5D47) else Color(0xFFE2E8F0),
+                                    shape = RoundedCornerShape(14.dp)
+                                )
+                                .clickable {
+                                    if (isUnlocked) {
+                                        TasbihRepository.setActiveBeadSkin(skin.id)
+                                        onSelectSkin(skin)
+                                        onDismiss()
+                                    } else {
+                                        // Demo 24h unlock
+                                        TasbihRepository.unlockMarble24Hours(skin.id)
+                                        TasbihRepository.setActiveBeadSkin(skin.id)
+                                        onSelectSkin(skin)
+                                        Toast.makeText(context, "${skin.name} Unlocked for 24 Hours! 🌟", Toast.LENGTH_SHORT).show()
+                                        onDismiss()
+                                    }
+                                }
+                                .padding(10.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                // 3D Bead Sphere Preview
+                                val baseCol = try { Color(android.graphics.Color.parseColor(skin.baseColor)) } catch (_: Exception) { Color(0xFF8A5A34) }
+                                val hlCol = try { Color(android.graphics.Color.parseColor(skin.highlightColor)) } catch (_: Exception) { Color(0xFFECCFA3) }
+
+                                Canvas(modifier = Modifier.size(36.dp)) {
+                                    drawCircle(
+                                        brush = Brush.radialGradient(
+                                            colors = listOf(hlCol, baseCol, Color.Black.copy(alpha = 0.6f)),
+                                            center = androidx.compose.ui.geometry.Offset(size.width * 0.35f, size.height * 0.35f),
+                                            radius = size.width * 0.55f
+                                        )
+                                    )
+                                }
+
+                                Text(
+                                    text = skin.name,
+                                    fontSize = 11.5.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color(0xFF1E293B),
+                                    maxLines = 1
+                                )
+
+                                if (skin.tier == "premium") {
+                                    Box(
+                                        modifier = Modifier
+                                            .clip(RoundedCornerShape(8.dp))
+                                            .background(if (isUnlocked) Color(0xFFEAF5EE) else Color(0xFFFEF3C7))
+                                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                                    ) {
+                                        Text(
+                                            text = if (isUnlocked) "Unlocked ✓" else "⭐ 24h Unlock",
+                                            fontSize = 9.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = if (isUnlocked) Color(0xFF0E5D47) else Color(0xFFB45309)
+                                        )
+                                    }
+                                } else {
+                                    Text(
+                                        text = "Free",
+                                        fontSize = 9.5.sp,
+                                        color = Color(0xFF0E5D47),
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 5. SPOTLIGHT TOUR MODAL (Screenshots 235450 & 235503)
+ */
+@Composable
+fun TasbihSpotlightTour(
+    step: Int,
+    totalSteps: Int = 2,
+    lang: String = "hi",
+    onNext: () -> Unit,
+    onDone: () -> Unit = onNext,
+    onSkip: () -> Unit
+) {
+    val l = lang.lowercase().split("-")[0]
+
+    val stepLabel = when (l) {
+        "hi" -> "कदम ${step} / ${totalSteps}"
+        "ur" -> "مرحلہ ${step} از ${totalSteps}"
+        "ar" -> "الخطوة ${step} من ${totalSteps}"
+        "bn" -> "ধাপ ${step} / ${totalSteps}"
+        "tr" -> "Adım ${step} / ${totalSteps}"
+        "id" -> "Langkah ${step} dari ${totalSteps}"
+        "ms" -> "Langkah ${step} / ${totalSteps}"
+        "fa" -> "مرحله ${step} از ${totalSteps}"
+        "fr" -> "Étape ${step} sur ${totalSteps}"
+        "de" -> "Schritt ${step} von ${totalSteps}"
+        "ru" -> "Шаг ${step} из ${totalSteps}"
+        else -> "Step ${step} of ${totalSteps}"
+    }
+
+    val title = if (step == 1) {
+        when (l) {
+            "hi" -> "🎯 तस्बीह का लक्ष्य (Target)"
+            "ur" -> "🎯 تسبیح کا ہدف (Target)"
+            "ar" -> "🎯 هدف التسبيح"
+            "bn" -> "🎯 তসবিহের লক্ষ্য (Target)"
+            "tr" -> "🎯 Zikir Hedefi"
+            "id" -> "🎯 Target Zikir"
+            "ms" -> "🎯 Sasaran Zikir"
+            "fa" -> "🎯 هدف ذکر"
+            "fr" -> "🎯 Objectif de Dhikr"
+            "de" -> "🎯 Dhikr-Ziel"
+            "ru" -> "🎯 Цель Зикра"
+            else -> "🎯 Set Dhikr Target"
+        }
+    } else {
+        when (l) {
+            "hi" -> "📿 तस्बीह काउंटर (Tap to Count)"
+            "ur" -> "📿 تسبیح کاؤنٹر (Tap to Count)"
+            "ar" -> "📿 عداد التسبيح الذكي"
+            "bn" -> "📿 তসবিহ কাউন্টার (Tap to Count)"
+            "tr" -> "📿 Zikir Sayacı (Saymak İçin Dokun)"
+            "id" -> "📿 Penghitung Tasbih"
+            "ms" -> "📿 Pengira Tasbih"
+            "fa" -> "📿 شمارنده تسبیح"
+            "fr" -> "📿 Compteur de Tasbih"
+            "de" -> "📿 Tasbih-Zähler"
+            "ru" -> "📿 Счетчик Тасбиха"
+            else -> "📿 Tasbih Counter Dial"
+        }
+    }
+
+    val description = if (step == 1) {
+        when (l) {
+            "hi" -> "यहाँ से आप अपनी तस्बीह का लक्ष्य (जैसे 33, 100 या मनचाहा नंबर) सेट कर सकते हैं ताकि गिनती आसान रहे।"
+            "ur" -> "یہاں سے آپ اپنی تسبیح کا ہدف (جیسے 33، 100 یا اپنی پسندیدہ تعداد) سیٹ کر سکتے ہیں تاکہ شمار کرنا آسان رہے۔"
+            "ar" -> "هنا يمكنك تحديد هدف التسبيح (مثل 33، 100 أو رقم مخصص) لتتبع أذكارك بسهولة."
+            "bn" -> "এখান থেকে আপনি আপনার তসবিহের লক্ষ্য (যেমন ৩৩, ১০০ বা কাস্টম) সেট করতে পারেন যাতে গণনা সহজ হয়।"
+            else -> "Here you can set or change your Dhikr target (e.g. 33, 100, or custom) to stay on track."
+        }
+    } else {
+        when (l) {
+            "hi" -> "इस बड़े डायल पर कहीं भी टैप करके आप अपना विर्द और ज़िक्र आसानी से गिन सकते हैं।"
+            "ur" -> "اس بڑے ڈائل پر کہیں بھی ٹیپ کر کے آپ اپنا ورد اور ذکر باآسانی شمار کر سکتے ہیں۔"
+            "ar" -> "اضغط في أي مكان على هذا القرص الكبير لحساب أذكارك اليومية بسهولة."
+            "bn" -> "এই বড় ডায়ালের যেকোনো স্থানে ট্যাপ করে আপনি সহজে আপনার জিকির গণনা করতে পারেন।"
+            else -> "Tap anywhere on this large dial to effortlessly count your daily dhikr."
+        }
+    }
+
+    val nextBtnText = when (l) {
+        "hi" -> "आगे बढ़ें ➔"
+        "ur" -> "اگلا ➔"
+        "ar" -> "التالي ➔"
+        "bn" -> "পরবর্তী ➔"
+        "tr" -> "İleri ➔"
+        "id" -> "Lanjut ➔"
+        "ms" -> "Seterusnya ➔"
+        "fa" -> "بعدی ➔"
+        "fr" -> "Suivant ➔"
+        "de" -> "Weiter ➔"
+        "ru" -> "Далее ➔"
+        else -> "Next ➔"
+    }
+
+    val doneBtnText = when (l) {
+        "hi" -> "समझ गया! ✓"
+        "ur" -> "سمجھ گیا! ✓"
+        "ar" -> "فهمت! ✓"
+        "bn" -> "বুঝেছি! ✓"
+        "tr" -> "Anladım! ✓"
+        "id" -> "Paham! ✓"
+        "ms" -> "Faham! ✓"
+        "fa" -> "متوجه شدم! ✓"
+        "fr" -> "Compris! ✓"
+        "de" -> "Verstanden! ✓"
+        "ru" -> "Понятно! ✓"
+        else -> "Got it! ✓"
+    }
+
+    val skipBtnText = when (l) {
+        "hi" -> "छोड़ें"
+        "ur" -> "چھوڑیں"
+        "ar" -> "تخطي"
+        "bn" -> "এড়িয়ে যান"
+        "tr" -> "Geç"
+        "id" -> "Lewati"
+        "ms" -> "Langkau"
+        "fa" -> "رد کردن"
+        "fr" -> "Passer"
+        "de" -> "Überspringen"
+        "ru" -> "Пропустить"
+        else -> "Skip"
+    }
+
+    // Gold pulse animation for spotlight ring
+    val infiniteTransition = rememberInfiniteTransition(label = "tasbihSpotlightPulse")
+    val pulseAlpha by infiniteTransition.animateFloat(
+        initialValue = 0.5f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(900, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "pulseAlpha"
+    )
+
+    // Bouncing animation for downward pointing arrow
+    val bounceOffset by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 6f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(600, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "bounceOffset"
+    )
+
+    // Full screen overlay - docked at the top matching PrayerSpotlightTourModal
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xD9030E0B))
+            .statusBarsPadding()
+            .padding(top = 70.dp, start = 14.dp, end = 14.dp)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) {},
+        contentAlignment = Alignment.TopCenter
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            // Spotlight Tour Card (Docked near the top)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .shadow(
+                        elevation = 24.dp,
+                        shape = RoundedCornerShape(22.dp),
+                        spotColor = Color(0xFFF3D48A),
+                        ambientColor = Color.Black
+                    )
+                    .clip(RoundedCornerShape(22.dp))
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                Color(0xFF0E4435),
+                                Color(0xFF082D23),
+                                Color(0xFF051E17)
+                            )
+                        )
+                    )
+                    .border(
+                        width = 1.5.dp,
+                        color = Color(0xFFF3D48A).copy(alpha = pulseAlpha),
+                        shape = RoundedCornerShape(22.dp)
+                    )
+                    .padding(20.dp)
+            ) {
+                // Top Row: Step Badge + Skip
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Step pill badge
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(Color(0x33F3D48A))
+                            .border(1.dp, Color(0x66F3D48A), RoundedCornerShape(12.dp))
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                    ) {
+                        Text(
+                            text = "✨ ${stepLabel}",
+                            color = Color(0xFFF3D48A),
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+                    // Skip button
+                    Text(
+                        text = skipBtnText,
+                        color = Color(0xFF94A3B8),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.clickable(onClick = onSkip)
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                // Title
+                Text(
+                    text = title,
+                    color = Color(0xFFF3D48A),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.ExtraBold
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Description
+                Text(
+                    text = description,
+                    color = Color(0xFFE2E8F0),
+                    fontSize = 13.5.sp,
+                    lineHeight = 20.sp,
+                    fontWeight = FontWeight.Normal
+                )
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                // Bottom Row: Pagination dots + Primary Action Button
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Step dots
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        repeat(totalSteps) { idx ->
+                            val isCurr = idx + 1 == step
+                            Box(
+                                modifier = Modifier
+                                    .height(6.dp)
+                                    .width(if (isCurr) 18.dp else 6.dp)
+                                    .clip(CircleShape)
+                                    .background(if (isCurr) Color(0xFFF3D48A) else Color(0x44F3D48A))
+                            )
+                        }
+                    }
+
+                    // Action Button
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(20.dp))
+                            .background(
+                                Brush.horizontalGradient(
+                                    colors = listOf(Color(0xFFF3D48A), Color(0xFFD8A846))
+                                )
+                            )
+                            .clickable(onClick = if (step >= totalSteps) onDone else onNext)
+                            .padding(horizontal = 22.dp, vertical = 10.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = if (step >= totalSteps) doneBtnText else nextBtnText,
+                            color = Color(0xFF0C382B),
+                            fontSize = 13.5.sp,
+                            fontWeight = FontWeight.ExtraBold
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            // Pointing Downward Arrow with golden border
+            Box(
+                modifier = Modifier
+                    .offset(y = bounceOffset.dp)
+                    .size(32.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color(0xFFF3D48A))
+                    .border(1.5.dp, Color(0xFFCA8A04), RoundedCornerShape(8.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "⬇",
+                    color = Color(0xFF14532D),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Black
+                )
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // Highlighted Target Spotlight Preview (Step 1: Target Pill, Step 2: Dial Counter)
+            if (step == 1) {
+                // Step 1: Glowing Highlighted Target Box
+                Box(
+                    modifier = Modifier
+                        .shadow(
+                            elevation = 20.dp,
+                            shape = RoundedCornerShape(16.dp),
+                            spotColor = Color(0xFFF3D48A)
+                        )
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(Color.White)
+                        .border(
+                            width = 2.dp,
+                            color = Color(0xFFF3D48A).copy(alpha = pulseAlpha),
+                            shape = RoundedCornerShape(16.dp)
+                        )
+                        .padding(horizontal = 20.dp, vertical = 12.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(Color(0xFFF0F5F2))
+                                .border(1.dp, Color(0xFFD8E6DE), RoundedCornerShape(12.dp))
+                                .padding(horizontal = 16.dp, vertical = 7.dp)
+                        ) {
+                            Text(
+                                text = "Target: 33",
+                                color = Color(0xFF0E5D47),
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.5.sp
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(Color(0xFF0E5D47))
+                                .padding(horizontal = 16.dp, vertical = 7.dp)
+                        ) {
+                            Text(
+                                text = if (l == "hi") "बदलें ✎" else if (l == "ur") "تبدیل کریں ✎" else "Change ✎",
+                                color = Color(0xFFF3D48A),
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.5.sp
+                            )
+                        }
+                    }
+                }
+            } else {
+                // Step 2: Glowing Highlighted Counter Dial
+                Box(
+                    modifier = Modifier
+                        .size(175.dp)
+                        .shadow(
+                            elevation = 28.dp,
+                            shape = CircleShape,
+                            spotColor = Color(0xFFF3D48A)
+                        )
+                        .clip(CircleShape)
+                        .background(
+                            Brush.radialGradient(
+                                colors = listOf(
+                                    Color(0xFF145D47),
+                                    Color(0xFF0B3A2C),
+                                    Color(0xFF051C15)
+                                )
+                            )
+                        )
+                        .border(
+                            width = 3.dp,
+                            color = Color(0xFFF3D48A).copy(alpha = pulseAlpha),
+                            shape = CircleShape
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "0000",
+                            color = Color(0xFFF3D48A),
+                            fontSize = 32.sp,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Monospace
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = "👆 TAP TO COUNT",
+                            color = Color.White.copy(alpha = 0.9f),
+                            fontSize = 10.5.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            letterSpacing = 1.sp
+                        )
+                    }
+                }
+            }
+        }
+    }
+}

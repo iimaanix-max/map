@@ -1,0 +1,1483 @@
+{
+  "popular": [
+    "India",
+    "Pakistan",
+    "Saudi Arabia",
+    "United Arab Emirates",
+    "Bangladesh",
+    "United Kingdom",
+    "United States",
+    "Canada",
+    "Indonesia",
+    "Malaysia",
+    "Turkey",
+    "Egypt",
+    "Qatar",
+    "Kuwait",
+    "Oman",
+    "Bahrain"
+  ],
+  "countries": [
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Andorra",
+    "Angola",
+    "Antigua and Barbuda",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahamas",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Belarus",
+    "Belgium",
+    "Belize",
+    "Benin",
+    "Bhutan",
+    "Bolivia",
+    "Bosnia and Herzegovina",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cabo Verde",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Central African Republic",
+    "Chad",
+    "Chile",
+    "China",
+    "Colombia",
+    "Comoros",
+    "Congo",
+    "Costa Rica",
+    "Croatia",
+    "Cuba",
+    "Cyprus",
+    "Czechia",
+    "Denmark",
+    "Djibouti",
+    "Dominica",
+    "Dominican Republic",
+    "DR Congo",
+    "Ecuador",
+    "Egypt",
+    "El Salvador",
+    "Equatorial Guinea",
+    "Eritrea",
+    "Estonia",
+    "Eswatini",
+    "Ethiopia",
+    "Fiji",
+    "Finland",
+    "France",
+    "Gabon",
+    "Gambia",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "Grenada",
+    "Guatemala",
+    "Guinea",
+    "Guinea-Bissau",
+    "Guyana",
+    "Haiti",
+    "Honduras",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Israel",
+    "Italy",
+    "Ivory Coast",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Kiribati",
+    "Kosovo",
+    "Kuwait",
+    "Kyrgyzstan",
+    "Laos",
+    "Latvia",
+    "Lebanon",
+    "Lesotho",
+    "Liberia",
+    "Libya",
+    "Liechtenstein",
+    "Lithuania",
+    "Luxembourg",
+    "Madagascar",
+    "Malawi",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Marshall Islands",
+    "Mauritania",
+    "Mauritius",
+    "Mexico",
+    "Micronesia",
+    "Moldova",
+    "Monaco",
+    "Mongolia",
+    "Montenegro",
+    "Morocco",
+    "Mozambique",
+    "Myanmar",
+    "Namibia",
+    "Nauru",
+    "Nepal",
+    "Netherlands",
+    "New Zealand",
+    "Nicaragua",
+    "Niger",
+    "Nigeria",
+    "North Korea",
+    "North Macedonia",
+    "Norway",
+    "Oman",
+    "Pakistan",
+    "Palau",
+    "Palestine",
+    "Panama",
+    "Papua New Guinea",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Rwanda",
+    "Saint Kitts and Nevis",
+    "Saint Lucia",
+    "Saint Vincent and the Grenadines",
+    "Samoa",
+    "San Marino",
+    "Sao Tome and Principe",
+    "Saudi Arabia",
+    "Senegal",
+    "Serbia",
+    "Seychelles",
+    "Sierra Leone",
+    "Singapore",
+    "Slovakia",
+    "Slovenia",
+    "Solomon Islands",
+    "Somalia",
+    "South Africa",
+    "South Korea",
+    "South Sudan",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Suriname",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Taiwan",
+    "Tajikistan",
+    "Tanzania",
+    "Thailand",
+    "Timor-Leste",
+    "Togo",
+    "Tonga",
+    "Trinidad and Tobago",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Tuvalu",
+    "Uganda",
+    "Ukraine",
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States",
+    "Uruguay",
+    "Uzbekistan",
+    "Vanuatu",
+    "Vatican City",
+    "Venezuela",
+    "Vietnam",
+    "Yemen",
+    "Zambia",
+    "Zimbabwe"
+  ],
+  "statesCities": {
+    "India": {
+      "Andhra Pradesh": [
+        "Visakhapatnam",
+        "Vijayawada",
+        "Guntur",
+        "Nellore",
+        "Tirupati",
+        "Kurnool",
+        "Rajahmundry",
+        "Kadapa",
+        "Kakinada",
+        "Anantapur"
+      ],
+      "Arunachal Pradesh": [
+        "Itanagar",
+        "Naharlagun",
+        "Pasighat",
+        "Tawang"
+      ],
+      "Assam": [
+        "Guwahati",
+        "Silchar",
+        "Dibrugarh",
+        "Jorhat",
+        "Nagaon",
+        "Tezpur"
+      ],
+      "Bihar": [
+        "Patna",
+        "Gaya",
+        "Bhagalpur",
+        "Muzaffarpur",
+        "Darbhanga",
+        "Purnia",
+        "Ara",
+        "Begusarai"
+      ],
+      "Chhattisgarh": [
+        "Raipur",
+        "Bhilai",
+        "Bilaspur",
+        "Korba",
+        "Durg",
+        "Rajnandgaon"
+      ],
+      "Goa": [
+        "Panaji",
+        "Margao",
+        "Vasco da Gama",
+        "Mapusa"
+      ],
+      "Gujarat": [
+        "Ahmedabad",
+        "Surat",
+        "Vadodara",
+        "Rajkot",
+        "Bhavnagar",
+        "Jamnagar",
+        "Junagadh",
+        "Gandhinagar"
+      ],
+      "Haryana": [
+        "Faridabad",
+        "Gurugram",
+        "Panipat",
+        "Ambala",
+        "Hisar",
+        "Rohtak",
+        "Karnal",
+        "Sonipat"
+      ],
+      "Himachal Pradesh": [
+        "Shimla",
+        "Dharamshala",
+        "Solan",
+        "Mandi",
+        "Kullu"
+      ],
+      "Jharkhand": [
+        "Ranchi",
+        "Jamshedpur",
+        "Dhanbad",
+        "Bokaro",
+        "Deoghar"
+      ],
+      "Karnataka": [
+        "Bengaluru",
+        "Mysuru",
+        "Hubballi",
+        "Mangaluru",
+        "Belagavi",
+        "Kalaburagi",
+        "Davanagere"
+      ],
+      "Kerala": [
+        "Thiruvananthapuram",
+        "Kochi",
+        "Kozhikode",
+        "Thrissur",
+        "Kollam",
+        "Malappuram",
+        "Kannur",
+        "Palakkad"
+      ],
+      "Madhya Pradesh": [
+        "Bhopal",
+        "Indore",
+        "Jabalpur",
+        "Gwalior",
+        "Ujjain",
+        "Sagar",
+        "Ratlam"
+      ],
+      "Maharashtra": [
+        "Mumbai",
+        "Pune",
+        "Nagpur",
+        "Nashik",
+        "Aurangabad",
+        "Solapur",
+        "Thane",
+        "Kolhapur",
+        "Amravati",
+        "Malegaon"
+      ],
+      "Manipur": [
+        "Imphal",
+        "Thoubal"
+      ],
+      "Meghalaya": [
+        "Shillong",
+        "Tura"
+      ],
+      "Mizoram": [
+        "Aizawl",
+        "Lunglei"
+      ],
+      "Nagaland": [
+        "Kohima",
+        "Dimapur",
+        "Mokokchung"
+      ],
+      "Odisha": [
+        "Bhubaneswar",
+        "Cuttack",
+        "Rourkela",
+        "Berhampur",
+        "Sambalpur"
+      ],
+      "Punjab": [
+        "Ludhiana",
+        "Amritsar",
+        "Jalandhar",
+        "Patiala",
+        "Bathinda",
+        "Mohali"
+      ],
+      "Rajasthan": [
+        "Jaipur",
+        "Jodhpur",
+        "Udaipur",
+        "Kota",
+        "Ajmer",
+        "Bikaner",
+        "Alwar",
+        "Bharatpur"
+      ],
+      "Sikkim": [
+        "Gangtok",
+        "Namchi"
+      ],
+      "Tamil Nadu": [
+        "Chennai",
+        "Coimbatore",
+        "Madurai",
+        "Tiruchirappalli",
+        "Salem",
+        "Tirunelveli",
+        "Erode",
+        "Vellore"
+      ],
+      "Telangana": [
+        "Hyderabad",
+        "Warangal",
+        "Nizamabad",
+        "Karimnagar",
+        "Khammam"
+      ],
+      "Tripura": [
+        "Agartala",
+        "Udaipur (Tripura)"
+      ],
+      "Uttar Pradesh": [
+        "Lucknow",
+        "Kanpur",
+        "Ghaziabad",
+        "Agra",
+        "Varanasi",
+        "Meerut",
+        "Prayagraj",
+        "Bareilly",
+        "Aligarh",
+        "Moradabad",
+        "Saharanpur",
+        "Noida",
+        "Gorakhpur"
+      ],
+      "Uttarakhand": [
+        "Dehradun",
+        "Haridwar",
+        "Roorkee",
+        "Haldwani",
+        "Rishikesh"
+      ],
+      "West Bengal": [
+        "Kolkata",
+        "Howrah",
+        "Durgapur",
+        "Asansol",
+        "Siliguri",
+        "Malda"
+      ],
+      "Andaman and Nicobar Islands": [
+        "Port Blair"
+      ],
+      "Chandigarh": [
+        "Chandigarh"
+      ],
+      "Dadra and Nagar Haveli and Daman and Diu": [
+        "Daman",
+        "Silvassa"
+      ],
+      "Delhi": [
+        "New Delhi",
+        "Delhi"
+      ],
+      "Jammu and Kashmir": [
+        "Srinagar",
+        "Jammu",
+        "Anantnag",
+        "Baramulla"
+      ],
+      "Ladakh": [
+        "Leh",
+        "Kargil"
+      ],
+      "Lakshadweep": [
+        "Kavaratti"
+      ],
+      "Puducherry": [
+        "Puducherry",
+        "Karaikal"
+      ]
+    },
+    "Pakistan": {
+      "Punjab": [
+        "Lahore",
+        "Faisalabad",
+        "Rawalpindi",
+        "Multan",
+        "Gujranwala",
+        "Sialkot",
+        "Bahawalpur",
+        "Sargodha"
+      ],
+      "Sindh": [
+        "Karachi",
+        "Hyderabad",
+        "Sukkur",
+        "Larkana",
+        "Nawabshah"
+      ],
+      "Khyber Pakhtunkhwa": [
+        "Peshawar",
+        "Abbottabad",
+        "Mardan",
+        "Swat",
+        "Kohat"
+      ],
+      "Balochistan": [
+        "Quetta",
+        "Gwadar",
+        "Turbat",
+        "Khuzdar"
+      ],
+      "Islamabad Capital Territory": [
+        "Islamabad"
+      ],
+      "Gilgit-Baltistan": [
+        "Gilgit",
+        "Skardu"
+      ],
+      "Azad Kashmir": [
+        "Muzaffarabad",
+        "Mirpur",
+        "Rawalakot"
+      ]
+    },
+    "Bangladesh": {
+      "Dhaka": [
+        "Dhaka",
+        "Gazipur",
+        "Narayanganj",
+        "Tangail"
+      ],
+      "Chittagong": [
+        "Chittagong",
+        "Cox's Bazar",
+        "Comilla"
+      ],
+      "Khulna": [
+        "Khulna",
+        "Jessore",
+        "Kushtia"
+      ],
+      "Rajshahi": [
+        "Rajshahi",
+        "Bogra",
+        "Pabna"
+      ],
+      "Sylhet": [
+        "Sylhet",
+        "Moulvibazar"
+      ],
+      "Rangpur": [
+        "Rangpur",
+        "Dinajpur"
+      ],
+      "Barisal": [
+        "Barisal",
+        "Patuakhali"
+      ],
+      "Mymensingh": [
+        "Mymensingh",
+        "Jamalpur"
+      ]
+    },
+    "Saudi Arabia": {
+      "Makkah": [
+        "Makkah",
+        "Jeddah",
+        "Taif",
+        "Rabigh"
+      ],
+      "Madinah": [
+        "Madinah",
+        "Yanbu",
+        "Al Ula",
+        "Badr"
+      ],
+      "Riyadh": [
+        "Riyadh",
+        "Al Kharj",
+        "Ad Diriyah",
+        "Al Majma'ah"
+      ],
+      "Eastern Province": [
+        "Dammam",
+        "Khobar",
+        "Dhahran",
+        "Jubail",
+        "Al Ahsa",
+        "Qatif",
+        "Hafar Al Batin"
+      ],
+      "Asir": [
+        "Abha",
+        "Khamis Mushait"
+      ],
+      "Tabuk": [
+        "Tabuk",
+        "Duba"
+      ],
+      "Al Qassim": [
+        "Buraidah",
+        "Unaizah"
+      ],
+      "Hail": [
+        "Hail"
+      ],
+      "Jazan": [
+        "Jazan",
+        "Sabya"
+      ],
+      "Najran": [
+        "Najran"
+      ],
+      "Al Bahah": [
+        "Al Bahah"
+      ],
+      "Al Jawf": [
+        "Sakaka",
+        "Dumat Al Jandal"
+      ],
+      "Northern Borders": [
+        "Arar",
+        "Rafha"
+      ]
+    },
+    "United Arab Emirates": {
+      "Dubai": [
+        "Dubai",
+        "Deira",
+        "Bur Dubai",
+        "Jumeirah"
+      ],
+      "Abu Dhabi": [
+        "Abu Dhabi",
+        "Al Ain",
+        "Al Dhafra"
+      ],
+      "Sharjah": [
+        "Sharjah",
+        "Khor Fakkan",
+        "Kalba"
+      ],
+      "Ajman": [
+        "Ajman"
+      ],
+      "Ras Al Khaimah": [
+        "Ras Al Khaimah"
+      ],
+      "Fujairah": [
+        "Fujairah",
+        "Dibba Al Fujairah"
+      ],
+      "Umm Al Quwain": [
+        "Umm Al Quwain"
+      ]
+    },
+    "Qatar": {
+      "Doha": [
+        "Doha"
+      ],
+      "Al Rayyan": [
+        "Al Rayyan",
+        "Education City"
+      ],
+      "Al Wakrah": [
+        "Al Wakrah",
+        "Mesaieed"
+      ],
+      "Al Khor": [
+        "Al Khor"
+      ],
+      "Umm Salal": [
+        "Umm Salal Ali"
+      ],
+      "Al Daayen": [
+        "Lusail"
+      ]
+    },
+    "Kuwait": {
+      "Capital": [
+        "Kuwait City",
+        "Dasman",
+        "Sharq"
+      ],
+      "Hawalli": [
+        "Hawalli",
+        "Salmiya",
+        "Bayan",
+        "Rumaithiya"
+      ],
+      "Farwaniya": [
+        "Farwaniya",
+        "Khaitan",
+        "Jleeb Al-Shuyoukh"
+      ],
+      "Al Ahmadi": [
+        "Ahmadi",
+        "Fahaheel",
+        "Mangaf",
+        "Mahboula"
+      ],
+      "Mubarak Al-Kabeer": [
+        "Al Qurain",
+        "Sabah Al-Salem"
+      ],
+      "Jahra": [
+        "Jahra",
+        "Saad Al Abdullah"
+      ]
+    },
+    "Oman": {
+      "Muscat": [
+        "Muscat",
+        "Muttrah",
+        "Seeb",
+        "Bawshar"
+      ],
+      "Dhofar": [
+        "Salalah",
+        "Taqa",
+        "Mirbat"
+      ],
+      "Al Batinah North": [
+        "Sohar",
+        "Saham",
+        "Shinas"
+      ],
+      "Al Batinah South": [
+        "Barka",
+        "Rustaq"
+      ],
+      "Ad Dakhiliyah": [
+        "Nizwa",
+        "Bahla",
+        "Sumail"
+      ],
+      "Ash Sharqiyah": [
+        "Sur",
+        "Ibra"
+      ],
+      "Al Buraimi": [
+        "Al Buraimi"
+      ]
+    },
+    "Bahrain": {
+      "Capital": [
+        "Manama",
+        "Juffair"
+      ],
+      "Muharraq": [
+        "Muharraq",
+        "Busaiteen"
+      ],
+      "Northern": [
+        "Hamad Town",
+        "Budaiya",
+        "Saar"
+      ],
+      "Southern": [
+        "Riffa",
+        "Isa Town",
+        "Zallaq"
+      ]
+    },
+    "Turkey": {
+      "Marmara": [
+        "Istanbul",
+        "Bursa",
+        "Kocaeli",
+        "Edirne"
+      ],
+      "Central Anatolia": [
+        "Ankara",
+        "Konya",
+        "Eskisehir",
+        "Kayseri"
+      ],
+      "Aegean": [
+        "Izmir",
+        "Aydin",
+        "Denizli",
+        "Mugla"
+      ],
+      "Mediterranean": [
+        "Antalya",
+        "Adana",
+        "Mersin",
+        "Hatay"
+      ],
+      "Southeastern Anatolia": [
+        "Gaziantep",
+        "Sanliurfa",
+        "Diyarbakir",
+        "Mardin"
+      ],
+      "Black Sea": [
+        "Trabzon",
+        "Samsun",
+        "Rize"
+      ],
+      "Eastern Anatolia": [
+        "Erzurum",
+        "Van",
+        "Malatya"
+      ]
+    },
+    "Egypt": {
+      "Cairo": [
+        "Cairo",
+        "New Cairo",
+        "Heliopolis",
+        "Nasr City"
+      ],
+      "Giza": [
+        "Giza",
+        "6th of October",
+        "Sheikh Zayed"
+      ],
+      "Alexandria": [
+        "Alexandria",
+        "Borg El Arab"
+      ],
+      "Dakahlia": [
+        "Mansoura"
+      ],
+      "Red Sea": [
+        "Hurghada"
+      ],
+      "South Sinai": [
+        "Sharm El Sheikh"
+      ],
+      "Gharbia": [
+        "Tanta"
+      ],
+      "Port Said": [
+        "Port Said"
+      ],
+      "Suez": [
+        "Suez"
+      ],
+      "Aswan": [
+        "Aswan"
+      ],
+      "Luxor": [
+        "Luxor"
+      ]
+    },
+    "United Kingdom": {
+      "England": [
+        "London",
+        "Birmingham",
+        "Manchester",
+        "Leeds",
+        "Bradford",
+        "Leicester",
+        "Luton",
+        "Bristol",
+        "Sheffield",
+        "Newcastle"
+      ],
+      "Scotland": [
+        "Glasgow",
+        "Edinburgh",
+        "Aberdeen",
+        "Dundee"
+      ],
+      "Wales": [
+        "Cardiff",
+        "Swansea",
+        "Newport"
+      ],
+      "Northern Ireland": [
+        "Belfast",
+        "Derry"
+      ]
+    },
+    "United States": {
+      "California": [
+        "Los Angeles",
+        "San Francisco",
+        "San Diego",
+        "San Jose",
+        "Sacramento",
+        "Irvine",
+        "Anaheim"
+      ],
+      "New York": [
+        "New York City",
+        "Brooklyn",
+        "Queens",
+        "Buffalo",
+        "Albany"
+      ],
+      "Texas": [
+        "Houston",
+        "Dallas",
+        "Austin",
+        "San Antonio",
+        "Fort Worth",
+        "Plano",
+        "Arlington"
+      ],
+      "Florida": [
+        "Miami",
+        "Orlando",
+        "Tampa",
+        "Jacksonville",
+        "Fort Lauderdale"
+      ],
+      "Illinois": [
+        "Chicago",
+        "Naperville",
+        "Aurora",
+        "Springfield"
+      ],
+      "New Jersey": [
+        "Jersey City",
+        "Newark",
+        "Paterson",
+        "Edison"
+      ],
+      "Michigan": [
+        "Detroit",
+        "Dearborn",
+        "Ann Arbor",
+        "Hamtramck"
+      ],
+      "Virginia": [
+        "Alexandria",
+        "Arlington",
+        "Richmond",
+        "Fairfax"
+      ],
+      "Pennsylvania": [
+        "Philadelphia",
+        "Pittsburgh",
+        "Allentown"
+      ],
+      "Ohio": [
+        "Columbus",
+        "Cleveland",
+        "Cincinnati"
+      ],
+      "Georgia": [
+        "Atlanta",
+        "Savannah",
+        "Augusta"
+      ],
+      "Washington": [
+        "Seattle",
+        "Bellevue",
+        "Tacoma"
+      ],
+      "Massachusetts": [
+        "Boston",
+        "Cambridge",
+        "Worcester"
+      ]
+    },
+    "Canada": {
+      "Ontario": [
+        "Toronto",
+        "Mississauga",
+        "Brampton",
+        "Ottawa",
+        "Hamilton",
+        "Markham",
+        "London",
+        "Waterloo"
+      ],
+      "Quebec": [
+        "Montreal",
+        "Quebec City",
+        "Laval",
+        "Gatineau"
+      ],
+      "British Columbia": [
+        "Vancouver",
+        "Surrey",
+        "Burnaby",
+        "Richmond",
+        "Victoria"
+      ],
+      "Alberta": [
+        "Calgary",
+        "Edmonton",
+        "Red Deer"
+      ],
+      "Manitoba": [
+        "Winnipeg"
+      ],
+      "Saskatchewan": [
+        "Saskatoon",
+        "Regina"
+      ],
+      "Nova Scotia": [
+        "Halifax"
+      ]
+    },
+    "Indonesia": {
+      "Jakarta": [
+        "Jakarta",
+        "Central Jakarta",
+        "South Jakarta",
+        "East Jakarta"
+      ],
+      "West Java": [
+        "Bandung",
+        "Bekasi",
+        "Depok",
+        "Bogor"
+      ],
+      "East Java": [
+        "Surabaya",
+        "Malang",
+        "Sidoarjo"
+      ],
+      "Central Java": [
+        "Semarang",
+        "Surakarta / Solo",
+        "Yogyakarta"
+      ],
+      "Banten": [
+        "Tangerang",
+        "South Tangerang",
+        "Serang"
+      ],
+      "North Sumatra": [
+        "Medan"
+      ],
+      "South Sulawesi": [
+        "Makassar"
+      ],
+      "Aceh": [
+        "Banda Aceh"
+      ],
+      "Bali": [
+        "Denpasar"
+      ]
+    },
+    "Malaysia": {
+      "Federal Territory": [
+        "Kuala Lumpur",
+        "Putrajaya",
+        "Labuan"
+      ],
+      "Selangor": [
+        "Shah Alam",
+        "Petaling Jaya",
+        "Subang Jaya",
+        "Klang",
+        "Cyberjaya"
+      ],
+      "Penang": [
+        "George Town",
+        "Butterworth"
+      ],
+      "Johor": [
+        "Johor Bahru",
+        "Muar",
+        "Batu Pahat"
+      ],
+      "Perak": [
+        "Ipoh",
+        "Taiping"
+      ],
+      "Kedah": [
+        "Alor Setar",
+        "Sungai Petani"
+      ],
+      "Melaka": [
+        "Malacca City"
+      ],
+      "Negeri Sembilan": [
+        "Seremban"
+      ],
+      "Pahang": [
+        "Kuantan"
+      ],
+      "Terengganu": [
+        "Kuala Terengganu"
+      ],
+      "Kelantan": [
+        "Kota Bharu"
+      ],
+      "Sabah": [
+        "Kota Kinabalu"
+      ],
+      "Sarawak": [
+        "Kuching"
+      ]
+    },
+    "Singapore": {
+      "Central": [
+        "Downtown",
+        "Orchard",
+        "Marina Bay"
+      ],
+      "East": [
+        "Tampines",
+        "Bedok",
+        "Pasir Ris"
+      ],
+      "West": [
+        "Jurong",
+        "Clementi",
+        "Bukit Batok"
+      ],
+      "North": [
+        "Woodlands",
+        "Yishun",
+        "Sembawang"
+      ],
+      "North-East": [
+        "Punggol",
+        "Sengkang",
+        "Hougang",
+        "Ang Mo Kio"
+      ]
+    },
+    "Sri Lanka": {
+      "Western Province": [
+        "Colombo",
+        "Dehiwala",
+        "Negombo"
+      ],
+      "Central Province": [
+        "Kandy",
+        "Nuwara Eliya"
+      ],
+      "Southern Province": [
+        "Galle",
+        "Matara"
+      ],
+      "Eastern Province": [
+        "Batticaloa",
+        "Trincomalee",
+        "Kalmunai"
+      ],
+      "Northern Province": [
+        "Jaffna"
+      ],
+      "North Western Province": [
+        "Kurunegala"
+      ]
+    },
+    "Nepal": {
+      "Bagmati": [
+        "Kathmandu",
+        "Lalitpur",
+        "Bhaktapur"
+      ],
+      "Gandaki": [
+        "Pokhara"
+      ],
+      "Koshi": [
+        "Biratnagar",
+        "Dharan"
+      ],
+      "Madhesh": [
+        "Birgunj",
+        "Janakpur"
+      ],
+      "Lumbini": [
+        "Butwal",
+        "Bhairahawa",
+        "Nepalgunj"
+      ]
+    },
+    "Jordan": {
+      "Amman": [
+        "Amman"
+      ],
+      "Zarqa": [
+        "Zarqa",
+        "Ruseifa"
+      ],
+      "Irbid": [
+        "Irbid",
+        "Ramtha"
+      ],
+      "Aqaba": [
+        "Aqaba"
+      ],
+      "Balqa": [
+        "Salt"
+      ]
+    },
+    "Palestine": {
+      "West Bank": [
+        "Jerusalem / Al-Quds",
+        "Ramallah",
+        "Hebron / Al-Khalil",
+        "Nablus",
+        "Bethlehem",
+        "Jenin",
+        "Jericho"
+      ],
+      "Gaza Strip": [
+        "Gaza City",
+        "Khan Yunis",
+        "Rafah",
+        "Deir al-Balah"
+      ]
+    },
+    "Lebanon": {
+      "Beirut": [
+        "Beirut"
+      ],
+      "Mount Lebanon": [
+        "Baabda",
+        "Jounieh"
+      ],
+      "North": [
+        "Tripoli"
+      ],
+      "South": [
+        "Sidon",
+        "Tyre"
+      ],
+      "Bekaa": [
+        "Zahle",
+        "Baalbek"
+      ]
+    },
+    "Iraq": {
+      "Baghdad": [
+        "Baghdad",
+        "Kadhimiya"
+      ],
+      "Najaf": [
+        "Najaf",
+        "Kufa"
+      ],
+      "Karbala": [
+        "Karbala"
+      ],
+      "Basra": [
+        "Basra"
+      ],
+      "Erbil": [
+        "Erbil"
+      ],
+      "Sulaymaniyah": [
+        "Sulaymaniyah"
+      ],
+      "Nineveh": [
+        "Mosul"
+      ],
+      "Kirkuk": [
+        "Kirkuk"
+      ]
+    },
+    "Yemen": {
+      "Sana'a": [
+        "Sana'a"
+      ],
+      "Aden": [
+        "Aden"
+      ],
+      "Taiz": [
+        "Taiz"
+      ],
+      "Al Hudaydah": [
+        "Al Hudaydah"
+      ],
+      "Hadhramaut": [
+        "Mukalla",
+        "Tarim",
+        "Shibam"
+      ]
+    },
+    "Morocco": {
+      "Casablanca-Settat": [
+        "Casablanca",
+        "Mohammedia"
+      ],
+      "Rabat-Sale-Kenitra": [
+        "Rabat",
+        "Sale",
+        "Kenitra"
+      ],
+      "Fes-Meknes": [
+        "Fes",
+        "Meknes"
+      ],
+      "Marrakech-Safi": [
+        "Marrakech",
+        "Safi"
+      ],
+      "Tanger-Tetouan-Al Hoceima": [
+        "Tangier",
+        "Tetouan"
+      ],
+      "Souss-Massa": [
+        "Agadir"
+      ]
+    },
+    "Algeria": {
+      "Algiers": [
+        "Algiers"
+      ],
+      "Oran": [
+        "Oran"
+      ],
+      "Constantine": [
+        "Constantine"
+      ],
+      "Annaba": [
+        "Annaba"
+      ],
+      "Blida": [
+        "Blida"
+      ],
+      "Setif": [
+        "Setif"
+      ]
+    },
+    "Tunisia": {
+      "Tunis": [
+        "Tunis"
+      ],
+      "Sfax": [
+        "Sfax"
+      ],
+      "Sousse": [
+        "Sousse"
+      ],
+      "Kairouan": [
+        "Kairouan"
+      ],
+      "Bizerte": [
+        "Bizerte"
+      ]
+    },
+    "Nigeria": {
+      "Lagos": [
+        "Lagos",
+        "Ikeja"
+      ],
+      "Kano": [
+        "Kano"
+      ],
+      "Federal Capital Territory": [
+        "Abuja"
+      ],
+      "Oyo": [
+        "Ibadan"
+      ],
+      "Kaduna": [
+        "Kaduna"
+      ],
+      "Rivers": [
+        "Port Harcourt"
+      ]
+    },
+    "South Africa": {
+      "Gauteng": [
+        "Johannesburg",
+        "Pretoria"
+      ],
+      "Western Cape": [
+        "Cape Town"
+      ],
+      "KwaZulu-Natal": [
+        "Durban",
+        "Pietermaritzburg"
+      ],
+      "Eastern Cape": [
+        "Gqeberha / Port Elizabeth"
+      ]
+    },
+    "Germany": {
+      "Berlin": [
+        "Berlin"
+      ],
+      "Bavaria": [
+        "Munich",
+        "Nuremberg"
+      ],
+      "North Rhine-Westphalia": [
+        "Cologne",
+        "Dusseldorf",
+        "Dortmund",
+        "Essen"
+      ],
+      "Hesse": [
+        "Frankfurt",
+        "Wiesbaden"
+      ],
+      "Baden-Wurttemberg": [
+        "Stuttgart",
+        "Mannheim"
+      ],
+      "Hamburg": [
+        "Hamburg"
+      ]
+    },
+    "France": {
+      "Ile-de-France": [
+        "Paris",
+        "Saint-Denis",
+        "Boulogne-Billancourt"
+      ],
+      "Provence-Alpes-Cote d'Azur": [
+        "Marseille",
+        "Nice"
+      ],
+      "Auvergne-Rhone-Alpes": [
+        "Lyon",
+        "Grenoble"
+      ],
+      "Occitanie": [
+        "Toulouse",
+        "Montpellier"
+      ],
+      "Grand Est": [
+        "Strasbourg"
+      ]
+    },
+    "Australia": {
+      "New South Wales": [
+        "Sydney",
+        "Newcastle",
+        "Wollongong"
+      ],
+      "Victoria": [
+        "Melbourne",
+        "Geelong"
+      ],
+      "Queensland": [
+        "Brisbane",
+        "Gold Coast"
+      ],
+      "Western Australia": [
+        "Perth"
+      ],
+      "South Australia": [
+        "Adelaide"
+      ],
+      "Australian Capital Territory": [
+        "Canberra"
+      ]
+    },
+    "New Zealand": {
+      "Auckland": [
+        "Auckland"
+      ],
+      "Wellington": [
+        "Wellington"
+      ],
+      "Canterbury": [
+        "Christchurch"
+      ],
+      "Waikato": [
+        "Hamilton"
+      ]
+    },
+    "Kazakhstan": {
+      "Almaty": [
+        "Almaty"
+      ],
+      "Astana": [
+        "Astana"
+      ],
+      "Shymkent": [
+        "Shymkent"
+      ],
+      "Karaganda": [
+        "Karaganda"
+      ]
+    },
+    "Uzbekistan": {
+      "Tashkent": [
+        "Tashkent"
+      ],
+      "Samarkand": [
+        "Samarkand"
+      ],
+      "Bukhara": [
+        "Bukhara"
+      ],
+      "Fergana": [
+        "Fergana",
+        "Andijan",
+        "Namangan"
+      ]
+    }
+  }
+}
