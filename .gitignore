@@ -1,24 +1,88 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
 /build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
 app/build/
 build_artifacts/
-temp_decompiled/
-jadx_tool/
-jadx.zip
-*.apk
-*.zip
-*.mp4
-scratch/
+.externalNativeBuild
+.cxx
+
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+/local.properties
+
+# Log files
+*.log
+/hs_err_pid*.log
+/replay_pid*.log
+
+# Android Studio / IntelliJ IDEA
+.idea/
+/.idea/
+*.iml
+*.ipr
+*.iws
+/captures
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Reverse engineering and decompilation dumps (Local only)
+/cfr_out/
+/cfr.jar
+/smali_output/
+/jadx_bad_out/
+/jadx_class_out/
+/jadx_debug_lines/
+/jadx_decompiled/
+/jadx_full_out/
+/jadx_simple_out/
+/jadx_test/
+/jadx_tool/
+/jadx.zip
+/temp_decompiled/
+/androguard.db
+
+# Local scratch and test dumps
+/scratch/
+/CLAUDE_AUDIT_PACKAGE/
+/.wrangler/
+/website_screenshots/
+/whatspp images/
+/compass_designs/
+/frames/
+/archived_assets/
+/notification_sounds/
+
+# Root-level test media and scratch scripts (keep app/res untouched)
+/*.png
+/*.jpg
+/*.jpeg
+/*.mp3
+/*.mp4
+/*.zip
+/*.html
+/*.js
+/*.css
+/*.xml
+/*.py
+/*.txt
+/jummah_data.json
