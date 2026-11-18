@@ -43,6 +43,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import com.tasbih.digitaltasbih.data.HalalFoodItem
+import com.tasbih.digitaltasbih.data.MosqueItem
+import com.tasbih.digitaltasbih.data.NearMeRepository
 import com.tasbih.digitaltasbih.data.PrayerRepository
 import com.tasbih.digitaltasbih.data.mosque.MosqueRepository
 import com.tasbih.digitaltasbih.data.mosque.MosqueRouteInfo
@@ -111,19 +114,23 @@ fun FindMosqueScreen(
         }
     }
 
-    // Function to refresh places
+    // Function to refresh places using unified NearMeRepository (OSM Live + Overture Offline + Dedup)
     fun loadPlaces() {
         isLoadingPlaces = true
         coroutineScope.launch {
-            val places = MosqueRepository.getNearbyPlaces(
-                userLat = userLat,
-                userLon = userLon,
-                radiusKm = selectedRadiusKm,
-                isHalal = isHalalMode,
-                searchQuery = searchQuery
-            )
-            placesList = places
-            isLoadingPlaces = false
+            try {
+                val places = if (isHalalMode) {
+                    val halal = NearMeRepository.getHalalFood(userLat, userLon, selectedRadiusKm)
+                    halal.map { it.toNearbyMosque() }
+                } else {
+                    val mosques = NearMeRepository.getMosques(context, userLat, userLon, selectedRadiusKm)
+                    mosques.map { it.toNearbyMosque() }
+                }
+                placesList = places
+            } catch (_: Exception) {
+            } finally {
+                isLoadingPlaces = false
+            }
         }
     }
 
@@ -284,31 +291,18 @@ fun FindMosqueScreen(
                 }
             }
 
-            if (useGoogleMapsSdk) {
-                GoogleMosqueMapView(
-                    userLat = userLat,
-                    userLon = userLon,
-                    places = filteredPlaces,
-                    selectedPlace = selectedPlace,
-                    routePoints = routeInfo?.polylinePoints ?: emptyList(),
-                    onPlaceClick = { place ->
-                        calculateRoute(place, isDrivingMode)
-                    },
-                    modifier = Modifier.fillMaxSize()
-                )
-            } else {
-                GoogleOsmMapView(
-                    userLat = userLat,
-                    userLon = userLon,
-                    places = filteredPlaces,
-                    selectedPlace = selectedPlace,
-                    routePoints = routeInfo?.polylinePoints ?: emptyList(),
-                    onPlaceClick = { place ->
-                        calculateRoute(place, isDrivingMode)
-                    },
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
+            // ── 1. MAP ENGINE: MapLibre Native with OpenFreeMap Liberty style ──
+            MapLibreMosqueView(
+                userLat = userLat,
+                userLon = userLon,
+                places = filteredPlaces,
+                selectedPlace = selectedPlace,
+                routePoints = routeInfo?.polylinePoints ?: emptyList(),
+                onPlaceClick = { place ->
+                    calculateRoute(place, isDrivingMode)
+                },
+                modifier = Modifier.fillMaxSize()
+            )
 
             // ── 2. FLOATING TOP BAR & CONTROLS ──
             Column(
@@ -487,7 +481,64 @@ fun FindMosqueScreen(
                 }
             }
 
-            // ── 3. SMART NAVIGATION ROUTE MODAL (Bottom Sheet) ──
+            // ── 3. HALAL FOOD EMPTY STATE WITH OSM REPORT BUTTON ──
+            if (isHalalMode && filteredPlaces.isEmpty() && !isLoadingPlaces) {
+                Surface(
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color.White,
+                    shadowElevation = 6.dp,
+                    border = BorderStroke(1.dp, Color(0xFFE2E8F0)),
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(horizontal = 20.dp, vertical = 24.dp)
+                        .fillMaxWidth()
+                ) {
+                    Column(
+                        modifier = Modifier.padding(18.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text("🍽️", fontSize = 28.sp)
+                        Text(
+                            text = "No Reported Halal Outlets",
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF1F2937)
+                        )
+                        Text(
+                            text = "No restaurants with confirmed 'diet:halal' tag found within ${selectedRadiusKm.toInt()} km in OpenStreetMap.",
+                            fontSize = 12.sp,
+                            color = Color(0xFF64748B),
+                            textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                        )
+                        Text(
+                            text = "Reported halal (not certified) · Zero AI guessing",
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color(0xFF8C6B1F)
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Button(
+                            onClick = {
+                                val osmAddUrl = "https://www.openstreetmap.org/note/new#map=16/$userLat/$userLon"
+                                val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(osmAddUrl))
+                                context.startActivity(intent)
+                            },
+                            shape = RoundedCornerShape(20.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0D4A3E))
+                        ) {
+                            Text(
+                                text = "Add / Report on OpenStreetMap",
+                                fontSize = 12.5.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+            }
+
+            // ── 4. SMART NAVIGATION ROUTE MODAL (Bottom Sheet) ──
             selectedPlace?.let { place ->
                 MosqueRouteModal(
                     place = place,
@@ -551,4 +602,42 @@ private fun startContinuousGpsTracking(context: Context, onLocation: (Location) 
             Looper.getMainLooper()
         )
     } catch (_: Exception) {}
+}
+
+private fun MosqueItem.toNearbyMosque(): NearbyMosque {
+    val dist = distanceMeters.toInt()
+    val walkMins = kotlin.math.max(1, (dist / 83.0).toInt())
+    val driveMins = kotlin.math.max(1, (dist / 500.0).toInt())
+    return NearbyMosque(
+        id = id,
+        name = name,
+        address = address ?: "Nearby Mosque",
+        lat = latitude,
+        lon = longitude,
+        distanceMeters = dist,
+        bearingDegrees = 0f,
+        estimatedWalkMinutes = walkMins,
+        estimatedDriveMinutes = driveMins,
+        isHalal = false,
+        placeType = "mosque"
+    )
+}
+
+private fun HalalFoodItem.toNearbyMosque(): NearbyMosque {
+    val dist = distanceMeters.toInt()
+    val walkMins = kotlin.math.max(1, (dist / 83.0).toInt())
+    val driveMins = kotlin.math.max(1, (dist / 500.0).toInt())
+    return NearbyMosque(
+        id = id,
+        name = name,
+        address = address ?: cuisine ?: "Reported halal (not certified)",
+        lat = latitude,
+        lon = longitude,
+        distanceMeters = dist,
+        bearingDegrees = 0f,
+        estimatedWalkMinutes = walkMins,
+        estimatedDriveMinutes = driveMins,
+        isHalal = true,
+        placeType = "halal"
+    )
 }
